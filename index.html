@@ -68,10 +68,13 @@
   margin-top: 6px;
 }
 
-/* OTTIMIZZAZIONE MOBILE (Sotto i 768px): Adatta l'altezza dell'iframe */
+/* OTTIMIZZAZIONE MOBILE (Sotto i 768px): Gestione visualizzazione mese corrente ed eventi */
 @media (max-width: 767px) {
+  #google-calendar-wrap {
+    padding: 4px !important;
+  }
   #google-calendar-wrap iframe {
-    height: 550px !important;
+    height: 480px !important;
   }
 }
 
@@ -317,9 +320,17 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
                     <h5 class="section-subtitle">Le nostre attivita&#039; ed Eventi</h5>                    <h2 class="section-title">Calendario</h2>                    <div class="section-desc"><p><img decoding="async" class="alignnone  wp-image-2459" src="wp-content/uploads/2026/03/penna-300x102.png" alt="" width="259" height="88" data-mce-src="wp-content/uploads/2026/03/penna-300x102.png" srcset="wp-content/uploads/2026/03/penna-300x102.png 300w, wp-content/uploads/2026/03/penna.png 500w" sizes="(max-width: 259px) 100vw, 259px" /><br />
 <div id="google-calendar-wrap">
   <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#7b2fd6,#f4c430);"></div>
-  <iframe src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=Europe%2FRome&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;src=fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d%40group.calendar.google.com&amp;color=%237B2FD6"
+  <iframe id="google-calendar-iframe" src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=Europe%2FRome&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;src=fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d%40group.calendar.google.com&amp;color=%237B2FD6"
     frameborder="0" scrolling="no"></iframe>
 </div>
+<script>
+  (function() {
+    var calendarIframe = document.getElementById('google-calendar-iframe');
+    if (calendarIframe && window.innerWidth <= 767) {
+      calendarIframe.src = "https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;ctz=Europe%2FRome&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;src=fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d%40group.calendar.google.com&amp;color=%237B2FD6";
+    }
+  })();
+</script>
 <div style="text-align:center;margin-top:18px;">
   <span style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#7b2fd6,#a855f7);color:#fff;padding:10px 22px;border-radius:30px;font-size:.85rem;letter-spacing:.3px;box-shadow:0 3px 10px rgba(123,47,214,.25);">
     👉 Premi su un giorno o un'attività per maggiori dettagli
