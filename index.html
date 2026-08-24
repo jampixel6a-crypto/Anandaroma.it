@@ -1,187 +1,535 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it-IT">
 <head>
-  <meta charset="UTF-8">
-  <!-- Fondamentale per la resa responsive su mobile -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendario Responsive</title>
-  <style>
-    /* RESET E STILI BASE */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<title>Anandaroma</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Anandaroma &raquo; Feed" href="feed/index.rss" />
+<link rel="alternate" type="application/rss+xml" title="Anandaroma &raquo; Feed dei commenti" href="comments/feed/index.rss" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="wp-json/oembed/1.0/embed.json" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="wp-json/oembed/1.0/embed.xml" />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='wp-emoji-styles-inline-css' type='text/css'>img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id='wp-block-library-inline-css' type='text/css'>:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
 
-    body {
-      padding: 20px;
-      background-color: #f4f6f8;
-    }
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id='wp-block-media-text-inline-css' type='text/css'>.wp-block-media-text{box-sizing:border-box;
+  /*!rtl:begin:ignore*/direction:ltr;
+  /*!rtl:end:ignore*/display:grid;grid-template-columns:50% 1fr;grid-template-rows:auto}.wp-block-media-text.has-media-on-the-right{grid-template-columns:1fr 50%}.wp-block-media-text.is-vertically-aligned-top>.wp-block-media-text__content,.wp-block-media-text.is-vertically-aligned-top>.wp-block-media-text__media{align-self:start}.wp-block-media-text.is-vertically-aligned-center>.wp-block-media-text__content,.wp-block-media-text.is-vertically-aligned-center>.wp-block-media-text__media,.wp-block-media-text>.wp-block-media-text__content,.wp-block-media-text>.wp-block-media-text__media{align-self:center}.wp-block-media-text.is-vertically-aligned-bottom>.wp-block-media-text__content,.wp-block-media-text.is-vertically-aligned-bottom>.wp-block-media-text__media{align-self:end}.wp-block-media-text>.wp-block-media-text__media{
+  /*!rtl:begin:ignore*/grid-column:1;grid-row:1;
+  /*!rtl:end:ignore*/margin:0}.wp-block-media-text>.wp-block-media-text__content{direction:ltr;
+  /*!rtl:begin:ignore*/grid-column:2;grid-row:1;
+  /*!rtl:end:ignore*/padding:0 8%;word-break:break-word}.wp-block-media-text.has-media-on-the-right>.wp-block-media-text__media{
+  /*!rtl:begin:ignore*/grid-column:2;grid-row:1
+  /*!rtl:end:ignore*/}.wp-block-media-text.has-media-on-the-right>.wp-block-media-text__content{
+  /*!rtl:begin:ignore*/grid-column:1;grid-row:1
+  /*!rtl:end:ignore*/}.wp-block-media-text__media a{display:block}.wp-block-media-text__media img,.wp-block-media-text__media video{height:auto;max-width:unset;vertical-align:middle;width:100%}.wp-block-media-text.is-image-fill>.wp-block-media-text__media{background-size:cover;height:100%;min-height:250px}.wp-block-media-text.is-image-fill>.wp-block-media-text__media>a{display:block;height:100%}.wp-block-media-text.is-image-fill>.wp-block-media-text__media img{height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;clip:rect(0,0,0,0);border:0}.wp-block-media-text.is-image-fill-element>.wp-block-media-text__media{height:100%;min-height:250px;position:relative}.wp-block-media-text.is-image-fill-element>.wp-block-media-text__media>a{display:block;height:100%}.wp-block-media-text.is-image-fill-element>.wp-block-media-text__media img{height:100%;object-fit:cover;position:absolute;width:100%}@media (max-width:600px){.wp-block-media-text.is-stacked-on-mobile{grid-template-columns:100%!important}.wp-block-media-text.is-stacked-on-mobile>.wp-block-media-text__media{grid-column:1;grid-row:1}.wp-block-media-text.is-stacked-on-mobile>.wp-block-media-text__content{grid-column:1;grid-row:2}}
+/*# sourceURL=https://anandaroma.it/wp-includes/blocks/media-text/style.min.css */
+</style>
+<style id='wp-block-code-inline-css' type='text/css'>.wp-block-code{box-sizing:border-box}.wp-block-code code{
+  /*!rtl:begin:ignore*/direction:ltr;display:block;font-family:inherit;overflow-wrap:break-word;text-align:initial;white-space:pre-wrap
+  /*!rtl:end:ignore*/}
+/*# sourceURL=https://anandaroma.it/wp-includes/blocks/code/style.min.css */
+</style>
+<style id='wp-block-code-theme-inline-css' type='text/css'>.wp-block-code{border:1px solid #ccc;border-radius:4px;font-family:Menlo,Consolas,monaco,monospace;padding:.8em 1em}
+/*# sourceURL=https://anandaroma.it/wp-includes/blocks/code/theme.min.css */
+</style>
+<style id='wp-block-paragraph-inline-css' type='text/css'>.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://anandaroma.it/wp-includes/blocks/paragraph/style.min.css */
+</style>
+<style id='wp-block-preformatted-inline-css' type='text/css'>.wp-block-preformatted{box-sizing:border-box;white-space:pre-wrap}:where(.wp-block-preformatted.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://anandaroma.it/wp-includes/blocks/preformatted/style.min.css */
+</style>
 
-    .calendar-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+<style id='classic-theme-styles-inline-css' type='text/css'>/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id='global-styles-inline-css' type='text/css'>:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
+<!-- Stili personalizzati per la risposta e ingrandimento del Calendario su PC -->
+<style id='calendar-responsive-custom-css' type='text/css'>
+#google-calendar-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 8px;
+  background: #e4e1ea;
+  border: 1px solid #d3cee0;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
 
-    /* INTESTAZIONE GIORNI (DESKTOP) */
-    .weekdays {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      text-align: center;
-      font-weight: bold;
-      background: #007bff;
-      color: #fff;
-      padding: 10px 0;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
+#google-calendar-wrap iframe {
+  border: 0;
+  width: 100%;
+  height: 600px;
+  display: block;
+  border-radius: 10px;
+  background: #fff;
+  margin-top: 6px;
+}
 
-    /* GRIGLIA DESKTOP (7 colonne) */
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-    }
+/* Ingrandimento specifico per schermo PC/Desktop (a partire da 992px) */
+@media (min-width: 992px) {
+  #google-calendar-wrap {
+    max-width: 1100px !important; /* Ingrandisce la larghezza del calendario su PC */
+    padding: 12px !important;
+  }
+  #google-calendar-wrap iframe {
+    height: 750px !important; /* Ingrandisce l'altezza per renderlo ancora più spazioso */
+  }
+}
+</style>
 
-    .day-card {
-      background: #fafafa;
-      border: 1px solid #e0e0e0;
-      border-radius: 4px;
-      padding: 8px;
-      min-height: 100px;
-      display: flex;
-      flex-direction: column;
-    }
+<link rel='stylesheet' id='pb_animate-css' href='wp-content/plugins/ays-popup-box/public/css/animate.css' type='text/css' media='all' />
+<link rel='stylesheet' id='onepress-fonts-css' href='https://fonts.googleapis.com/css?family=Raleway%3A400%2C500%2C600%2C700%2C300%2C100%2C800%2C900%7COpen+Sans%3A400%2C300%2C300italic%2C400italic%2C600%2C600italic%2C700%2C700italic&amp;subset=latin%2Clatin-ext&amp;display=swap&amp;ver=2.3.17' type='text/css' media='all' />
+<link rel='stylesheet' id='onepress-lightgallery-css' href='wp-content/themes/onepress/assets/frontend/lightgallery.css' type='text/css' media='all' />
+<link rel='stylesheet' id='onepress-style-css' href='wp-content/themes/onepress/assets/frontend/theme.css' type='text/css' media='all' />
+<style id='onepress-style-inline-css' type='text/css'>.site-logo-div img{height:50px;width:auto}#main .video-section section.hero-slideshow-wrapper{background:transparent}.hero-slideshow-wrapper:after{position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:rgba(51,102,204,0.66);display:block;content:""}#parallax-hero .jarallax-container .parallax-bg:before{background-color:rgba(51,102,204,0.66)}.body-desktop .parallax-hero .hero-slideshow-wrapper:after{display:none!important}#parallax-hero>.parallax-bg::before{background-color:rgba(51,102,204,0.66);opacity:1}.body-desktop .parallax-hero .hero-slideshow-wrapper:after{display:none!important}a,.screen-reader-text:hover,.screen-reader-text:active,.screen-reader-text:focus,.header-social a,.onepress-menu a:hover,.onepress-menu ul li a:hover,.onepress-menu li.onepress-current-item>a,.onepress-menu ul li.current-menu-item>a,.onepress-menu>li a.menu-actived,.onepress-menu.onepress-menu-mobile li.onepress-current-item>a,.site-footer a,.site-footer .footer-social a:hover,.site-footer .btt a:hover,.highlight,#comments .comment .comment-wrapper .comment-meta .comment-time:hover,#comments .comment .comment-wrapper .comment-meta .comment-reply-link:hover,#comments .comment .comment-wrapper .comment-meta .comment-edit-link:hover,.btn-theme-primary-outline,.sidebar .widget a:hover,.section-services .service-item .service-image i,.counter_item .counter__number,.team-member .member-thumb .member-profile a:hover,.icon-background-default{color:#3366cc}input[type="reset"],input[type="submit"],input[type="submit"],input[type="reset"]:hover,input[type="submit"]:hover,input[type="submit"]:hover .nav-links a:hover,.btn-theme-primary,.btn-theme-primary-outline:hover,.section-testimonials .card-theme-primary,.woocommerce #respond input#submit,.woocommerce a.button,.woocommerce button.button,.woocommerce input.button,.woocommerce button.button.alt,.pirate-forms-submit-button,.pirate-forms-submit-button:hover,input[type="reset"],input[type="submit"],input[type="submit"],.pirate-forms-submit-button,.contact-form div.wpforms-container-full .wpforms-form .wpforms-submit,.contact-form div.wpforms-container-full .wpforms-form .wpforms-submit:hover,.nav-links a:hover,.nav-links a.current,.nav-links .page-numbers:hover,.nav-links .page-numbers.current{background:#3366cc}.btn-theme-primary-outline,.btn-theme-primary-outline:hover,.pricing__item:hover,.section-testimonials .card-theme-primary,.entry-content blockquote{border-color:#3366cc}.feature-item:hover .icon-background-default{color:#edede1}.page-header:not(.page--cover){text-align:center}.page-header.page--cover:before{background:rgba(237,237,194,1)}.page-header:before{background:rgba(237,237,194,1)}.site-header,.is-transparent .site-header.header-fixed{background:#edede1;border-bottom:0px none}.hero-content-style1 .morphext{color:#eeee22}.site-footer{background-color:#d1d1d1}.site-footer .footer-connect .follow-heading,.site-footer .footer-social a{color:#3f3f3f}.site-footer .site-info,.site-footer .btt a{background-color:#edede1}.site-footer .site-info{color:#aaaaaa}.site-footer .btt a,.site-footer .site-info a{color:#aaaaaa}#footer-widgets{background-color:#edede1}.gallery-carousel .g-item{padding:0px 1px}.gallery-carousel-wrap{margin-left:-1px;margin-right:-1px}.gallery-grid .g-item,.gallery-masonry .g-item .inner{padding:1px}.gallery-grid-wrap,.gallery-masonry-wrap{margin-left:-1px;margin-right:-1px}.gallery-justified-wrap{margin-left:-2px;margin-right:-2px}body .c-bully{color:#3366cc}
+/*# sourceURL=onepress-style-inline-css */
+</style>
+<script type="text/javascript" src="wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script>
+<script type="text/javascript" src="wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="ays-pb-js-extra">
+/* <![CDATA[ */
+var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","seconds":"seconds","thisWillClose":"This will close in","icons":{"close_icon":"<svg class=\"ays_pb_material_close_icon\" xmlns=\"https://www.w3.org/2000/svg\" height=\"36px\" viewBox=\"0 0 24 24\" width=\"36px\" fill=\"#000000\" alt=\"Pop-up Close\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/></svg>","close_circle_icon":"<svg class=\"ays_pb_material_close_circle_icon\" xmlns=\"https://www.w3.org/2000/svg\" height=\"24\" viewBox=\"0 0 24 24\" width=\"36\" alt=\"Pop-up Close\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z\"/></svg>","volume_up_icon":"<svg class=\"ays_pb_fa_volume\" xmlns=\"https://www.w3.org/2000/svg\" height=\"24\" viewBox=\"0 0 24 24\" width=\"36\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>","volume_mute_icon":"<svg xmlns=\"https://www.w3.org/2000/svg\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M7 9v6h4l5 5V4l-5 5H7z\"/></svg>"}};
+//# sourceURL=ays-pb-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="wp-content/plugins/ays-popup-box/public/js/ays-pb-public.js" id="ays-pb-js"></script>
+<link rel="https://api.w.org/" href="wp-json/index.json" /><link rel="alternate" title="JSON" type="application/json" href="wp-json/wp/v2/pages/1415.json" />
+<meta name="generator" content="WordPress 6.9.4" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='index.html' />
+<link rel="icon" href="wp-content/uploads/2026/02/cropped-cropped-LogoBugOnly_500px-1-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="wp-content/uploads/2026/02/cropped-cropped-LogoBugOnly_500px-1-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="wp-content/uploads/2026/02/cropped-cropped-LogoBugOnly_500px-1-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://anandaroma.it/wp-content/uploads/2026/02/cropped-cropped-LogoBugOnly_500px-1-1-270x270.png" />
+<style id='core-block-supports-inline-css' type='text/css'>.wp-elements-a3238127b661f58193b0479c1f4951fb a:where(:not(.wp-element-button)){color:var(--wp--preset--color--black);}.wp-elements-013bf5ac2acce8b31d560ccc05cee8bb a:where(:not(.wp-element-button)){color:var(--wp--preset--color--black);}
+/*# sourceURL=core-block-supports-inline-css */
+</style>
+<link rel='stylesheet' id='ays-pb-min-css' href='wp-content/plugins/ays-popup-box/public/css/ays-pb-public-min.css' type='text/css' media='all' />
 
-    .day-number {
-      font-weight: bold;
-      font-size: 14px;
-      margin-bottom: 6px;
-      color: #555;
-    }
-
-    .event {
-      background-color: #e3f2fd;
-      color: #0d47a1;
-      padding: 4px 6px;
-      border-radius: 3px;
-      font-size: 12px;
-      margin-top: 4px;
-      border-left: 3px solid #1976d2;
-    }
-
-    /* Giorni vuoti per pareggiare l'inizio del mese */
-    .day-card.empty {
-      background: transparent;
-      border: none;
-    }
-
-    /* ===================================================
-       STILI RESPONSIVE PER SMARTPHONE (Sotto i 768px)
-       =================================================== */
-    @media (max-width: 767px) {
-      /* Nasconde l'intestazione rigida dei giorni */
-      .weekdays {
-        display: none;
-      }
-
-      /* Trasforma la griglia in una lista singola a scorrimento verticale */
-      .calendar-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      /* Nasconde le celle vuote del calendario */
-      .day-card.empty {
-        display: none;
-      }
-
-      /* Riorganizza le schede giorno per il mobile */
-      .day-card {
-        min-height: auto;
-        padding: 12px;
-        background: #ffffff;
-        border-left: 4px solid #007bff; /* Evidenzia il giorno */
-      }
-
-      .day-number {
-        font-size: 16px;
-        color: #007bff;
-      }
-
-      /* Garantisce la massima leggibilità del testo dell'evento */
-      .event {
-        font-size: 14px;
-        line-height: 1.4;
-        white-space: normal;
-        word-break: break-word;
-        padding: 8px;
-        margin-top: 6px;
-      }
-    }
-  </style>
 </head>
-<body>
 
-  <div class="calendar-container">
-    <h2>Ottobre 2026</h2>
+<body class="home wp-singular page-template page-template-template-frontpage page-template-template-frontpage-php page page-id-1415 wp-custom-logo wp-theme-onepress cookies-not-set">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Passa al contenuto</a>
+	<div id="header-section" class="h-below-hero no-transparent"><div id="parallax-hero" class=" parallax-hero jarallax"> <div class="parallax-bg jarallax-img"><img src="wp-content/uploads/2026/02/shutterstock_2342373739-1-scaled-1.jpg" alt=""></div>	<section  id="home" 			 class="hero-slideshow-wrapper hero-slideshow-normal">
 
-    <!-- Intestazione giorni della settimana -->
-    <div class="weekdays">
-      <div>Lun</div>
-      <div>Mar</div>
-      <div>Mer</div>
-      <div>Gio</div>
-      <div>Ven</div>
-      <div>Sab</div>
-      <div>Dom</div>
+					<div class="slider-spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
+			</div>
+		
+						<div class="container" style="padding-top: 30%; padding-bottom: 20%;">
+					<div class="hero__content hero-content-style1">
+						<h2 class="hero-large-text"><img src="wp-content/uploads/2026/02/cropped-LogoBugOnly_500px-1-1.png" alt="" width="69" height="70" class="alignnone  wp-image-2160" data-mce-src="wp-content/uploads/2026/02/cropped-LogoBugOnly_500px-1-1.png"> Ananda Roma</h2>						<div class="hero-small-text"><h6>Come è naturale per l&#8217;uccello volare nel cielo, così è naturale per l&#8217;anima librarsi <strong>nell&#8217;onnipresenza.</strong></h6>
+<h6>Paramhansa Yogananda</h6>
+</div>						<a  href="#about" class="btn btn-secondary-outline btn-lg">Prosegui</a>											</div>
+				</div>
+					</section>
+</div>		<header id="masthead" class="site-header header-full-width is-sticky no-scroll no-t h-below-hero" role="banner">
+			<div class="container">
+				<div class="site-branding">
+					<div class="site-brand-inner has-logo-img no-desc"><div class="site-logo-div"><a href="index.html" class="custom-logo-link  no-t-logo" rel="home" itemprop="url"><img width="283" height="67" src="wp-content/uploads/2026/02/cropped-cropped-Screenshot_2024-01-01_alle_11.45.56-removebg-preview.png" class="custom-logo" alt="Anandaroma" itemprop="logo" decoding="async" /></a></div></div>				</div>
+				<div class="header-right-wrapper">
+					<a href="#0" id="nav-toggle">Menu<span></span></a>
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+						<ul class="onepress-menu">
+							<li id="menu-item-1500" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1500"><a href="#about">Chi Siamo</a></li>
+<li id="menu-item-1678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1678"><a href="#servizi">Attivita&#8217;</a></li>
+<li id="menu-item-1504" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1504"><a href="#programmi">Programmi</a></li>
+<li id="menu-item-1501" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1501"><a href="#team">Calendario</a></li>
+<li id="menu-item-1505" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1505"><a href="#contact">Contatti</a></li>
+						</ul>
+					</nav>
+
+				</div>
+			</div>
+		</header>
+		</div>
+	<div id="content" class="site-content">
+		<main id="main" class="site-main" role="main">
+            					<section id="about"  class="section-about section-padding onepage-section">
+		
+						<div class="container">
+								<div class="section-title-area">
+					<h5 class="section-subtitle">Associazione Culturale</h5>					<h2 class="section-title">Ananda Roma</h2>					<div class="section-desc"><p style="text-align: justify;font-size: 80%;font-family: verdana" data-mce-style="text-align: justify; font-size: 80%; font-family: verdana;">Hai mai sentito il desiderio di fermarti, ritrovare la calma e ristabilire l’equilibrio dentro di te?<br />
+Vieni a scoprire come la meditazione, lo yoga e l’approfondimento degli insegnamenti spirituali, possano essere di aiuto per imparare a vivere con maggiore consapevolezza, serenità e gioia.<br />
+Ad Ananda Roma potrai conoscere gli antichi insegnamenti portati in occidente dal grande maestro indiano Paramhansa Yogananda, autore di Autobiografia di uno Yogi, e trasmessi da Swami Kriyananda, suo discepolo diretto. Dal 2000 ci dedichiamo a condividerli con coloro che, come te, sono alla ricerca di una nuova consapevolezza interiore. Ti aspettiamo.</p>
+<p><img fetchpriority="high" decoding="async" class=" wp-image-2423 aligncenter" src="wp-content/uploads/2026/02/rounded-in-photoretrica.png" alt="" width="358" height="286" data-mce-src="wp-content/uploads/2026/02/rounded-in-photoretrica.png"></p>
+<p style="text-align: justify;font-size: 80%;font-family: verdana" data-mce-style="text-align: justify; font-size: 80%; font-family: verdana;">Paramhansa Yogananda è stato il primo grande maestro indiano a trascorrere la maggior parte della sua vita in Occidente. Divenuto famoso per il suo libro Autobiografia di uno Yogi, ha contribuito a rendere lo yoga e la meditazione ben conosciuti e praticati in tutto il mondo con la profondità e l’universalità dei suoi insegnamenti. Il suo scopo era quello di ispirare i sinceri ricercatori spirituali, indipendentemente dalla religione di appartenenza, a perseguire l’esperienza interiore e diretta di Dio, attraverso pratiche facilmente accessibili.</p>
+<p><img decoding="async" class="wp-image-2424 aligncenter" src="wp-content/uploads/2026/02/rounded-in-photoretrica-copia.png" alt="" width="358" height="322" data-mce-src="wp-content/uploads/2026/02/rounded-in-photoretrica-copia.png"></p>
+<p style="text-align: justify;font-size: 80%;font-family: verdana" data-mce-style="text-align: justify; font-size: 80%; font-family: verdana;">Insegnante spirituale, autore e compositore di fama mondiale, Swami Kriyananda è stato uno dei maggiori esponenti dello yoga occidentale.<br />
+Discepolo diretto di Paramhansa Yogananda, ha dedicato l’intera vita a diffondere in tutto il mondo gli insegnamenti della Realizzazione del Sé trasmessi dal suo Maestro e a dimostranne l’applicazione in ogni ambito dell’esistenza.</p>
+</div>				</div>
+								<div class="row">
+									</div>
+			</div>
+							</section>
+								<section id="servizi"  class="section-services section-padding section-meta onepage-section">						<div class="container">
+								<div class="section-title-area">
+										<h2 class="section-title">Le nostre Attivita&#039;</h2>					<div class="section-desc"><p><img decoding="async" class="size-full wp-image-2418 aligncenter" src="wp-content/uploads/2026/02/Medi.png" alt="" width="266" height="266" data-mce-src="wp-content/uploads/2026/02/Medi.png" srcset="wp-content/uploads/2026/02/Medi.png 266w, wp-content/uploads/2026/02/Medi-150x150.png 150w" sizes="(max-width: 266px) 100vw, 266px" /></p>
+<p style="text-align: center;font-size: 80%;font-family: verdana" data-mce-style="text-align: center; font-size: 80%; font-family: verdana;">Ad Ananda Roma puoi avvicinarti alla Scienza della Meditazione e allo Yoga come vie<br />
+complementari per ritrovare equilibrio, energia e consapevolezza interiore.<br />
+Attraverso i nostri corsi di meditazione e di yoga imparerai:<br />
+-come meditare e come praticare gli Esercizi di Ricarica Energetica di Paramhansa Yogananda<br />
+-come rilassare e rigenerare il corpo e la mente con l&#8217; Ananda Yoga.<br />
+Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altri corsi di approfondimento.</p>
+<p><img decoding="async" class="alignnone size-medium wp-image-2525" src="wp-content/uploads/2026/03/Separa-300x30.png" alt="" width="300" height="30" data-mce-src="wp-content/uploads/2026/03/Separa-300x30.png" srcset="wp-content/uploads/2026/03/Separa-300x30.png 300w, wp-content/uploads/2026/03/Separa-768x77.png 768w, wp-content/uploads/2026/03/Separa.png 994w" sizes="(max-width: 300px) 100vw, 300px" /></p>
+<p><br data-mce-bogus="1"></p>
+<p><img decoding="async" class="alignnone size-full wp-image-2542" src="wp-content/uploads/2026/03/rounded-in-photoretrica.png" alt="" width="300" height="85" data-mce-src="wp-content/uploads/2026/03/rounded-in-photoretrica.png"></p>
+</div>				</div>
+								<div class="row">
+												<div class="col-sm-12 col-lg-12 wow slideInUp">
+								<div class="service-item ">
+																																				<div class="service-content">
+										<h4 class="service-title"></h4>
+										
+<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="649" height="642" src="wp-content/uploads/2026/02/1.png" alt="" class="wp-image-2324 size-full" srcset="wp-content/uploads/2026/02/1.png 649w, wp-content/uploads/2026/02/1-300x297.png 300w" sizes="(max-width: 649px) 100vw, 649px" /></figure><div class="wp-block-media-text__content">
+<p><strong>Daylan Alberto Rinieri</strong></p>
+
+
+
+<br>
+<p><p style="text-align: justify; font-size: 110%; font-family: verdana;">Pratica meditazione dal 1995, è discepolo di Paramhansa Yogananda e segue gli insegnamenti della Realizzazione del Sé di Yogananda e Swami Kriyananda.<br>E&#8217; diplomato all’ Accademia europea di Raja Yoga e ama condividere gli insegnamenti della Realizzazione del Sé. Insieme a Medhavati guida il Centro Ananda Roma.</p></p>
+</div></div>
+
+
+
+<pre class="wp-block-preformatted"></pre>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="591" height="556" src="wp-content/uploads/2026/02/2.png" alt="" class="wp-image-2338 size-full" srcset="wp-content/uploads/2026/02/2.png 591w, wp-content/uploads/2026/02/2-300x282.png 300w" sizes="(max-width: 591px) 100vw, 591px" /></figure><div class="wp-block-media-text__content">
+<p><strong>Medhavati Maria Grazia Scalchi</strong></p>
+
+
+
+<br>
+<p><p style="text-align: justify; font-size: 110%; font-family: verdana;">Pratica meditazione da oltre trent&#8217;anni. E&#8217; discepola di Paramhansa Yogananda di cui segue gli insegnamenti della Realizzazione del Sé, trasmessi dal suo discepolo Swami Kriyananda. E&#8217; diplomata all’ Accademia europea di Raja Yoga e ama condividere gli insegnamenti di questo sentiero. Insieme a Dayalan guida il Centro Ananda Roma.</p></p>
+</div></div>
+
+
+
+<pre class="wp-block-preformatted"></pre>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="850" height="833" src="wp-content/uploads/2026/02/3.png" alt="" class="wp-image-2375 size-full" srcset="wp-content/uploads/2026/02/3.png 850w, wp-content/uploads/2026/02/3-300x294.png 300w, wp-content/uploads/2026/02/3-768x753.png 768w" sizes="(max-width: 850px) 100vw, 850px" /></figure><div class="wp-block-media-text__content">
+<p><strong style="white-space: normal; box-sizing: inherit;">Lila Maria Antonietta Maiello</strong></p>
+
+
+
+<br>
+<p><p style="text-align: justify; font-size: 110%; font-family: verdana;">Dal 2018 è discepola di Paramhansa Yogananda, dal 2019 Kriyaban. E’ diplomata all’ Accademia europea di Raja Yoga e considera l’insegnamento delle tecniche di meditazione trasmesse da Paramhansa Yogananda e Swami Kriyananda un dono a cui si avvicina sempre con gioia e amore.</p></p>
+</div></div>
+
+
+
+<pre class="wp-block-preformatted"></pre>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="570" height="546" src="wp-content/uploads/2026/02/4.png" alt="" class="wp-image-2379 size-full" srcset="wp-content/uploads/2026/02/4.png 570w, wp-content/uploads/2026/02/4-300x287.png 300w" sizes="(max-width: 570px) 100vw, 570px" /></figure><div class="wp-block-media-text__content">
+<p><strong>Arathi Sabrina Giannò&nbsp;</strong></p>
+
+
+
+<br>
+<p><p style="text-align: justify; font-size: 110%; font-family: verdana;">Insegnante di&nbsp;Ananda Yoga,&nbsp;si è diplomata&nbsp; all&#8217;Accademia Europea di Ananda Yoga&nbsp;&nbsp;dopo aver conosciuto&nbsp;gli insegnamenti di Paramhansa Yogananda.&nbsp;Tiene corsi a Roma e&nbsp;dal 2013 insegna all&#8217;Accademia nei corsi di formazione per insegnanti di Yoga per bambini e per le donne in gravidanza. E&#8217; autrice dei&nbsp;libri&nbsp;Il Piccolo Yogi&nbsp;e Yoga in gravidanza.</p></p>
+</div></div>
+
+
+
+<pre class="wp-block-preformatted"></pre>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="1024" height="1002" src="wp-content/uploads/2026/02/5-1024x1002.png" alt="" class="wp-image-2387 size-full" srcset="wp-content/uploads/2026/02/5-1024x1002.png 1024w, wp-content/uploads/2026/02/5-300x293.png 300w, wp-content/uploads/2026/02/5-768x751.png 768w, wp-content/uploads/2026/02/5.png 1464w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure><div class="wp-block-media-text__content">
+<p><strong>Darshana Carmela Notarangelo</strong></p>
+
+
+
+<br>
+<p><p style="text-align: justify; font-size: 110%; font-family: verdana;">Istruttrice di Ananda Yoga, lo pratica da oltre otto anni e nel 2022 ha conseguito il diploma presso la Scuola Europea di Ananda Yoga di Assisi.<br>Considera l’Ananda yoga, basato sulla tradizione di Paramhansa Yogananda e Swami Kriyananda, uno stile di yoga in grado di fondere al meglio tradizione e contemporaneità, disciplina e giocosità, rilassamento ed energia.</p></p>
+</div></div>
+
+
+
+<p></p>
+									</div>
+								</div>
+							</div>
+											</div>
+			</div>
+							</section>
+			            <section id="programmi"         class="section-gallery section-padding section-meta onepage-section">
+        
+    <div class="g-layout-default container">
+                    <div class="section-title-area">
+                <h5 class="section-subtitle">Programmi ed Eventi</h5>                <h2 class="section-title">I Nostri Programmi</h2>                <div class="section-desc"><p><img decoding="async" class="alignnone  wp-image-2481" src="wp-content/uploads/2026/03/Programmi.png" alt="" width="417" height="71" data-mce-src="wp-content/uploads/2026/03/Programmi.png"></p>
+</div>            </div>
+                <div class="gallery-content">
+            
+<pre class="wp-block-code has-black-color has-text-color has-background has-link-color wp-elements-a3238127b661f58193b0479c1f4951fb" style="background-color:#edede2"><code><strong>COME SI MEDITA</strong></code></pre>
+
+
+
+<p style="text-align: left;font-size: 110%;font-family: verdana">✅<strong> Corso base di Meditazione Programma del corso: </em></strong><br><br>✓ Cos’è la meditazione e perché meditare<br><br>✓ Preparare il corpo alla meditazione ricaricandolo energeticamente con gli esercizi di Yogananda<br><br>✓ Rilassare il corpo<br><br>✓ La concentrazione<br><br>✓ Pratica di Meditazione</p>
+
+
+
+<pre class="wp-block-code has-black-color has-text-color has-background has-link-color" style="background-color:#edede2"><code><strong>ANANDA YOGA</strong></code></pre>
+
+
+
+<p style="text-align: justify;font-size: 110%;font-family: verdana">Incontro introduttivo e date del corso: vedi calendario<strong> Ananda Yoga.</strong> Lo Yoga (letteralmente “unione”, filosoficamente significa unire il piccolo sé con il grande Sé) è una scienza tramandata in India da migliaia di anni. Comprende molti aspetti: l’azione, il discernimento, la devozione e la meditazione. L’Hatha Yoga, che è l’aspetto fisico della meditazione, attraverso la pratica delle posizioni contribuisce al raggiungimento dell’armonia tra corpo, mente, anima ed è uno dei migliori sistemi conosciuti dall’uomo per alleviare i problemi fisici.<br><br>Uno stile speciale di Hatha Yoga è l’Ananda Yoga, creato e insegnato da Swami Kriyananda a partire dal 1965 e basato sugli insegnamenti di Paramhansa Yogananda. Utilizzando movimenti dolci e naturali che richiedono al sistema corporeo una tensione minima, con il massimo beneficio, l’Ananda Yoga aiuta ad armonizzare il corpo in accordo con le leggi naturali. Chi lo pratica impara a sviluppare le proprie capacità latenti per ottenere il benessere fisico, riuscendo a superare lo stress e accrescendo l’energia e la vitalità. Grazie a una pratica interiorizzata e all’utilizzo delle affermazioni, si può sperimentare l’unione consapevole di corpo, mente e anima, a beneficio di una vita più gioiosa.
+<strong>Per giorni e orari vedi calendario.</strong></p>
+
+
+
+<pre class="wp-block-code has-black-color has-text-color has-background has-link-color wp-elements-013bf5ac2acce8b31d560ccc05cee8bb" style="background-color:#edede2"><code><strong>E INOLTRE</strong></code></pre>
+
+
+
+<p style="text-align: justify;font-size: 110%;font-family: verdana"><strong>
+✅ Incontri di Meditazione, ogni martedì ore 18:45, in presenza e online</strong>
+<br><br>
+✓ Corsi di approfondimento
+<br><br>
+✓ Seminari
+<br><br>
+✓ Incontri di lettura commentata, ogni venerdi ore 18:45 solo online
+<br><br>
+✓ Kirtan (Canti spirituali) Servizio domenicale.</p>
+        </div>
+        
     </div>
+                </section>
+                        <section id="team"                  class="section-team section-padding section-meta onepage-section">
+                                <div class="container">
+                                <div class="section-title-area">
+                    <h5 class="section-subtitle">Le nostre attivita&#039; ed Eventi</h5>                    <h2 class="section-title">Calendario</h2>                    <div class="section-desc"><p><img decoding="async" class="alignnone  wp-image-2459" src="wp-content/uploads/2026/03/penna-300x102.png" alt="" width="259" height="88" data-mce-src="wp-content/uploads/2026/03/penna-300x102.png" srcset="wp-content/uploads/2026/03/penna-300x102.png 300w, wp-content/uploads/2026/03/penna.png 500w" sizes="(max-width: 259px) 100vw, 259px" /><br />
+<div id="google-calendar-wrap">
+  <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#7b2fd6,#f4c430);"></div>
+  <iframe src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=Europe%2FRome&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;src=fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d%40group.calendar.google.com&amp;color=%237B2FD6"
+    frameborder="0" scrolling="no"></iframe>
+</div>
+<div style="text-align:center;margin-top:18px;">
+  <span style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#7b2fd6,#a855f7);color:#fff;padding:10px 22px;border-radius:30px;font-size:.85rem;letter-spacing:.3px;box-shadow:0 3px 10px rgba(123,47,214,.25);">
+    👉 Premi su un giorno o un'attività per maggiori dettagli
+  </span>
+</div>
 
-    <!-- Griglia del Calendario -->
-    <div class="calendar-grid">
-      <!-- Cella vuota per allineamento inizio mese -->
-      <div class="day-card empty"></div>
-      <div class="day-card empty"></div>
+			</div></p>
+</div>                </div>
+                                <div class="team-members row team-layout-4">
+                                    </div>
+            </div>
+                            </section>
+            						<section id="contact"  class="section-contact section-padding  section-meta onepage-section">
+									<div class="container">
+									<div class="section-title-area">
+						<h5 class="section-subtitle">Informazioni e contatti</h5>						<h2 class="section-title">Contattaci</h2>						<div class="section-desc"><p><img decoding="async" class=" wp-image-2291 aligncenter" src="wp-content/uploads/2026/02/Mail-300x222.png" alt="" width="379" height="281" data-mce-src="wp-content/uploads/2026/02/Mail-300x222.png" srcset="wp-content/uploads/2026/02/Mail-300x222.png 300w, wp-content/uploads/2026/02/Mail-1024x759.png 1024w, wp-content/uploads/2026/02/Mail-768x569.png 768w, wp-content/uploads/2026/02/Mail.png 1398w" sizes="(max-width: 379px) 100vw, 379px" /></p>
+</div>					</div>
+								<div class="row">
+																		<div class="contact-form col-sm-6 wow slideInUp">
+								
+<div class="wpcf7-replacement">
+<form id="ananda-contact-form" action="https://formspree.io/f/mgawqdkj" method="POST" class="wpcf7-form" aria-label="Modulo di contatto">
+<input type="hidden" name="_subject" value="Nuovo messaggio dal sito Ananda Roma" />
+<p><label> La tua email (richiesto)<br />
+<input size="40" maxlength="400" class="wpcf7-form-control" required type="email" name="email" />
+</label>
+</p>
+<p><label> Oggetto<br />
+<input size="40" maxlength="400" class="wpcf7-form-control" type="text" name="Oggetto" />
+</label>
+</p>
+<p><label> Il tuo messaggio<br />
+<textarea cols="40" rows="10" maxlength="2000" class="wpcf7-form-control" name="Messaggio" required></textarea>
+</label>
+</p>
+<p><input class="wpcf7-form-control wpcf7-submit" type="submit" value="Invia" />
+</p>
+</form>
+<div id="ananda-contact-status" style="display:none;padding:16px 0;font-size:1rem;"></div>
+<script>
+(function(){
+  var form = document.getElementById('ananda-contact-form');
+  var statusBox = document.getElementById('ananda-contact-status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var submitBtn = form.querySelector('input[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.value = 'Invio in corso...';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response){
+      if (response.ok) {
+        statusBox.style.display = 'block';
+        statusBox.style.color = '#2e7d32';
+        statusBox.style.fontWeight = '600';
+        statusBox.textContent = 'La mail è stata inviata correttamente. Grazie';
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.value = 'Invia';
+      } else {
+        response.json().then(function(data){
+          statusBox.style.display = 'block';
+          statusBox.style.color = '#b33';
+          statusBox.textContent = (data && data.errors) ? 'Errore: ' + data.errors.map(function(er){return er.message;}).join(', ') : 'Si è verificato un errore, riprova più tardi.';
+          submitBtn.disabled = false;
+          submitBtn.value = 'Invia';
+        });
+      }
+    }).catch(function(){
+      statusBox.style.display = 'block';
+      statusBox.style.color = '#b33';
+      statusBox.textContent = 'Si è verificato un errore di connessione, riprova più tardi.';
+      submitBtn.disabled = false;
+      submitBtn.value = 'Invia';
+    });
+  });
+})();
+</script>
+</div>
+							</div>
+											
+					<div class="col-sm-6 wow slideInUp">
+						<p><a href="https://wa.me/393397626518" data-mce-href="https://wa.me/393397626518"><br />
+Info su WhatsApp<img decoding="async" class="alignnone  wp-image-2154" src="wp-content/uploads/2026/02/sm_5b321c98efaa6-removebg-preview-300x300-1.png" alt="" width="28" height="28" data-mce-src="wp-content/uploads/2026/02/sm_5b321c98efaa6-removebg-preview-300x300-1.png" srcset="wp-content/uploads/2026/02/sm_5b321c98efaa6-removebg-preview-300x300-1.png 300w, wp-content/uploads/2026/02/sm_5b321c98efaa6-removebg-preview-300x300-1-150x150.png 150w" sizes="(max-width: 28px) 100vw, 28px" /></a></p>
+						<br><br>
+						<div class="address-box">
 
-      <!-- Giorni con eventi -->
-      <div class="day-card">
-        <span class="day-number">1</span>
-        <div class="event">Riunione di progetto ore 10:00</div>
-      </div>
+							<h3>Per qualsiasi informazione scrivici</h3>
 
-      <div class="day-card">
-        <span class="day-number">2</span>
-      </div>
+															<div class="address-contact">
+									<span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-map-marker fa-stack-1x fa-inverse"></i></span>
 
-      <div class="day-card">
-        <span class="day-number">3</span>
-        <div class="event">Consegna documentazione e verifica requisiti tecnici</div>
-      </div>
+									<div class="address-content">LARGO DELLA GANCIA, 5<br> ROMA <br> (PIAZZA MAZZINI) METRO A-LEPANTO <br> Italy</div>
+								</div>
+							
+																<div class="address-contact">
+										<span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-phone fa-stack-1x fa-inverse"></i></span>
+										<div class="address-content">06-47548427</div>
+									</div>
+							
+																<div class="address-contact">
+										<span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i></span>
+										<div class="address-content"><a href="mailto:&#105;nf&#111;&#064;&#097;na&#110;d&#097;r&#111;&#109;a&#046;&#105;&#116;">inf&#111;&#064;an&#097;&#110;&#100;a&#114;&#111;&#109;&#097;.i&#116;</a></div>
+									</div>
+							
+																<div class="address-contact">
+										<span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-fax fa-stack-1x fa-inverse"></i></span>
+										<div class="address-content">Mob. 3668147348</div>
+									</div>
+													</div>
+					</div>
+				</div>
+			</div>
+									</section>
+				</main>
+	</div>
 
-      <div class="day-card">
-        <span class="day-number">4</span>
-      </div>
+	<footer id="colophon" class="site-footer" role="contentinfo">
+						<div id="footer-widgets" class="footer-widgets section-padding ">
+					<div class="container">
+						<div class="row">
+																<div id="footer-1" class="col-md-12 col-sm-12 footer-column widget-area sidebar" role="complementary">
+										<aside id="block-13" class="footer-widget widget widget_block"></aside><aside id="block-15" class="footer-widget widget widget_block widget_text">
+<p></p>
+</aside><aside id="block-16" class="footer-widget widget widget_block"></aside>									</div>
+													</div>
+					</div>
+				</div>
+								<div class="footer-connect">
+				<div class="container">
+					<div class="row">
+						 <div class="col-md-8 offset-md-2 col-sm-12 offset-md-0">			<div class="footer-social">
+				<h5 class="follow-heading">Teniamoci in contatto</h5><div class="footer-social-icons"><a target="_blank" href="https://www.facebook.com/search/top?q=anandaroma&amp;locale=it_IT" title=""><i class="fa fa-brands fa-facebook-f"></i></a><a target="_blank" href="http://www.instagram.com" title=""><i class="fa fa-brands fa-square-instagram"></i></a><a target="_blank" href="https://api.whatsapp.com/send?phone=393397626518" title=""><i class="fa fa-brands fa-whatsapp"></i></a></div>			</div>
+		</div>					</div>
+				</div>
+			</div>
+	
+		<div class="site-info">
+			<div class="container" style="text-align: center;">
+									<div class="btt">
+						<a class="back-to-top" href="#page" title="Torna in alto"><i class="fa fa-angle-double-up wow flash" data-wow-duration="2s"></i></a>
+					</div>
+					<span style="font-size: 1.15em; font-weight: 500;">Copyright &copy; 2026 Anandaroma</span>
+			</div>
+		</div>
 
-      <div class="day-card">
-        <span class="day-number">5</span>
-        <div class="event">Call con il cliente</div>
-        <div class="event">Appuntamento dal dentista</div>
-      </div>
+	</footer>
+	</div>
 
-      <!-- Aggiungi qui gli altri giorni del mese -->
-    </div>
-  </div>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/onepress/*","/*\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript" src="wp-includes/js/dist/hooks.min.js" id="wp-hooks-js"></script>
+<script type="text/javascript" src="wp-includes/js/dist/i18n.min.js" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+/* ]]> */
+</script>
+<script type="text/javascript" id="wpfront-scroll-top-js-extra">
+/* <![CDATA[ */
+var wpfront_scroll_top_data = {"data":{"css":"#wpfront-scroll-top-container{position:fixed;cursor:pointer;z-index:9999;border:none;outline:none;background-color:rgba(0,0,0,0);box-shadow:none;outline-style:none;text-decoration:none;opacity:0;display:none;align-items:center;justify-content:center;margin:0;padding:0}#wpfront-scroll-top-container.show{display:flex;opacity:1}#wpfront-scroll-top-container .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#wpfront-scroll-top-container .text-holder{padding:3px 10px;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:4px 4px 5px 0px rgba(50,50,50,.5);-moz-box-shadow:4px 4px 5px 0px rgba(50,50,50,.5);box-shadow:4px 4px 5px 0px rgba(50,50,50,.5)}#wpfront-scroll-top-container{right:8px;bottom:0px;}#wpfront-scroll-top-container img{width:auto;height:auto;}#wpfront-scroll-top-container .text-holder{color:#ffffff;background-color:#000000;width:auto;height:auto;;}#wpfront-scroll-top-container .text-holder:hover{background-color:#000000;}#wpfront-scroll-top-container i{color:#000000;}","html":"<button id=\"wpfront-scroll-top-container\" aria-label=\"\" title=\"\" ><img src=\"https://anandaroma.it/wp-content/uploads/2026/02/up.png\" alt=\"up-arrow-icon\" title=\"\"></button>","data":{"hide_iframe":false,"button_fade_duration":0,"auto_hide":false,"auto_hide_after":2,"scroll_offset":100,"button_opacity":0.6,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0,"scroll_duration":500}}};
+//# sourceURL=wpfront-scroll-top-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="wp-content/plugins/wpfront-scroll-top/includes/assets/wpfront-scroll-top.min.js" id="wpfront-scroll-top-js"></script>
+<script type="text/javascript" src="wp-content/themes/onepress/assets/frontend/gallery-justified.minified.js" id="onepress-gallery-justified-js"></script>
+<script type="text/javascript" src="wp-content/themes/onepress/assets/frontend/lightgallery.minified.js" id="onepress-lightgallery-js"></script>
+<script type="text/javascript" id="onepress-theme-js-extra">
+/* <![CDATA[ */
+var onepress_js_settings = {"onepress_disable_animation":"","onepress_disable_sticky_header":"","onepress_vertical_align_menu":"","hero_animation":"fadeInDown","hero_speed":"5000","hero_fade":"2000","submenu_width":"0","hero_duration":"6000","hero_disable_preload":"","disabled_google_font":"","is_home":"","gallery_enable":"1","is_rtl":"","parallax_speed":"0.5"};
+var Onepress_Bully = {"enable_label":"","disable_mobile":"1","sections":{"home":{"id":"home","_id":"features","inverse":false,"enable":true,"title":"Home"},"about":{"id":"about","_id":"about","inverse":false,"enable":true,"title":"Ananda Roma"},"servizi":{"id":"servizi","_id":"services","inverse":false,"enable":true,"title":"Le nostre Attivita'"},"programmi":{"id":"programmi","_id":"gallery","inverse":false,"enable":true,"title":"I Nostri Programmi"},"team":{"id":"team","_id":"team","inverse":false,"enable":true,"title":"Calendario"},"contact":{"id":"contact","_id":"contact","inverse":0,"enable":true,"title":"Contattaci"}}};
+//# sourceURL=onepress-theme-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="wp-content/themes/onepress/assets/frontend/theme.minified.js" id="onepress-theme-js"></script>
+<script defer type="text/javascript" src="wp-content/plugins/akismet/_inc/akismet-frontend.js" id="akismet-frontend-js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://anandaroma.it/wp-includes/js/wp-emoji-release.min.js?ver=6.9.4"}}
+</script>
+<script type="module">
+/* <![CDATA[ */
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"️‍⚧️","️​⚧️")?!1:!n(e,"","​")&&!n(e,"","​​​​​​");case"emoji":return!a(e,"ᾬ8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=https://anandaroma.it/wp-includes/js/wp-emoji-loader.min.js
+/* ]]> */
+</script>
 
 </body>
 </html>
