@@ -91,9 +91,24 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   var iframe = document.querySelector("#google-calendar-wrap iframe");
-  if (iframe && window.innerWidth < 768) {
-    iframe.src = iframe.src.replace("mode=MONTH", "mode=AGENDA");
+  if (!iframe) return;
+
+  function applyCalendarMode() {
+    var isMobile = window.innerWidth < 768;
+    var wantedMode = isMobile ? "AGENDA" : "MONTH";
+    var currentMode = iframe.src.indexOf("mode=AGENDA") !== -1 ? "AGENDA" : "MONTH";
+    if (currentMode !== wantedMode) {
+      iframe.src = iframe.src.replace("mode=" + currentMode, "mode=" + wantedMode);
+    }
   }
+
+  applyCalendarMode();
+
+  var resizeTimer;
+  window.addEventListener("resize", function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(applyCalendarMode, 300);
+  });
 });
 </script>
 
