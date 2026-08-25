@@ -82,6 +82,62 @@
     transform: translate(-3%, 7%) scale(0.95) rotate(-2deg);
   }
 }
+
+/* COLOMBA BIANCA CHE VOLA NELL'HERO */
+.hero-dove {
+  position: absolute;
+  top: 12%;
+  left: -10%;
+  width: 46px;
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+  animation: doveFlyAcross 16s linear infinite;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.hero-dove svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: doveFlap 0.6s ease-in-out infinite alternate;
+  transform-origin: 50% 50%;
+}
+
+@keyframes doveFlyAcross {
+  0% {
+    left: -10%;
+    top: 18%;
+    transform: translateY(0) scale(0.9);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  50% {
+    left: 55%;
+    top: 6%;
+    transform: translateY(-10px) scale(1.05);
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    left: 115%;
+    top: 14%;
+    transform: translateY(6px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes doveFlap {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0.82);
+  }
+}
 </style>
 
 <!-- SPAZIATURA SEZIONI & DIVISORIA SFUMATA GRIGIO-VIOLA -->
@@ -236,6 +292,11 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 		
 						<div class="container" style="padding-top: 30%; padding-bottom: 20%;">
 					<div class="hero__content hero-content-style1">
+						<div class="hero-dove" aria-hidden="true">
+							<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+								<path d="M50 30 C40 15, 15 10, 0 22 C15 24, 28 30, 35 34 C20 34, 8 40, 0 50 C18 46, 35 42, 46 34 C48 40, 52 45, 58 48 C56 40, 54 34, 52 30 C58 32, 68 30, 72 24 C62 24, 54 22, 50 20 C60 12, 78 10, 92 20 C78 12, 58 12, 50 30 Z" fill="#ffffff"/>
+							</svg>
+						</div>
 						<h2 class="hero-large-text"><img src="wp-content/uploads/2026/02/cropped-LogoBugOnly_500px-1-1.png" alt="" width="69" height="70" class="alignnone  wp-image-2160" data-mce-src="wp-content/uploads/2026/02/cropped-LogoBugOnly_500px-1-1.png"> Ananda Roma</h2>						<div class="hero-small-text"><h6>Come è naturale per l&#8217;uccello volare nel cielo, così è naturale per l&#8217;anima librarsi <strong>nell&#8217;onnipresenza.</strong></h6>
 <h6>Paramhansa Yogananda</h6>
 </div>						<a  href="#about" class="btn btn-secondary-outline btn-lg">Prosegui</a>											</div>
