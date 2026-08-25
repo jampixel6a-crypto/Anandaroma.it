@@ -84,28 +84,34 @@
 }
 </style>
 
-<!-- SPAZIATURA SEZIONI & SEPARATORE CON SPAZIO EXTRA -->
+<!-- SPAZIATURA SEZIONI & DIVISORIA SFUMATA GRIGIO-VIOLA -->
 <style id='custom-section-spacing-css' type='text/css'>
 .onepage-section {
   position: relative;
-  margin-bottom: 30px !important; /* Spazio extra dopo la linea di separazione */
+  margin-bottom: 40px !important;
 }
 
 .onepage-section.section-padding,
 .section-padding {
-  padding-top: 50px !important;   /* Aumentato lo spazio interno superiore */
-  padding-bottom: 50px !important;/* Aumentato lo spazio interno inferiore */
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
 }
 
-/* Separatore elegante sfumato viola/grigio e trasparente ai bordi */
+/* Separatore con sfumatura Trasparente -> Grigio -> Viola -> Trasparente */
 .onepage-section::after {
   content: "";
   position: absolute;
-  bottom: -15px;
-  left: 15%;
-  width: 70%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(123, 47, 214, 0.35), rgba(160, 160, 160, 0.35), transparent);
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #8a8a8a, #8a2be2, transparent);
+  pointer-events: none;
+}
+
+/* Rimuove la divisoria dall'ultima sezione per evitare doppie linee prima del footer */
+.onepage-section:last-of-type::after {
+  display: none;
 }
 
 .section-title-area {
