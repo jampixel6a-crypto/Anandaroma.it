@@ -83,16 +83,17 @@
   }
 }
 
-/* COLOMBA BIANCA CHE VOLA NELL'HERO: dal basso a sinistra verso l'alto a destra */
+/* COLOMBA BIANCA CHE VOLA NELL'HERO: dal basso a sinistra, si ferma al centro sotto "Ananda Roma" */
 .hero-dove {
   position: absolute;
-  bottom: 0%;
-  left: -12%;
+  top: 0;
+  left: 0;
   width: 58px;
   height: auto;
   z-index: 3;
   pointer-events: none;
-  animation: doveFlyDiagonal 14s ease-in-out infinite;
+  will-change: transform, opacity;
+  animation: doveFlyDiagonal 6s cubic-bezier(0.25, 0.7, 0.35, 1) 1 forwards;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }
 
@@ -126,26 +127,23 @@
 @keyframes doveFlyDiagonal {
   0% {
     left: -12%;
-    bottom: -5%;
-    transform: rotate(-22deg) scale(0.85);
+    top: 95%;
+    transform: translate(0, 0) rotate(-22deg) scale(0.85);
     opacity: 0;
   }
-  10% {
+  15% {
     opacity: 1;
   }
-  50% {
-    left: 48%;
-    bottom: 60%;
-    transform: rotate(-14deg) scale(1.05);
-  }
-  90% {
-    opacity: 1;
+  70% {
+    left: 50%;
+    top: 80px;
+    transform: translate(-50%, 0) rotate(-6deg) scale(1.02);
   }
   100% {
-    left: 112%;
-    bottom: 108%;
-    transform: rotate(-22deg) scale(0.85);
-    opacity: 0;
+    left: 50%;
+    top: 92px;
+    transform: translate(-50%, 0) rotate(0deg) scale(1);
+    opacity: 1;
   }
 }
 </style>
@@ -468,7 +466,7 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
                         <section id="team"                  class="section-team section-padding section-meta onepage-section">
                                 <div class="container">
                                 <div class="section-title-area">
-                    <h5 class="section-subtitle">Le nostre attivita&#039; ed Eventi</h5>                    <h2 class="section-title">Calendario</h2>                    <div class="section-desc"><p><img decoding="async" class="alignnone  wp-image-2459" src="wp-content/uploads/2026/03/penna-300x102.png" alt="" width="259" height="88" data-mce-src="wp-content/uploads/2026/03/penna-300x102.png" srcset="wp-content/uploads/2026/03/penna-300x102.png 300w, wp-content/uploads/2026/03/penna.png 500w" sizes="(max-width: 259px) 100vw, 259px" /><br />
+                    <h5 class="section-subtitle">Le nostre attivita&#039; ed Eventi</h5>                    <h2 class="section-title">Calendario</h2>                    <div class="section-desc"><p><img decoding="async" class="alignnone  wp-image-2459" src="wp-content/uploads/2026/03/penna-300x102.png" alt="" width="110" height="37" style="max-width:110px;height:auto;" data-mce-src="wp-content/uploads/2026/03/penna-300x102.png" srcset="wp-content/uploads/2026/03/penna-300x102.png 300w, wp-content/uploads/2026/03/penna.png 500w" sizes="110px" /><div style="height: 55px;"></div>
 <div id="google-calendar-wrap">
   <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#7b2fd6,#f4c430);"></div>
   <iframe src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=Europe%2FRome&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;src=fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d%40group.calendar.google.com&amp;color=%237B2FD6"
