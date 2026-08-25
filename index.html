@@ -122,27 +122,6 @@
   }
 }
 
-/* COLOMBA SINGOLA: secondo ciclo, si ferma al centro tra il titolo e il sottotitolo */
-.hero-dove-final {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 54px;
-  height: auto;
-  z-index: 3;
-  pointer-events: none;
-  opacity: 0;
-  will-change: transform, opacity;
-  animation: doveFinalFly 6.5s cubic-bezier(0.3, 0.6, 0.35, 1) 3s 1 forwards;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-}
-
-.hero-dove-final svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 .dove-wing {
   animation: doveFlap 0.5s ease-in-out infinite alternate;
 }
@@ -161,30 +140,6 @@
   }
   100% {
     transform: rotate(-18deg) scaleY(0.7);
-  }
-}
-
-@keyframes doveFinalFly {
-  0% {
-    left: 0;
-    top: 0;
-    transform: translate(-15vw, 60vh) rotate(-22deg) scale(0.85);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  80% {
-    left: 50%;
-    top: 258px;
-    transform: translate(calc(-50% + 95px), 0) rotate(-6deg) scale(0.95);
-    opacity: 1;
-  }
-  100% {
-    left: 50%;
-    top: 258px;
-    transform: translate(calc(-50% + 95px), 0) rotate(0deg) scale(0.9);
-    opacity: 1;
   }
 }
 </style>
@@ -416,7 +371,7 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 								<circle cx="96" cy="36" r="1.4" fill="#333333"/>
 							</svg>
 						</div>
-						<div class="hero-dove-final" aria-hidden="true">
+						<div class="hero-dove-flock" aria-hidden="true" style="--sy:85vh; --ey:-42vh; --delay:1.4s; --dur:12s; --w:28px;">
 							<svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
 								<path d="M40 52 C28 54, 16 58, 6 66 C18 62, 30 60, 42 58 Z" fill="#ffffff"/>
 								<g class="dove-wing dove-wing-left" style="transform-origin: 58px 48px;">
