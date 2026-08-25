@@ -133,7 +133,7 @@
   pointer-events: none;
   opacity: 0;
   will-change: transform, opacity;
-  animation: doveFinalFly 6.5s cubic-bezier(0.3, 0.6, 0.35, 1) 9.5s 1 forwards;
+  animation: doveFinalFly 6.5s cubic-bezier(0.3, 0.6, 0.35, 1) 3s 1 forwards;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }
 
@@ -176,14 +176,14 @@
   }
   80% {
     left: 50%;
-    top: 58px;
-    transform: translate(-50%, 0) rotate(-6deg) scale(1.02);
+    top: 258px;
+    transform: translate(calc(-50% + 95px), 0) rotate(-6deg) scale(0.95);
     opacity: 1;
   }
   100% {
     left: 50%;
-    top: 58px;
-    transform: translate(-50%, 0) rotate(0deg) scale(1);
+    top: 258px;
+    transform: translate(calc(-50% + 95px), 0) rotate(0deg) scale(0.9);
     opacity: 1;
   }
 }
