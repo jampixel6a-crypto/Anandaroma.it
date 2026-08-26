@@ -142,6 +142,45 @@
     transform: rotate(-18deg) scaleY(0.7);
   }
 }
+
+/* SESTA COLOMBA: atterra lentamente e si ferma al centro sotto "Ananda Roma" */
+.hero-dove-land {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: doveLandCenter var(--dur, 12s) ease-out var(--delay, 0s) 1 forwards;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+}
+
+.hero-dove-land svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes doveLandCenter {
+  0% {
+    transform: translate(-15vw, var(--sy, 85vh)) rotate(-16deg) scale(0.85);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.95;
+  }
+  85% {
+    transform: translate(calc(50vw - 18px), 62px) rotate(-6deg) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(50vw - 18px), 62px) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
 </style>
 
 <!-- SPAZIATURA SEZIONI & DIVISORIA SFUMATA GRIGIO-VIOLA -->
@@ -296,7 +335,7 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 		
 						<div class="container" style="padding-top: 30%; padding-bottom: 20%;">
 					<div class="hero__content hero-content-style1">
-						<div class="hero-dove-flock" aria-hidden="true" style="--sy:78vh; --ey:-8vh; --delay:0s; --dur:9s; --w:34px;">
+						<div class="hero-dove-flock" aria-hidden="true" style="--sy:78vh; --ey:-8vh; --delay:0s; --dur:9s; --w:41px;">
 							<svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
 								<path d="M40 52 C28 54, 16 58, 6 66 C18 62, 30 60, 42 58 Z" fill="#ffffff"/>
 								<g class="dove-wing dove-wing-left" style="transform-origin: 58px 48px;">
@@ -311,7 +350,7 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 								<circle cx="96" cy="36" r="1.4" fill="#333333"/>
 							</svg>
 						</div>
-						<div class="hero-dove-flock" aria-hidden="true" style="--sy:55vh; --ey:-32vh; --delay:0.5s; --dur:10s; --w:26px;">
+						<div class="hero-dove-flock" aria-hidden="true" style="--sy:55vh; --ey:-32vh; --delay:0.5s; --dur:10s; --w:31px;">
 							<svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
 								<path d="M40 52 C28 54, 16 58, 6 66 C18 62, 30 60, 42 58 Z" fill="#ffffff"/>
 								<g class="dove-wing dove-wing-left" style="transform-origin: 58px 48px;">
@@ -326,7 +365,7 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 								<circle cx="96" cy="36" r="1.4" fill="#333333"/>
 							</svg>
 						</div>
-						<div class="hero-dove-flock" aria-hidden="true" style="--sy:92vh; --ey:8vh; --delay:1s; --dur:8.3s; --w:40px;">
+						<div class="hero-dove-flock" aria-hidden="true" style="--sy:92vh; --ey:8vh; --delay:1s; --dur:8.3s; --w:48px;">
 							<svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
 								<path d="M40 52 C28 54, 16 58, 6 66 C18 62, 30 60, 42 58 Z" fill="#ffffff"/>
 								<g class="dove-wing dove-wing-left" style="transform-origin: 58px 48px;">
@@ -341,7 +380,7 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 								<circle cx="96" cy="36" r="1.4" fill="#333333"/>
 							</svg>
 						</div>
-						<div class="hero-dove-flock" aria-hidden="true" style="--sy:40vh; --ey:-48vh; --delay:0.2s; --dur:9.5s; --w:22px;">
+						<div class="hero-dove-flock" aria-hidden="true" style="--sy:40vh; --ey:-48vh; --delay:0.2s; --dur:9.5s; --w:26px;">
 							<svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
 								<path d="M40 52 C28 54, 16 58, 6 66 C18 62, 30 60, 42 58 Z" fill="#ffffff"/>
 								<g class="dove-wing dove-wing-left" style="transform-origin: 58px 48px;">
@@ -356,7 +395,7 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 								<circle cx="96" cy="36" r="1.4" fill="#333333"/>
 							</svg>
 						</div>
-						<div class="hero-dove-flock" aria-hidden="true" style="--sy:65vh; --ey:-18vh; --delay:0.7s; --dur:8.7s; --w:30px;">
+						<div class="hero-dove-flock" aria-hidden="true" style="--sy:65vh; --ey:-18vh; --delay:0.7s; --dur:8.7s; --w:36px;">
 							<svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
 								<path d="M40 52 C28 54, 16 58, 6 66 C18 62, 30 60, 42 58 Z" fill="#ffffff"/>
 								<g class="dove-wing dove-wing-left" style="transform-origin: 58px 48px;">
@@ -371,7 +410,7 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 								<circle cx="96" cy="36" r="1.4" fill="#333333"/>
 							</svg>
 						</div>
-						<div class="hero-dove-flock" aria-hidden="true" style="--sy:85vh; --ey:-42vh; --delay:1.4s; --dur:12s; --w:28px;">
+						<div class="hero-dove-land" aria-hidden="true" style="--sy:85vh; --dur:12s; --delay:1.4s;">
 							<svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
 								<path d="M40 52 C28 54, 16 58, 6 66 C18 62, 30 60, 42 58 Z" fill="#ffffff"/>
 								<g class="dove-wing dove-wing-left" style="transform-origin: 58px 48px;">
@@ -550,6 +589,7 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
                             </section>
             						<section id="contact"  class="section-contact section-padding  section-meta onepage-section">
 									<div class="container">
+									<div style="height:1px; width:100%; max-width:1140px; margin:0 auto 40px; background:linear-gradient(90deg, rgba(150,150,160,0) 0%, rgba(123,47,214,0.3) 50%, rgba(150,150,160,0) 100%);"></div>
 									<div class="section-title-area">
 						<h5 class="section-subtitle">Informazioni e contatti</h5>						<h2 class="section-title">Contattaci</h2>						<div class="section-desc"><p><img decoding="async" class=" wp-image-2291 aligncenter" src="wp-content/uploads/2026/02/Mail-300x222.png" alt="" width="379" height="281" data-mce-src="wp-content/uploads/2026/02/Mail-300x222.png" srcset="wp-content/uploads/2026/02/Mail-300x222.png 300w, wp-content/uploads/2026/02/Mail-1024x759.png 1024w, wp-content/uploads/2026/02/Mail-768x569.png 768w, wp-content/uploads/2026/02/Mail.png 1398w" sizes="(max-width: 379px) 100vw, 379px" /></p>
 </div>					</div>
