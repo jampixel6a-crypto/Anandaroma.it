@@ -175,13 +175,36 @@
   }
   85% {
     left: 50%;
-    transform: translate(-50%, 300px) rotate(-6deg) scale(1.05);
+    transform: translate(-50%, 285px) rotate(-6deg) scale(1.05);
     opacity: 1;
   }
   100% {
     left: 50%;
-    transform: translate(-50%, 300px) rotate(0deg) scale(1);
+    transform: translate(-50%, 285px) rotate(0deg) scale(1);
     opacity: 1;
+  }
+}
+
+/* Evita che "Ananda Roma" si spezzi parola per parola su smartphone con font di sistema più grande */
+.hero-large-text {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hero-large-text img {
+  flex-shrink: 0;
+}
+
+.hero-large-text .hero-title-text {
+  white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+  .hero-large-text .hero-title-text {
+    font-size: clamp(22px, 7.8vw, 34px) !important;
   }
 }
 </style>
@@ -428,7 +451,7 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 								<circle cx="96" cy="36" r="1.4" fill="#333333"/>
 							</svg>
 						</div>
-						<h2 class="hero-large-text"><img src="wp-content/uploads/2026/02/cropped-LogoBugOnly_500px-1-1.png" alt="" width="69" height="70" class="alignnone  wp-image-2160" data-mce-src="wp-content/uploads/2026/02/cropped-LogoBugOnly_500px-1-1.png"> Ananda Roma</h2>						<div class="hero-small-text"><h6>Come è naturale per l&#8217;uccello volare nel cielo, così è naturale per l&#8217;anima librarsi <strong>nell&#8217;onnipresenza.</strong></h6>
+						<h2 class="hero-large-text"><img src="wp-content/uploads/2026/02/cropped-LogoBugOnly_500px-1-1.png" alt="" width="69" height="70" class="alignnone  wp-image-2160" data-mce-src="wp-content/uploads/2026/02/cropped-LogoBugOnly_500px-1-1.png"> <span class="hero-title-text">Ananda Roma</span></h2>						<div class="hero-small-text"><h6>Come è naturale per l&#8217;uccello volare nel cielo, così è naturale per l&#8217;anima librarsi <strong>nell&#8217;onnipresenza.</strong></h6>
 <h6>Paramhansa Yogananda</h6>
 </div>						<a  href="#about" class="btn btn-secondary-outline btn-lg">Prosegui</a>											</div>
 				</div>
