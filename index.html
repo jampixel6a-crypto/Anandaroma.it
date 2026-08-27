@@ -791,5 +791,62 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 /* ]]> */
 </script>
 
+<script>
+/* Lieve cinguettio di uccelli in sottofondo al volo delle colombe (audio sintetizzato, nessun file esterno) */
+(function(){
+  var played = false;
+  var ctx = null;
+
+  function chirp(startTime, freqStart, freqEnd, duration, gainPeak){
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freqStart, startTime);
+    osc.frequency.exponentialRampToValueAtTime(freqEnd, startTime + duration);
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.exponentialRampToValueAtTime(gainPeak, startTime + duration * 0.3);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(startTime);
+    osc.stop(startTime + duration + 0.05);
+  }
+
+  function scheduleSong(){
+    var t = ctx.currentTime + 0.05;
+    var notes = [
+      [t,        3200, 4200, 0.09, 0.16],
+      [t + 0.28, 3600, 2600, 0.07, 0.14],
+      [t + 0.55, 4000, 5200, 0.10, 0.16],
+      [t + 1.05, 3000, 3800, 0.08, 0.13],
+      [t + 1.35, 4400, 3400, 0.09, 0.14],
+      [t + 2.10, 3300, 4300, 0.08, 0.13],
+      [t + 2.40, 4000, 2900, 0.07, 0.12]
+    ];
+    notes.forEach(function(n){ chirp(n[0], n[1], n[2], n[3], n[4]); });
+  }
+
+  function playBirdSong(){
+    if (played) return;
+    try {
+      if (!ctx) {
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (ctx.state === 'suspended') {
+        ctx.resume().then(function(){
+          played = true;
+          scheduleSong();
+        });
+      } else {
+        played = true;
+        scheduleSong();
+      }
+    } catch (e) { /* Web Audio non disponibile: ignora silenziosamente */ }
+  }
+
+  document.addEventListener('click', playBirdSong);
+  document.addEventListener('touchstart', playBirdSong);
+  document.addEventListener('touchend', playBirdSong);
+})();
+</script>
 </body>
 </html>
