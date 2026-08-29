@@ -786,69 +786,6 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 /* ]]> */
 </script>
 
-<script>
-/* Lieve cinguettio di uccelli in sottofondo al volo delle colombe (audio sintetizzato, nessun file esterno) */
-(function(){
-  var played = false;
-  var ctx = null;
 
-  function chirp(startTime, freqStart, freqEnd, duration, gainPeak){
-    var osc = ctx.createOscillator();
-    var filter = ctx.createBiquadFilter();
-    var gain = ctx.createGain();
-    osc.type = 'triangle';
-    filter.type = 'lowpass';
-    filter.frequency.value = 3200;
-    osc.frequency.setValueAtTime(freqStart, startTime);
-    osc.frequency.exponentialRampToValueAtTime(freqEnd, startTime + duration);
-    gain.gain.setValueAtTime(0.0001, startTime);
-    gain.gain.exponentialRampToValueAtTime(gainPeak, startTime + duration * 0.4);
-    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
-    osc.connect(filter).connect(gain).connect(ctx.destination);
-    osc.start(startTime);
-    osc.stop(startTime + duration + 0.05);
-  }
-
-  function scheduleSong(){
-    var t = ctx.currentTime + 0.05;
-    var notes = [
-      [t,        2200, 2800, 0.16, 0.075],
-      [t + 0.40, 2500, 1900, 0.14, 0.065],
-      [t + 0.85, 2700, 3300, 0.18, 0.075],
-      [t + 1.55, 2100, 2600, 0.15, 0.06],
-      [t + 2.00, 2900, 2300, 0.16, 0.065],
-      [t + 2.90, 2300, 2900, 0.15, 0.06],
-      [t + 3.30, 2700, 2000, 0.14, 0.055]
-    ];
-    notes.forEach(function(n){ chirp(n[0], n[1], n[2], n[3], n[4]); });
-  }
-
-  function playBirdSong(){
-    if (played) return;
-    try {
-      if (!ctx) {
-        ctx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (ctx.state === 'suspended') {
-        ctx.resume().then(function(){
-          played = true;
-          scheduleSong();
-        });
-      } else {
-        played = true;
-        scheduleSong();
-      }
-    } catch (e) { /* Web Audio non disponibile: ignora silenziosamente */ }
-  }
-
-  // Tenta subito al caricamento (funziona su molti desktop)
-  window.addEventListener('load', playBirdSong);
-  // Fallback per mobile: parte alla primissima interazione, anche minima
-  document.addEventListener('click', playBirdSong);
-  document.addEventListener('touchstart', playBirdSong);
-  document.addEventListener('touchend', playBirdSong);
-  document.addEventListener('scroll', playBirdSong);
-})();
-</script>
 </body>
 </html>
