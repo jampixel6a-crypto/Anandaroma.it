@@ -761,12 +761,7 @@ Info su WhatsApp<img decoding="async" class="alignnone  wp-image-2154" src="phot
 wp.i18n.setLocaleData( { 'text direction ltr': [ 'ltr' ] } );
 /* ]]> */
 </script>
-<script type="text/javascript" id="wpfront-scroll-top-js-extra">
-/* <![CDATA[ */
-var wpfront_scroll_top_data = {"data":{"css":"#wpfront-scroll-top-container{position:fixed;cursor:pointer;z-index:9999;border:none;outline:none;background-color:rgba(0,0,0,0);box-shadow:none;outline-style:none;text-decoration:none;opacity:0;display:none;align-items:center;justify-content:center;margin:0;padding:0}#wpfront-scroll-top-container.show{display:flex;opacity:1}#wpfront-scroll-top-container .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#wpfront-scroll-top-container .text-holder{padding:3px 10px;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:4px 4px 5px 0px rgba(50,50,50,.5);-moz-box-shadow:4px 4px 5px 0px rgba(50,50,50,.5);box-shadow:4px 4px 5px 0px rgba(50,50,50,.5)}#wpfront-scroll-top-container{right:6px;bottom:56px;}#wpfront-scroll-top-container img{width:auto;height:auto;}#wpfront-scroll-top-container .text-holder{color:#ffffff;background-color:#000000;width:auto;height:auto;;}#wpfront-scroll-top-container .text-holder:hover{background-color:#000000;}#wpfront-scroll-top-container i{color:#000000;}","html":"<button id=\"wpfront-scroll-top-container\" aria-label=\"\" title=\"\" ><img src=\"photo/up-arrow-icon.png\" alt=\"up-arrow-icon\" title=\"\"></button>","data":{"hide_iframe":false,"button_fade_duration":0,"auto_hide":false,"auto_hide_after":2,"scroll_offset":100,"button_opacity":0.6,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0,"scroll_duration":2000}}};
-/* ]]> */
-</script>
-<script type="text/javascript" src="Other/wpfront-scroll-top.min.js" id="wpfront-scroll-top-js"></script>
+
 <script type="text/javascript" src="Other/gallery-justified.minified.js" id="onepress-gallery-justified-js"></script>
 <script type="text/javascript" src="Other/lightgallery.minified.js" id="onepress-lightgallery-js"></script>
 <script type="text/javascript" id="onepress-theme-js-extra">
@@ -784,6 +779,87 @@ var Onepress_Bully = {"enable_label":"","disable_mobile":"1","sections":{"home":
 /* <![CDATA[ */
 const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"️‍⚧️","️​⚧️")?!1:!n(e,"","​")&&!n(e,"","​​​​​​");case"emoji":return!a(e,"ᾬ8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
 /* ]]> */
+</script>
+
+
+<button id="custom-scroll-top" aria-label="Torna in cima" title="">
+  <img src="photo/up-arrow-icon.png" alt="up-arrow-icon">
+</button>
+<style>
+#custom-scroll-top{
+  position:fixed;
+  right:6px;
+  bottom:56px;
+  z-index:9999;
+  border:none;
+  outline:none;
+  background:transparent;
+  box-shadow:none;
+  padding:6px;
+  cursor:pointer;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.5s ease;
+}
+#custom-scroll-top.show{
+  opacity:0.55;
+  pointer-events:auto;
+}
+#custom-scroll-top img{
+  width:26px;
+  height:auto;
+  display:block;
+}
+</style>
+<script>
+(function(){
+  var btn = document.getElementById('custom-scroll-top');
+  var hideTimer = null;
+  var lastScrollY = window.scrollY || window.pageYOffset;
+
+  function showButton(){
+    btn.classList.add('show');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function(){
+      btn.classList.remove('show');
+    }, 1200);
+  }
+
+  window.addEventListener('scroll', function(){
+    var currentY = window.scrollY || window.pageYOffset;
+    var scrollingDown = currentY > lastScrollY;
+    lastScrollY = currentY;
+
+    // Mostra solo se si sta scorrendo verso il basso e non si è già in cima
+    if (scrollingDown && currentY > 150) {
+      showButton();
+    }
+  }, { passive: true });
+
+  btn.addEventListener('click', function(){
+    clearTimeout(hideTimer);
+    btn.classList.remove('show');
+    var startY = window.scrollY || window.pageYOffset;
+    var startTime = null;
+    var duration = 2000;
+
+    function easeInOutQuad(t){
+      return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
+    }
+
+    function step(timestamp){
+      if (!startTime) startTime = timestamp;
+      var elapsed = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = easeInOutQuad(progress);
+      window.scrollTo(0, startY * (1 - eased));
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  });
+})();
 </script>
 
 
