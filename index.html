@@ -845,25 +845,35 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   btn.addEventListener('click', function(){
     clearTimeout(hideTimer);
     btn.classList.remove('show');
-    var startY = window.scrollY || window.pageYOffset;
-    var startTime = null;
-    var duration = 2000;
 
-    function easeInOutQuad(t){
-      return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
-    }
+    // Blocca l'inerzia dello scroll nativo (momentum su iOS) prima di partire
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
 
-    function step(timestamp){
-      if (!startTime) startTime = timestamp;
-      var elapsed = timestamp - startTime;
-      var progress = Math.min(elapsed / duration, 1);
-      var eased = easeInOutQuad(progress);
-      window.scrollTo(0, startY * (1 - eased));
-      if (progress < 1) {
-        requestAnimationFrame(step);
+    requestAnimationFrame(function(){
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+
+      var startY = window.scrollY || window.pageYOffset;
+      var startTime = null;
+      var duration = 2000;
+
+      function easeInOutQuad(t){
+        return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
       }
-    }
-    requestAnimationFrame(step);
+
+      function step(timestamp){
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        var eased = easeInOutQuad(progress);
+        window.scrollTo(0, startY * (1 - eased));
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      }
+      requestAnimationFrame(step);
+    });
   });
 })();
 </script>
