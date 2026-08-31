@@ -842,39 +842,55 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     }
   }, { passive: true });
 
-  btn.addEventListener('click', function(){
+  var isAnimating = false;
+
+  function handleTap(e){
+    if (isAnimating) return;
+    isAnimating = true;
+
     clearTimeout(hideTimer);
     btn.classList.remove('show');
 
-    // Blocca l'inerzia dello scroll nativo (momentum su iOS) prima di partire
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+    var startY = window.scrollY || window.pageYOffset;
 
-    requestAnimationFrame(function(){
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
+    // Blocca istantaneamente l'inerzia dello scroll nativo (momentum su iOS):
+    // "congela" la pagina nella posizione attuale, forza il browser a fermarsi,
+    // poi ripristina la stessa posizione senza inerzia residua.
+    document.body.style.position = 'fixed';
+    document.body.style.top = (-startY) + 'px';
+    document.body.style.width = '100%';
+    // forza il reflow per applicare subito il blocco
+    document.body.offsetHeight;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, startY);
 
-      var startY = window.scrollY || window.pageYOffset;
-      var startTime = null;
-      var duration = 2000;
+    // Ora parte l'animazione lenta e fluida verso l'alto, come prima
+    var startTime = null;
+    var duration = 2000;
 
-      function easeInOutQuad(t){
-        return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
+    function easeInOutQuad(t){
+      return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
+    }
+
+    function step(timestamp){
+      if (!startTime) startTime = timestamp;
+      var elapsed = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = easeInOutQuad(progress);
+      window.scrollTo(0, startY * (1 - eased));
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        isAnimating = false;
       }
+    }
+    requestAnimationFrame(step);
+  }
 
-      function step(timestamp){
-        if (!startTime) startTime = timestamp;
-        var elapsed = timestamp - startTime;
-        var progress = Math.min(elapsed / duration, 1);
-        var eased = easeInOutQuad(progress);
-        window.scrollTo(0, startY * (1 - eased));
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        }
-      }
-      requestAnimationFrame(step);
-    });
-  });
+  btn.addEventListener('pointerup', handleTap);
+  btn.addEventListener('click', handleTap);
 })();
 </script>
 
