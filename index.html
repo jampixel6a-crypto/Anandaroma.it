@@ -885,18 +885,19 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   }
 
   function handleTap(e){
-    if (isAnimating) return;
-    isAnimating = true;
     if (e){
       if (e.cancelable && e.preventDefault) e.preventDefault();
       if (e.stopPropagation) e.stopPropagation();
     }
+    if (isAnimating) return;
+    isAnimating = true;
     clearTimeout(hideTimer);
     btn.classList.remove('show');
     scrollToTopSmooth();
   }
 
   btn.addEventListener('touchstart', handleTap, { passive: false });
+  btn.addEventListener('touchend', handleTap, { passive: false });
   btn.addEventListener('pointerup', handleTap);
   btn.addEventListener('click', handleTap);
 
@@ -905,15 +906,16 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   var footerBackToTop = document.querySelector('.back-to-top');
   if (footerBackToTop){
     function handleFooterTap(e){
-      if (isAnimating) return;
-      isAnimating = true;
       if (e){
         if (e.cancelable && e.preventDefault) e.preventDefault();
         if (e.stopPropagation) e.stopPropagation();
       }
+      if (isAnimating) return;
+      isAnimating = true;
       scrollToTopSmooth();
     }
     footerBackToTop.addEventListener('touchstart', handleFooterTap, { passive: false });
+    footerBackToTop.addEventListener('touchend', handleFooterTap, { passive: false });
     footerBackToTop.addEventListener('pointerup', handleFooterTap);
     footerBackToTop.addEventListener('click', handleFooterTap);
   }
