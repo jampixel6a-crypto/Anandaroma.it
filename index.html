@@ -807,6 +807,7 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   opacity:0;
   pointer-events:none;
   transition:opacity 0.5s ease;
+  touch-action:manipulation;
 }
 #custom-scroll-top.show{
   opacity:0.7;
@@ -844,14 +845,7 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 
   var isAnimating = false;
 
-  function handleTap(e){
-    if (isAnimating) return;
-    isAnimating = true;
-    if (e && e.preventDefault) e.preventDefault();
-
-    clearTimeout(hideTimer);
-    btn.classList.remove('show');
-
+  function scrollToTopSmooth(){
     var startY = window.scrollY || window.pageYOffset;
 
     // Blocca istantaneamente l'inerzia dello scroll nativo (momentum su iOS):
@@ -867,7 +861,7 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     document.body.style.width = '';
     window.scrollTo(0, startY);
 
-    // Ora parte l'animazione lenta e fluida verso l'alto, come prima
+    // Ora parte l'animazione lenta e fluida verso l'alto
     var startTime = null;
     var duration = 2000;
 
@@ -890,9 +884,39 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     requestAnimationFrame(step);
   }
 
+  function handleTap(e){
+    if (isAnimating) return;
+    isAnimating = true;
+    if (e){
+      if (e.cancelable && e.preventDefault) e.preventDefault();
+      if (e.stopPropagation) e.stopPropagation();
+    }
+    clearTimeout(hideTimer);
+    btn.classList.remove('show');
+    scrollToTopSmooth();
+  }
+
   btn.addEventListener('touchstart', handleTap, { passive: false });
   btn.addEventListener('pointerup', handleTap);
   btn.addEventListener('click', handleTap);
+
+  // Collega anche l'icona "torna su" nel footer alla stessa animazione lenta,
+  // al posto del salto istantaneo nativo dell'ancora #page
+  var footerBackToTop = document.querySelector('.back-to-top');
+  if (footerBackToTop){
+    function handleFooterTap(e){
+      if (isAnimating) return;
+      isAnimating = true;
+      if (e){
+        if (e.cancelable && e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+      }
+      scrollToTopSmooth();
+    }
+    footerBackToTop.addEventListener('touchstart', handleFooterTap, { passive: false });
+    footerBackToTop.addEventListener('pointerup', handleFooterTap);
+    footerBackToTop.addEventListener('click', handleFooterTap);
+  }
 })();
 </script>
 
