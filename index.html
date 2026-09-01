@@ -837,6 +837,15 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     var currentY = window.scrollY || window.pageYOffset;
     lastScrollY = currentY;
 
+    // Vicino al fondo pagina non serve: c'è già la freccia nel footer
+    var nearBottom = (window.innerHeight + currentY) >= (document.documentElement.scrollHeight - 80);
+
+    if (nearBottom) {
+      clearTimeout(hideTimer);
+      btn.classList.remove('show');
+      return;
+    }
+
     // Mostra durante qualsiasi scorrimento (su o giù), non appena ci si è allontanati dalla cima
     if (currentY > 150) {
       showButton();
@@ -861,27 +870,33 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     document.body.style.width = '';
     window.scrollTo(0, startY);
 
-    // Ora parte l'animazione lenta e fluida verso l'alto
-    var startTime = null;
-    var duration = 2000;
+    // Attende due frame per essere certi che l'inerzia residua del browser
+    // si sia esaurita del tutto, prima di prendere il controllo dello scroll
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        var animStartY = window.scrollY || window.pageYOffset;
+        var startTime = null;
+        var duration = 2000;
 
-    function easeInOutQuad(t){
-      return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
-    }
+        function easeInOutQuad(t){
+          return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
+        }
 
-    function step(timestamp){
-      if (!startTime) startTime = timestamp;
-      var elapsed = timestamp - startTime;
-      var progress = Math.min(elapsed / duration, 1);
-      var eased = easeInOutQuad(progress);
-      window.scrollTo(0, startY * (1 - eased));
-      if (progress < 1) {
+        function step(timestamp){
+          if (!startTime) startTime = timestamp;
+          var elapsed = timestamp - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = easeInOutQuad(progress);
+          window.scrollTo(0, animStartY * (1 - eased));
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            isAnimating = false;
+          }
+        }
         requestAnimationFrame(step);
-      } else {
-        isAnimating = false;
-      }
-    }
-    requestAnimationFrame(step);
+      });
+    });
   }
 
   function handleTap(e){
