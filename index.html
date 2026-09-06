@@ -854,6 +854,36 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 
   var isAnimating = false;
 
+  // Easing morbido tipo "sott'acqua": accelerazione e frenata molto graduali
+  function easeInOutWater(t){
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  // Animazione di scroll pura, senza alcun trucco anti-inerzia
+  function animateScrollTo(targetY, duration){
+    var animStartY = window.scrollY || window.pageYOffset;
+    var distance = targetY - animStartY;
+    var startTime = null;
+
+    function step(timestamp){
+      if (!startTime) startTime = timestamp;
+      var elapsed = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = easeInOutWater(progress);
+      window.scrollTo(0, animStartY + distance * eased);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        isAnimating = false;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Variante con blocco dell'inerzia iOS: utile solo per il tasto "torna in cima",
+  // che può essere premuto mentre la pagina sta ancora scorrendo per inerzia
   function smoothScrollTo(targetY, duration){
     var startY = window.scrollY || window.pageYOffset;
 
@@ -874,30 +904,7 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     // si sia esaurita del tutto, prima di prendere il controllo dello scroll
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){
-        var animStartY = window.scrollY || window.pageYOffset;
-        var distance = targetY - animStartY;
-        var startTime = null;
-
-        // Easing morbido tipo "sott'acqua": accelerazione e frenata molto graduali
-        function easeInOutWater(t){
-          return t < 0.5
-            ? 4 * t * t * t
-            : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        }
-
-        function step(timestamp){
-          if (!startTime) startTime = timestamp;
-          var elapsed = timestamp - startTime;
-          var progress = Math.min(elapsed / duration, 1);
-          var eased = easeInOutWater(progress);
-          window.scrollTo(0, animStartY + distance * eased);
-          if (progress < 1) {
-            requestAnimationFrame(step);
-          } else {
-            isAnimating = false;
-          }
-        }
-        requestAnimationFrame(step);
+        animateScrollTo(targetY, duration);
       });
     });
   }
@@ -921,7 +928,7 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
       var headerHeight = headerEl ? headerEl.offsetHeight : 0;
       var targetY = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - headerHeight;
       if (targetY < 0) targetY = 0;
-      smoothScrollTo(targetY, 1800);
+      animateScrollTo(targetY, 1800);
       history.pushState(null, '', hash);
     });
   });
