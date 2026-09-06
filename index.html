@@ -926,7 +926,6 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     link.addEventListener('click', function(e){
       e.preventDefault();
       e.stopPropagation();
-      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
       var headerHeight = headerEl ? headerEl.offsetHeight : 0;
       var targetY = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - headerHeight;
       if (targetY < 0) targetY = 0;
