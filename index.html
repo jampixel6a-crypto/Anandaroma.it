@@ -102,18 +102,18 @@
 
 @keyframes doveFlockFly {
   0% {
-    transform: translate(-15vw, var(--sy)) rotate(-16deg) scale(1.05);
+    transform: translate(-15vw, var(--sy)) rotate(-16deg) scale(1.15);
     opacity: 0;
   }
   12% {
     opacity: 0.95;
   }
   85% {
-    transform: translate(108vw, var(--ey)) rotate(-12deg) scale(0.75);
+    transform: translate(108vw, var(--ey)) rotate(-12deg) scale(0.7);
     opacity: 0.9;
   }
   100% {
-    transform: translate(122vw, var(--ey)) rotate(-12deg) scale(0.7);
+    transform: translate(122vw, var(--ey)) rotate(-12deg) scale(0.6);
     opacity: 0;
   }
 }
@@ -925,12 +925,14 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 
     link.addEventListener('click', function(e){
       e.preventDefault();
+      e.stopPropagation();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
       var headerHeight = headerEl ? headerEl.offsetHeight : 0;
       var targetY = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - headerHeight;
       if (targetY < 0) targetY = 0;
       animateScrollTo(targetY, 1800);
       history.pushState(null, '', hash);
-    });
+    }, true); // "true" = fase di capture: intercetta il click prima dello script del tema, evitando il doppio scroll
   });
 
   function handleTap(e){
