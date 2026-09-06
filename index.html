@@ -1010,11 +1010,18 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     link.addEventListener('click', function(){
       waitForStable(link, function(rect){
         var size = Math.max(rect.width, rect.height);
+        var cs = window.getComputedStyle(link);
+        var padLeft = parseFloat(cs.paddingLeft) || 0;
+        var padRight = parseFloat(cs.paddingRight) || 0;
+        var padTop = parseFloat(cs.paddingTop) || 0;
+        var padBottom = parseFloat(cs.paddingBottom) || 0;
+        var centerX = (rect.width + padLeft - padRight) / 2;
+        var centerY = (rect.height + padTop - padBottom) / 2;
         var ripple = document.createElement('span');
         ripple.className = 'menu-ripple';
         ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = ((rect.width - size) / 2) + 'px';
-        ripple.style.top = ((rect.height - size) / 2) + 'px';
+        ripple.style.left = (centerX - size / 2) + 'px';
+        ripple.style.top = (centerY - size / 2) + 'px';
         link.appendChild(ripple);
         setTimeout(function(){
           ripple.remove();
