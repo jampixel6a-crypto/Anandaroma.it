@@ -979,21 +979,45 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 <script>
 (function(){
   var links = document.querySelectorAll('.onepress-menu > li > a');
+
+  function waitForStable(el, callback){
+    var lastRect = el.getBoundingClientRect();
+    var stableCount = 0;
+    var tries = 0;
+    var maxTries = 40; // ~ tempo massimo di attesa (circa 0.6s a 60fps)
+
+    function check(){
+      var rect = el.getBoundingClientRect();
+      var moved = Math.abs(rect.left - lastRect.left) > 0.5 ||
+                  Math.abs(rect.top - lastRect.top) > 0.5 ||
+                  Math.abs(rect.width - lastRect.width) > 0.5 ||
+                  Math.abs(rect.height - lastRect.height) > 0.5;
+      stableCount = moved ? 0 : stableCount + 1;
+      lastRect = rect;
+      tries++;
+      if (stableCount >= 3 || tries >= maxTries){
+        callback(rect);
+      } else {
+        requestAnimationFrame(check);
+      }
+    }
+    requestAnimationFrame(check);
+  }
+
   links.forEach(function(link){
-    link.addEventListener('click', function(e){
-      var rect = link.getBoundingClientRect();
-      var size = Math.max(rect.width, rect.height);
-      var ripple = document.createElement('span');
-      ripple.className = 'menu-ripple';
-      ripple.style.width = ripple.style.height = size + 'px';
-      var x = (rect.width - size) / 2;
-      var y = (rect.height - size) / 2;
-      ripple.style.left = x + 'px';
-      ripple.style.top = y + 'px';
-      link.appendChild(ripple);
-      setTimeout(function(){
-        ripple.remove();
-      }, 1600);
+    link.addEventListener('click', function(){
+      waitForStable(link, function(rect){
+        var size = Math.max(rect.width, rect.height);
+        var ripple = document.createElement('span');
+        ripple.className = 'menu-ripple';
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = ((rect.width - size) / 2) + 'px';
+        ripple.style.top = ((rect.height - size) / 2) + 'px';
+        link.appendChild(ripple);
+        setTimeout(function(){
+          ripple.remove();
+        }, 1600);
+      });
     });
   });
 })();
