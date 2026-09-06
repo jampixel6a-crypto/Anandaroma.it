@@ -102,18 +102,18 @@
 
 @keyframes doveFlockFly {
   0% {
-    transform: translate(-15vw, var(--sy)) rotate(-16deg) scale(1.35);
+    transform: translate(-15vw, var(--sy)) rotate(-16deg) scale(1.1);
     opacity: 0;
   }
   12% {
     opacity: 0.95;
   }
   85% {
-    transform: translate(108vw, var(--ey)) rotate(-12deg) scale(0.65);
+    transform: translate(108vw, var(--ey)) rotate(-12deg) scale(0.85);
     opacity: 0.9;
   }
   100% {
-    transform: translate(122vw, var(--ey)) rotate(-12deg) scale(0.55);
+    transform: translate(122vw, var(--ey)) rotate(-12deg) scale(0.8);
     opacity: 0;
   }
 }
@@ -163,7 +163,7 @@
 @keyframes doveLandCenter {
   0% {
     left: 0;
-    transform: translate(-15vw, var(--sy, 85vh)) rotate(-16deg) scale(0.85);
+    transform: translate(-15vw, var(--sy, 85vh)) rotate(-16deg) scale(1.1);
     opacity: 0;
   }
   12% {
@@ -936,11 +936,17 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     e.preventDefault();
     e.stopPropagation();
 
-    var isMobileMenu = onepressMenu && onepressMenu.classList.contains('onepress-menu-mobile');
+    var isMobileMenu = (onepressMenu && onepressMenu.classList.contains('onepress-menu-mobile')) ||
+                        (navToggle && navToggle.classList.contains('nav-is-visible'));
 
-    // Se il menu mobile è aperto, lo chiudiamo (stesso comportamento del tema originale)
+    // Se il menu mobile è aperto, lo chiudiamo (stesso comportamento del tema originale,
+    // usando jQuery.trigger come fa il tema stesso, per massima compatibilità)
     if (isMobileMenu && navToggle){
-      navToggle.click();
+      if (window.jQuery){
+        window.jQuery(navToggle).trigger('click');
+      } else {
+        navToggle.click();
+      }
     }
 
     // Cerchio (ripple) solo su desktop: su mobile il menu si chiude subito, quindi non si vedrebbe
