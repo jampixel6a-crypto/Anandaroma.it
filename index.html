@@ -986,8 +986,8 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
       var ripple = document.createElement('span');
       ripple.className = 'menu-ripple';
       ripple.style.width = ripple.style.height = size + 'px';
-      var x = (e.clientX || rect.left + rect.width/2) - rect.left - size/2;
-      var y = (e.clientY || rect.top + rect.height/2) - rect.top - size/2;
+      var x = (rect.width - size) / 2;
+      var y = (rect.height - size) / 2;
       ripple.style.left = x + 'px';
       ripple.style.top = y + 'px';
       link.appendChild(ripple);
