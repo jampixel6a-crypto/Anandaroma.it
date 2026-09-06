@@ -854,7 +854,7 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 
   var isAnimating = false;
 
-  function scrollToTopSmooth(){
+  function smoothScrollTo(targetY, duration){
     var startY = window.scrollY || window.pageYOffset;
 
     // Blocca istantaneamente l'inerzia dello scroll nativo (momentum su iOS):
@@ -875,19 +875,22 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){
         var animStartY = window.scrollY || window.pageYOffset;
+        var distance = targetY - animStartY;
         var startTime = null;
-        var duration = 2000;
 
-        function easeInOutQuad(t){
-          return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
+        // Easing morbido tipo "sott'acqua": accelerazione e frenata molto graduali
+        function easeInOutWater(t){
+          return t < 0.5
+            ? 4 * t * t * t
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
         }
 
         function step(timestamp){
           if (!startTime) startTime = timestamp;
           var elapsed = timestamp - startTime;
           var progress = Math.min(elapsed / duration, 1);
-          var eased = easeInOutQuad(progress);
-          window.scrollTo(0, animStartY * (1 - eased));
+          var eased = easeInOutWater(progress);
+          window.scrollTo(0, animStartY + distance * eased);
           if (progress < 1) {
             requestAnimationFrame(step);
           } else {
@@ -898,6 +901,30 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
       });
     });
   }
+
+  function scrollToTopSmooth(){
+    smoothScrollTo(0, 2000);
+  }
+
+  // Scorrimento fluido e lento per tutte le voci di menu che puntano a una sezione della pagina
+  var headerEl = document.getElementById('masthead');
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    var hash = link.getAttribute('href');
+    if (!hash || hash.length < 2) return;
+    // Esclude i link gestiti a parte (torna in cima, skip-link di accessibilità, toggle menu mobile)
+    if (hash === '#page' || hash === '#content' || hash === '#0') return;
+    var target = document.getElementById(hash.substring(1));
+    if (!target) return;
+
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var headerHeight = headerEl ? headerEl.offsetHeight : 0;
+      var targetY = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - headerHeight;
+      if (targetY < 0) targetY = 0;
+      smoothScrollTo(targetY, 1800);
+      history.pushState(null, '', hash);
+    });
+  });
 
   function handleTap(e){
     if (e){
