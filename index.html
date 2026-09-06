@@ -345,12 +345,15 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 <style>
 .section-about .wp-image-2423,
 .section-about .wp-image-2424{
-  transition: transform 0.35s ease;
+  transition: transform 0.35s ease, opacity 0.35s ease;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 .section-about .wp-image-2423:hover,
 .section-about .wp-image-2424:hover{
   transform: scale(1.08);
+  opacity: 0.75;
 }
 </style>
 </head>
