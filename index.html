@@ -924,6 +924,18 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   var onepressMenu = document.querySelector('.onepress-menu');
 
   document.addEventListener('click', function(e){
+    // Torna in cima: intercetta anche il link del footer, che il tema gestisce
+    // con un proprio scroll istantaneo (causando altrimenti un doppio scroll)
+    var backToTop = e.target.closest('.back-to-top');
+    if (backToTop){
+      e.preventDefault();
+      e.stopPropagation();
+      if (isAnimating) return;
+      isAnimating = true;
+      scrollToTopSmooth();
+      return;
+    }
+
     var link = e.target.closest('a[href^="#"]');
     if (!link) return;
     var hash = link.getAttribute('href');
@@ -978,24 +990,10 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   btn.addEventListener('pointerup', handleTap);
   btn.addEventListener('click', handleTap);
 
-  // Collega anche l'icona "torna su" nel footer alla stessa animazione lenta,
-  // al posto del salto istantaneo nativo dell'ancora #page
-  var footerBackToTop = document.querySelector('.back-to-top');
-  if (footerBackToTop){
-    function handleFooterTap(e){
-      if (e){
-        if (e.cancelable && e.preventDefault) e.preventDefault();
-        if (e.stopPropagation) e.stopPropagation();
-      }
-      if (isAnimating) return;
-      isAnimating = true;
-      scrollToTopSmooth();
-    }
-    footerBackToTop.addEventListener('touchstart', handleFooterTap, { passive: false });
-    footerBackToTop.addEventListener('touchend', handleFooterTap, { passive: false });
-    footerBackToTop.addEventListener('pointerup', handleFooterTap);
-    footerBackToTop.addEventListener('click', handleFooterTap);
-  }
+  // Nota: il link "torna in cima" del footer (.back-to-top) è già gestito
+  // dal listener delegato su document più sopra, per evitare il doppio scroll
+  // causato dal listener nativo del tema legato allo stesso elemento.
+
 })();
 </script>
 
