@@ -406,12 +406,120 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
   }
 }
 </style>
+
+<!-- FONT YOUNGEST SERIF + HERO CIELO -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style id="simon-font-face" type="text/css">
+/* Simon Font: se il file è presente in Other/ (SimonFont.woff2/.woff/.otf/.ttf) o installato, ha la precedenza */
+@font-face{font-family:'Simon Font';font-style:normal;font-weight:400;font-display:swap;
+  src:local('Simon Font'),local('Simon'),local('Simon-Regular'),
+      url('Other/SimonFont.woff2') format('woff2'),url('Other/SimonFont.woff') format('woff'),
+      url('Other/SimonFont.otf') format('opentype'),url('Other/SimonFont.ttf') format('truetype');}
+/* Font incluso nel sito (nessun caricamento da Google): Fraunces, versione morbida */
+@font-face{font-family:'Fraunces Local';font-style:normal;font-weight:100 900;font-display:swap;src:url('Other/fonts/fraunces-latin-ext-full-normal.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Fraunces Local';font-style:normal;font-weight:100 900;font-display:swap;src:url('Other/fonts/fraunces-latin-full-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Fraunces Local';font-style:italic;font-weight:100 900;font-display:swap;src:url('Other/fonts/fraunces-latin-ext-full-italic.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Fraunces Local';font-style:italic;font-weight:100 900;font-display:swap;src:url('Other/fonts/fraunces-latin-full-italic.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+</style>
+<style id="youngest-serif-css" type="text/css">
+:root{--font-main:'Simon Font','Fraunces Local',Georgia,serif;}
+html body,
+body h1:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h2:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h3:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h4:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h5:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h6:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body p:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body a:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body li:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body span:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body div:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body input:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body textarea:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body select:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body button:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body label:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body td:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body th:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body strong:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body em:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body blockquote:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body .site-title,body .section-title,body .section-subtitle,body .section-desc,body .btn,body .hero-title-text{
+  font-family:var(--font-main) !important;
+  font-variation-settings:'SOFT' 100,'WONK' 0 !important;
+}
+
+/* HERO: cielo sfumato come da screenshot */
+.hero__content::before{display:none !important;}
+.hero-large-text .hero-title-text{color:#fff;letter-spacing:.04em;text-transform:uppercase;text-shadow:0 2px 14px rgba(0,0,0,.18);}
+.hero-small-text h6{color:#fff;text-transform:uppercase;letter-spacing:.03em;text-shadow:0 2px 10px rgba(0,0,0,.18);}
+.hero-slideshow-wrapper:after{background:transparent !important;}
+.hero-content-style1 .btn,.hero-content-style1 .btn-secondary-outline{
+  background:#ecc65b !important;border-color:#ecc65b !important;color:#2a2418 !important;
+  text-transform:uppercase;letter-spacing:.04em;border-radius:3px;box-shadow:0 4px 14px rgba(0,0,0,.12);
+}
+.hero-content-style1 .btn:hover{background:#f3d27a !important;border-color:#f3d27a !important;color:#2a2418 !important;}
+</style>
+<style id="header-brand-css" type="text/css">
+.site-logo-div .custom-logo-link{display:inline-flex;align-items:center;gap:12px;text-decoration:none;}
+.site-logo-div img.custom-logo{height:50px !important;width:auto !important;flex-shrink:0;}
+.header-brand-text{font-size:24px;line-height:1;letter-spacing:.04em;text-transform:uppercase;color:#2b3a99;white-space:nowrap;}
+@media (max-width:420px){.header-brand-text{font-size:18px;}}
+</style>
+<style id="youngest-serif-light-css" type="text/css">
+body h1:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h2:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h3:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h4:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h5:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body h6:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body p:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body a:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body li:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body span:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body div:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body strong:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body b:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body em:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body button:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body label:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body td:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body th:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
+body blockquote:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]){
+  font-weight:400 !important;
+  font-synthesis:none !important;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+body{color:#4a4a4a;}
+body p, body li, body .section-desc{color:#555 !important;}
+body .onepress-menu > li > a{color:#4a4a4a !important;letter-spacing:.06em;}
+body .section-title, body h1, body h2, body h3, body h4{color:#3a3a3a;}
+.header-brand-text{color:#3a4aa8 !important;}
+</style>
+<style id="about-intro-blue-css" type="text/css">body p.about-intro,body p.about-intro *{color:#3376c4 !important;}</style>
+<style id="footer-sky-css" type="text/css">
+body .site-footer{
+  background:linear-gradient(180deg,#2c68b0 0%,#4080c1 25%,#769ecd 50%,#a6b6cd 69%,#c8c4c8 80%,#deccb6 90%,#e8b88a 100%) !important;
+}
+body .site-footer .footer-widgets,body .site-footer .footer-connect{background:transparent !important;}
+body .site-footer .footer-connect .follow-heading{color:#fff !important;text-transform:uppercase;letter-spacing:.06em;text-shadow:0 2px 10px rgba(0,0,0,.18);}
+body .site-footer .footer-social a,body .site-footer .footer-social a i{color:#fff !important;}
+body .site-footer .footer-social a:hover,body .site-footer .footer-social a:hover i{color:#ecc65b !important;}
+/* fascia copyright e freccia "torna su" come nell'originale (linguetta ruotata sul bordo superiore della fascia) */
+body .site-footer .site-info{background:#faf0d3 !important;}
+body .site-footer .site-info span{color:#4a3b2a !important;}
+body .site-footer .btt a,body .site-footer .btt a i{background-color:transparent;color:#3376c4 !important;}
+body .site-footer .btt a{background-color:#faf0d3 !important;}
+body .site-footer .btt a:hover,body .site-footer .btt a:hover i{color:#e0b43a !important;}
+</style>
 </head>
 
 <body class="home wp-singular page-template page-template-template-frontpage page-template-template-frontpage-php page page-id-1415 wp-custom-logo wp-theme-onepress cookies-not-set">
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content">Passa al contenuto</a>
-	<div id="header-section" class="h-below-hero no-transparent"><div id="parallax-hero" class=" parallax-hero jarallax"> <div class="parallax-bg jarallax-img"><img src="photo/shutterstock_2342373739-1-scaled-1.jpg" alt=""></div>	<section  id="home" 			 class="hero-slideshow-wrapper hero-slideshow-normal">
+	<div id="header-section" class="h-below-hero no-transparent"><div id="parallax-hero" class=" parallax-hero jarallax"> <div class="parallax-bg jarallax-img"><img src="photo/hero-cielo.jpg" alt=""></div>	<section  id="home" 			 class="hero-slideshow-wrapper hero-slideshow-normal">
 
 					<div class="slider-spinner">
 				<div class="double-bounce1"></div>
@@ -518,7 +626,7 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 </div>		<header id="masthead" class="site-header header-full-width is-sticky no-scroll no-t h-below-hero" role="banner">
 			<div class="container">
 				<div class="site-branding">
-					<div class="site-brand-inner has-logo-img no-desc"><div class="site-logo-div"><a href="index.html" class="custom-logo-link  no-t-logo" rel="home" itemprop="url"><img width="283" height="67" src="photo/logo-fiore-loto.png" class="custom-logo" alt="Anandaroma" itemprop="logo" decoding="async" /></a></div></div>				</div>
+					<div class="site-brand-inner has-logo-img no-desc"><div class="site-logo-div"><a href="index.html" class="custom-logo-link  no-t-logo" rel="home" itemprop="url"><img width="125" height="126" src="photo/cropped-LogoBugOnly_500px-1-1.png" class="custom-logo" alt="Ananda Roma" itemprop="logo" decoding="async" /><span class="header-brand-text">Ananda Roma</span></a></div></div>				</div>
 				<div class="header-right-wrapper">
 					<a href="#0" id="nav-toggle">Menu<span></span></a>
 					<nav id="site-navigation" class="main-navigation" role="navigation">
@@ -542,13 +650,13 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
 		
 						<div class="container">
 								<div class="section-title-area">
-					<h5 class="section-subtitle">Associazione Culturale</h5>					<h2 class="section-title">Ananda Roma</h2>					<div class="section-desc"><p style="text-align: justify;font-size: 80%;font-family: verdana" data-mce-style="text-align: justify; font-size: 80%; font-family: verdana;">Hai mai sentito il desiderio di fermarti, ritrovare la calma e ristabilire l’equilibrio dentro di te?<br />
+					<h5 class="section-subtitle">Associazione Culturale</h5>					<h2 class="section-title">Ananda Roma</h2>					<div class="section-desc"><p class="about-intro" style="text-align: justify;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: justify; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Hai mai sentito il desiderio di fermarti, ritrovare la calma e ristabilire l’equilibrio dentro di te?<br />
 Vieni a scoprire come la meditazione, lo yoga e l’approfondimento degli insegnamenti spirituali, possano essere di aiuto per imparare a vivere con maggiore consapevolezza, serenità e gioia.<br />
 Ad Ananda Roma potrai conoscere gli antichi insegnamenti portati in occidente dal grande maestro indiano Paramhansa Yogananda, autore di Autobiografia di uno Yogi, e trasmessi da Swami Kriyananda, suo discepolo diretto. Dal 2000 ci dedichiamo a condividerli con coloro che, come te, sono alla ricerca di una nuova consapevolezza interiore. Ti aspettiamo.</p>
-<p><img fetchpriority="high" decoding="async" class=" wp-image-2423 aligncenter" src="photo/rounded-in-photoretrica.png" alt="" width="358" height="286" data-mce-src="photo/rounded-in-photoretrica.png"></p>
-<p style="text-align: justify;font-size: 80%;font-family: verdana" data-mce-style="text-align: justify; font-size: 80%; font-family: verdana;">Paramhansa Yogananda è stato il primo grande maestro indiano a trascorrere la maggior parte della sua vita in Occidente. Divenuto famoso per il suo libro Autobiografia di uno Yogi, ha contribuito a rendere lo yoga e la meditazione ben conosciuti e praticati in tutto il mondo con la profondità e l’universalità dei suoi insegnamenti. Il suo scopo era quello di ispirare i sinceri ricercatori spirituali, indipendentemente dalla religione di appartenenza, a perseguire l’esperienza interiore e diretta di Dio, attraverso pratiche facilmente accessibili.</p>
+<p><img fetchpriority="high" decoding="async" class=" wp-image-2423 aligncenter" src="photo/rounded-in-photoretrica.png" alt="" width="358" height="322" data-mce-src="photo/rounded-in-photoretrica.png"></p>
+<p style="text-align: justify;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: justify; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Paramhansa Yogananda è stato il primo grande maestro indiano a trascorrere la maggior parte della sua vita in Occidente. Divenuto famoso per il suo libro Autobiografia di uno Yogi, ha contribuito a rendere lo yoga e la meditazione ben conosciuti e praticati in tutto il mondo con la profondità e l’universalità dei suoi insegnamenti. Il suo scopo era quello di ispirare i sinceri ricercatori spirituali, indipendentemente dalla religione di appartenenza, a perseguire l’esperienza interiore e diretta di Dio, attraverso pratiche facilmente accessibili.</p>
 <p><img decoding="async" class="wp-image-2424 aligncenter" src="photo/rounded-in-photoretrica-copia.png" alt="" width="358" height="322" data-mce-src="photo/rounded-in-photoretrica-copia.png"></p>
-<p style="text-align: justify;font-size: 80%;font-family: verdana" data-mce-style="text-align: justify; font-size: 80%; font-family: verdana;">Insegnante spirituale, autore e compositore di fama mondiale, Swami Kriyananda è stato uno dei maggiori esponenti dello yoga occidentale.<br />
+<p style="text-align: justify;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: justify; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Insegnante spirituale, autore e compositore di fama mondiale, Swami Kriyananda è stato uno dei maggiori esponenti dello yoga occidentale.<br />
 Discepolo diretto di Paramhansa Yogananda, ha dedicato l’intera vita a diffondere in tutto il mondo gli insegnamenti della Realizzazione del Sé trasmessi dal suo Maestro e a dimostranne l’applicazione in ogni ambito dell’esistenza.</p>
 </div>				</div>
 								<div class="row">
@@ -559,8 +667,7 @@ Discepolo diretto di Paramhansa Yogananda, ha dedicato l’intera vita a diffond
 							<section id="servizi"  class="section-services section-padding section-meta onepage-section">
 						<div class="container">
 								<div class="section-title-area">
-										<h2 class="section-title">Le nostre Attivita&#039;</h2>					<div class="section-desc"><p><img decoding="async" class="size-full wp-image-2418 aligncenter" src="photo/Medi.png" alt="" width="266" height="266" data-mce-src="photo/Medi.png" /></p>
-<p style="text-align: center;font-size: 80%;font-family: verdana" data-mce-style="text-align: center; font-size: 80%; font-family: verdana;">Ad Ananda Roma puoi avvicinarti alla Scienza della Meditazione e allo Yoga come vie<br />
+										<h2 class="section-title">Le nostre Attivita&#039;</h2>					<div class="section-desc"><p style="text-align: center;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: center; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Ad Ananda Roma puoi avvicinarti alla Scienza della Meditazione e allo Yoga come vie<br />
 complementari per ritrovare equilibrio, energia e consapevolezza interiore.<br />
 Attraverso i nostri corsi di meditazione e di yoga imparerai:<br />
 -come meditare e come praticare gli Esercizi di Ricarica Energetica di Paramhansa Yogananda<br />
@@ -582,31 +689,37 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
 											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="649" height="642" src="photo/1.png" alt="" class="wp-image-2324 size-full" /></figure><div class="wp-block-media-text__content">
 											<p><strong>Daylan Alberto Rinieri</strong></p>
 											<div style="height:2px; width:100%; max-width:300px; margin:6px 0 14px; background:linear-gradient(90deg, rgba(51,118,196,0) 0%, rgba(51,118,196,0.75) 25%, rgba(234,196,83,0.95) 55%, rgba(234,196,83,0.5) 80%, rgba(51,118,196,0) 100%);"></div>
-											<p style="text-align: justify; font-size: 110%; font-family: verdana;">Pratica meditazione dal 1995, è discepolo di Paramhansa Yogananda e segue gli insegnamenti della Realizzazione del Sé di Yogananda e Swami Kriyananda.<br>E&#8217; diplomato all’ Accademia europea di Raja Yoga e ama condividere gli insegnamenti della Realizzazione del Sé. Insieme a Medhavati guida il Centro Ananda Roma.</p>
+											<p style="text-align: justify; font-size: 110%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Pratica meditazione dal 1995, è discepolo di Paramhansa Yogananda e segue gli insegnamenti della Realizzazione del Sé di Yogananda e Swami Kriyananda.<br>E&#8217; diplomato all’ Accademia europea di Raja Yoga e ama condividere gli insegnamenti della Realizzazione del Sé. Insieme a Medhavati guida il Centro Ananda Roma.</p>
 											</div></div>
 
 											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="591" height="556" src="photo/2.png" alt="" class="wp-image-2338 size-full" /></figure><div class="wp-block-media-text__content">
 											<p><strong>Medhavati Maria Grazia Scalchi</strong></p>
 											<div style="height:2px; width:100%; max-width:300px; margin:6px 0 14px; background:linear-gradient(90deg, rgba(51,118,196,0) 0%, rgba(51,118,196,0.75) 25%, rgba(234,196,83,0.95) 55%, rgba(234,196,83,0.5) 80%, rgba(51,118,196,0) 100%);"></div>
-											<p style="text-align: justify; font-size: 110%; font-family: verdana;">Pratica meditazione da oltre trent&#8217;anni. E&#8217; discepola di Paramhansa Yogananda di cui segue gli insegnamenti della Realizzazione del Sé, trasmessi dal suo discepolo Swami Kriyananda. E&#8217; diplomata all’ Accademia europea di Raja Yoga e ama condividere gli insegnamenti di questo sentiero. Insieme a Dayalan guida il Centro Ananda Roma.</p>
+											<p style="text-align: justify; font-size: 110%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Pratica meditazione da oltre trent&#8217;anni. E&#8217; discepola di Paramhansa Yogananda di cui segue gli insegnamenti della Realizzazione del Sé, trasmessi dal suo discepolo Swami Kriyananda. E&#8217; diplomata all’ Accademia europea di Raja Yoga e ama condividere gli insegnamenti di questo sentiero. Insieme a Dayalan guida il Centro Ananda Roma.</p>
 											</div></div>
 
-											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="850" height="833" src="photo/3.png" alt="" class="wp-image-2375 size-full" /></figure><div class="wp-block-media-text__content">
+											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="650" height="650" src="photo/3.png" alt="" class="wp-image-2375 size-full" /></figure><div class="wp-block-media-text__content">
 											<p><strong style="white-space: normal; box-sizing: inherit;">Lila Maria Antonietta Maiello</strong></p>
 											<div style="height:2px; width:100%; max-width:300px; margin:6px 0 14px; background:linear-gradient(90deg, rgba(51,118,196,0) 0%, rgba(51,118,196,0.75) 25%, rgba(234,196,83,0.95) 55%, rgba(234,196,83,0.5) 80%, rgba(51,118,196,0) 100%);"></div>
-											<p style="text-align: justify; font-size: 110%; font-family: verdana;">Dal 2018 è discepola di Paramhansa Yogananda, dal 2019 Kriyaban. E’ diplomata all’ Accademia europea di Raja Yoga e considera l’insegnamento delle tecniche di meditazione trasmesse da Paramhansa Yogananda e Swami Kriyananda un dono a cui si avvicina sempre con gioia e amore.</p>
+											<p style="text-align: justify; font-size: 110%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Dal 2018 è discepola di Paramhansa Yogananda, dal 2019 Kriyaban. E’ diplomata all’ Accademia europea di Raja Yoga e considera l’insegnamento delle tecniche di meditazione trasmesse da Paramhansa Yogananda e Swami Kriyananda un dono a cui si avvicina sempre con gioia e amore.</p>
 											</div></div>
 
-											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="570" height="546" src="photo/4.png" alt="" class="wp-image-2379 size-full" /></figure><div class="wp-block-media-text__content">
+											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="650" height="650" src="photo/4.png" alt="" class="wp-image-2379 size-full" /></figure><div class="wp-block-media-text__content">
 											<p><strong>Arathi Sabrina Giannò&nbsp;</strong></p>
 											<div style="height:2px; width:100%; max-width:300px; margin:6px 0 14px; background:linear-gradient(90deg, rgba(51,118,196,0) 0%, rgba(51,118,196,0.75) 25%, rgba(234,196,83,0.95) 55%, rgba(234,196,83,0.5) 80%, rgba(51,118,196,0) 100%);"></div>
-											<p style="text-align: justify; font-size: 110%; font-family: verdana;">Insegnante di&nbsp;Ananda Yoga,&nbsp;si è diplomata&nbsp; all&#8217;Accademia Europea di Ananda Yoga&nbsp;&nbsp;dopo aver conosciuto&nbsp;gli insegnamenti di Paramhansa Yogananda.&nbsp;Tiene corsi a Roma e&nbsp;dal 2013 insegna all&#8217;Accademia nei corsi di formazione per insegnanti di Yoga per bambini e per le donne in gravidanza. E&#8217; autrice dei&nbsp;libri&nbsp;Il Piccolo Yogi&nbsp;e Yoga in gravidanza.</p>
+											<p style="text-align: justify; font-size: 110%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Insegnante di&nbsp;Ananda Yoga,&nbsp;si è diplomata&nbsp; all&#8217;Accademia Europea di Ananda Yoga&nbsp;&nbsp;dopo aver conosciuto&nbsp;gli insegnamenti di Paramhansa Yogananda.&nbsp;Tiene corsi a Roma e&nbsp;dal 2013 insegna all&#8217;Accademia nei corsi di formazione per insegnanti di Yoga per bambini e per le donne in gravidanza. E&#8217; autrice dei&nbsp;libri&nbsp;Il Piccolo Yogi&nbsp;e Yoga in gravidanza.</p>
 											</div></div>
 
-											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="1024" height="1002" src="photo/5-1024x1002.png" alt="" class="wp-image-2387 size-full" /></figure><div class="wp-block-media-text__content">
+											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="650" height="650" src="photo/5-1024x1002.png" alt="" class="wp-image-2387 size-full" /></figure><div class="wp-block-media-text__content">
 											<p><strong>Darshana Carmela Notarangelo</strong></p>
 											<div style="height:2px; width:100%; max-width:300px; margin:6px 0 14px; background:linear-gradient(90deg, rgba(51,118,196,0) 0%, rgba(51,118,196,0.75) 25%, rgba(234,196,83,0.95) 55%, rgba(234,196,83,0.5) 80%, rgba(51,118,196,0) 100%);"></div>
-											<p style="text-align: justify; font-size: 110%; font-family: verdana;">Istruttrice di Ananda Yoga, lo pratica da oltre otto anni e nel 2022 ha conseguito il diploma presso la Scuola Europea di Ananda Yoga di Assisi.<br>Considera l’Ananda yoga, basato sulla tradizione di Paramhansa Yogananda e Swami Kriyananda, uno stile di yoga in grado di fondere al meglio tradizione e contemporaneità, disciplina e giocosità, rilassamento ed energia.</p>
+											<p style="text-align: justify; font-size: 110%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Istruttrice di Ananda Yoga, lo pratica da oltre otto anni e nel 2022 ha conseguito il diploma presso la Scuola Europea di Ananda Yoga di Assisi.<br>Considera l’Ananda yoga, basato sulla tradizione di Paramhansa Yogananda e Swami Kriyananda, uno stile di yoga in grado di fondere al meglio tradizione e contemporaneità, disciplina e giocosità, rilassamento ed energia.</p>
+											</div></div>
+
+											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="650" height="650" src="photo/6.png" alt="Alessandro Gunnella" class="size-full" /></figure><div class="wp-block-media-text__content">
+											<p><strong>Alessandro Gunnella</strong></p>
+											<div style="height:2px; width:100%; max-width:300px; margin:6px 0 14px; background:linear-gradient(90deg, rgba(51,118,196,0) 0%, rgba(51,118,196,0.75) 25%, rgba(234,196,83,0.95) 55%, rgba(234,196,83,0.5) 80%, rgba(51,118,196,0) 100%);"></div>
+											<p style="text-align: justify; font-size: 110%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Praticata dapprima la Meditazione Trascendentale, dopo l’incontro con gli insegnamenti di P. Yogananda ha seguito il Suo Sentiero, formandosi presso l’AYTT come insegnante di Ananda yoga, che insegna nella città di Roma.<br>Nel cammino spirituale del Maestro, di cui è discepolo, è diventato Kriyaban e preso il Voto del Pellegrino dell’Ordine di Rinuncianti.</p>
 											</div></div>
 										</div>
 									</div>
@@ -617,15 +730,14 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
         
     <div class="g-layout-default container">
                     <div class="section-title-area">
-                <h5 class="section-subtitle">Programmi ed Eventi</h5>                <h2 class="section-title">I Nostri Programmi</h2>                <div class="section-desc"><p><img decoding="async" class="alignnone  wp-image-2481" src="photo/Programmi.png" alt="" width="417" height="71" data-mce-src="photo/Programmi.png"></p>
-</div>            </div>
+                <h5 class="section-subtitle">Programmi ed Eventi</h5>                <h2 class="section-title">I Nostri Programmi</h2>            </div>
                 <div class="gallery-content">
             
 <pre class="wp-block-code has-black-color has-text-color has-background has-link-color wp-elements-a3238127b661f58193b0479c1f4951fb" style="background-color:#faf0d3"><code><strong>COME SI MEDITA</strong></code></pre>
 
 
 
-<p style="text-align: left;font-size: 110%;font-family: verdana">✅<strong> Corso base di Meditazione Programma del corso: </em></strong><br><br>✓ Cos’è la meditazione e perché meditare<br><br>✓ Preparare il corpo alla meditazione ricaricandolo energeticamente con gli esercizi di Yogananda<br><br>✓ Rilassare il corpo<br><br>✓ La concentrazione<br><br>✓ Pratica di Meditazione</p>
+<p style="text-align: left;font-size: 110%;font-family: 'Simon Font','Fraunces Local',Georgia,serif">✅<strong> Corso base di Meditazione Programma del corso: </em></strong><br><br>✓ Cos’è la meditazione e perché meditare<br><br>✓ Preparare il corpo alla meditazione ricaricandolo energeticamente con gli esercizi di Yogananda<br><br>✓ Rilassare il corpo<br><br>✓ La concentrazione<br><br>✓ Pratica di Meditazione</p>
 
 
 
@@ -633,7 +745,7 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
 
 
 
-<p style="text-align: justify;font-size: 110%;font-family: verdana">Incontro introduttivo e date del corso: vedi calendario<strong> Ananda Yoga.</strong> Lo Yoga (letteralmente “unione”, filosoficamente significa unire il piccolo sé con il grande Sé) è una scienza tramandata in India da migliaia di anni. Comprende molti aspetti: l’azione, il discernimento, la devozione e la meditazione. L’Hatha Yoga, che è l’aspetto fisico della meditazione, attraverso la pratica delle posizioni contribuisce al raggiungimento dell’armonia tra corpo, mente, anima ed è uno dei migliori sistemi conosciuti dall’uomo per alleviare i problemi fisici.<br><br>Uno stile speciale di Hatha Yoga è l’Ananda Yoga, creato e insegnato da Swami Kriyananda a partire dal 1965 e basato sugli insegnamenti di Paramhansa Yogananda. Utilizzando movimenti dolci e naturali che richiedono al sistema corporeo una tensione minima, con il massimo beneficio, l’Ananda Yoga aiuta ad armonizzare il corpo in accordo con le leggi naturali. Chi lo pratica impara a sviluppare le proprie capacità latenti per ottenere il benessere fisico, riuscendo a superare lo stress e accrescendo l’energia e la vitalità. Grazie a una pratica interiorizzata e all’utilizzo delle affermazioni, si può sperimentare l’unione consapevole di corpo, mente e anima, a beneficio di una vita più gioiosa.
+<p style="text-align: justify;font-size: 110%;font-family: 'Simon Font','Fraunces Local',Georgia,serif">Incontro introduttivo e date del corso: vedi calendario<strong> Ananda Yoga.</strong> Lo Yoga (letteralmente “unione”, filosoficamente significa unire il piccolo sé con il grande Sé) è una scienza tramandata in India da migliaia di anni. Comprende molti aspetti: l’azione, il discernimento, la devozione e la meditazione. L’Hatha Yoga, che è l’aspetto fisico della meditazione, attraverso la pratica delle posizioni contribuisce al raggiungimento dell’armonia tra corpo, mente, anima ed è uno dei migliori sistemi conosciuti dall’uomo per alleviare i problemi fisici.<br><br>Uno stile speciale di Hatha Yoga è l’Ananda Yoga, creato e insegnato da Swami Kriyananda a partire dal 1965 e basato sugli insegnamenti di Paramhansa Yogananda. Utilizzando movimenti dolci e naturali che richiedono al sistema corporeo una tensione minima, con il massimo beneficio, l’Ananda Yoga aiuta ad armonizzare il corpo in accordo con le leggi naturali. Chi lo pratica impara a sviluppare le proprie capacità latenti per ottenere il benessere fisico, riuscendo a superare lo stress e accrescendo l’energia e la vitalità. Grazie a una pratica interiorizzata e all’utilizzo delle affermazioni, si può sperimentare l’unione consapevole di corpo, mente e anima, a beneficio di una vita più gioiosa.
 <strong>Per giorni e orari vedi calendario.</strong></p>
 
 
@@ -642,7 +754,7 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
 
 
 
-<p style="text-align: justify;font-size: 110%;font-family: verdana"><strong>
+<p style="text-align: justify;font-size: 110%;font-family: 'Simon Font','Fraunces Local',Georgia,serif"><strong>
 ✅ Incontri di Meditazione, ogni martedì ore 18:45, in presenza e online</strong>
 <br><br>
 ✓ Corsi di approfondimento
@@ -659,8 +771,7 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
                         <section id="team"                  class="section-team section-padding section-meta onepage-section">
                                 <div class="container">
                                 <div class="section-title-area">
-                    <h5 class="section-subtitle">Le nostre attivita&#039; ed Eventi</h5>                    <h2 class="section-title">Calendario</h2>                    <div class="section-desc"><p><img decoding="async" class="alignnone  wp-image-2459" src="photo/penna-300x102.png" alt="" width="110" height="37" style="max-width:110px;height:auto;" data-mce-src="photo/penna-300x102.png" /><div style="height: 25px;"></div>
-<div id="google-calendar-wrap">
+                    <h5 class="section-subtitle">Le nostre attivita&#039; ed Eventi</h5>                    <h2 class="section-title">Calendario</h2>                    <div class="section-desc"><div id="google-calendar-wrap">
   <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#3376c4,#eac453);"></div>
   <iframe src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=Europe%2FRome&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;src=fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d%40group.calendar.google.com&amp;color=%237B2FD6"
     frameborder="0" scrolling="no"></iframe>
@@ -672,7 +783,7 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
 </div>
 <div style="height:2px; width:80%; max-width:900px; margin:40px auto 0; background:linear-gradient(90deg, rgba(51,118,196,0) 0%, rgba(51,118,196,0.75) 25%, rgba(234,196,83,0.95) 55%, rgba(234,196,83,0.5) 80%, rgba(51,118,196,0) 100%);"></div>
 
-			</div></p>
+			</div>
 </div>                </div>
                                 <div class="team-members row team-layout-4">
                                     </div>
@@ -681,8 +792,7 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
             						<section id="contact"  class="section-contact section-padding  section-meta onepage-section">
 									<div class="container">
 									<div class="section-title-area">
-						<h5 class="section-subtitle">Informazioni e contatti</h5>						<h2 class="section-title">Contattaci</h2>						<div class="section-desc"><p><img decoding="async" class=" wp-image-2291 aligncenter" src="photo/Mail-300x222.png" alt="" width="379" height="281" data-mce-src="photo/Mail-300x222.png" /></p>
-</div>					</div>
+						<h5 class="section-subtitle">Informazioni e contatti</h5>						<h2 class="section-title">Contattaci</h2>					</div>
 		<div style="height:2px; width:80%; max-width:900px; margin:0 auto 40px; background:linear-gradient(90deg, rgba(51,118,196,0) 0%, rgba(51,118,196,0.75) 25%, rgba(234,196,83,0.95) 55%, rgba(234,196,83,0.5) 80%, rgba(51,118,196,0) 100%);"></div>
 								<div class="row">
 																		<div class="contact-form col-sm-6 wow slideInUp">
