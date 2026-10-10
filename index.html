@@ -462,10 +462,10 @@ body .site-title,body .section-title,body .section-subtitle,body .section-desc,b
 .hero-content-style1 .btn:hover{background:#f3d27a !important;border-color:#f3d27a !important;color:#2a2418 !important;}
 </style>
 <style id="header-brand-css" type="text/css">
-.site-logo-div .custom-logo-link{display:inline-flex;align-items:center;gap:12px;text-decoration:none;}
-.site-logo-div img.custom-logo{height:50px !important;width:auto !important;flex-shrink:0;}
-.header-brand-text{font-size:24px;line-height:1;letter-spacing:.04em;text-transform:uppercase;color:#2b3a99;white-space:nowrap;}
-@media (max-width:420px){.header-brand-text{font-size:18px;}}
+.site-logo-div .custom-logo-link{display:flex;width:fit-content;align-items:center;gap:14px;height:75px;line-height:1;text-decoration:none;}
+.site-logo-div img.custom-logo{height:44px !important;width:auto !important;flex-shrink:0;margin:0 !important;display:block;}
+.header-brand-text{font-size:24px;line-height:1;letter-spacing:.04em;text-transform:uppercase;color:#3a4aa8 !important;white-space:nowrap;display:block;margin:0;padding-top:2px;}
+@media (max-width:420px){.header-brand-text{font-size:18px;}.site-logo-div img.custom-logo{height:36px !important;}}
 </style>
 <style id="youngest-serif-light-css" type="text/css">
 body h1:not(.fa):not(.fas):not(.far):not(.fab):not([class*="fa-"]):not([class*="lg-"]),
@@ -498,7 +498,10 @@ body .onepress-menu > li > a{color:#4a4a4a !important;letter-spacing:.06em;}
 body .section-title, body h1, body h2, body h3, body h4{color:#3a3a3a;}
 .header-brand-text{color:#3a4aa8 !important;}
 </style>
-<style id="about-intro-blue-css" type="text/css">body p.about-intro,body p.about-intro *{color:#3376c4 !important;}</style>
+<style id="about-intro-blue-css" type="text/css">
+body p.about-intro,body p.about-intro *,body p.about-text,body p.about-text *{color:#111 !important;}
+body p.about-intro,body p.about-text{font-size:92% !important;line-height:1.7;}
+</style>
 <style id="footer-sky-css" type="text/css">
 body .site-footer{
   background:linear-gradient(180deg,#2c68b0 0%,#4080c1 25%,#769ecd 50%,#a6b6cd 69%,#c8c4c8 80%,#deccb6 90%,#e8b88a 100%) !important;
@@ -513,6 +516,27 @@ body .site-footer .site-info span{color:#4a3b2a !important;}
 body .site-footer .btt a,body .site-footer .btt a i{background-color:transparent;color:#3376c4 !important;}
 body .site-footer .btt a{background-color:#faf0d3 !important;}
 body .site-footer .btt a:hover,body .site-footer .btt a:hover i{color:#e0b43a !important;}
+</style>
+<style id="hero-water-css" type="text/css">
+/* HERO: immagine sfumata e fluttuante come acqua */
+.hero-slideshow-wrapper{overflow:hidden;}
+.parallax-bg.jarallax-img img{filter:blur(3px) saturate(1.06);transform:scale(1.06);will-change:transform;animation:acqua-img 20s ease-in-out infinite alternate;}
+@keyframes acqua-img{0%{transform:scale(1.06) translate3d(-1%,-.6%,0)}50%{transform:scale(1.09) translate3d(1%,.8%,0)}100%{transform:scale(1.07) translate3d(-.5%,1%,0)}}
+.hero-slideshow-wrapper::before{content:"";position:absolute;inset:-12%;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(38% 22% at 18% 28%,rgba(255,255,255,.26),transparent 70%),
+    radial-gradient(34% 18% at 78% 42%,rgba(255,255,255,.20),transparent 70%),
+    radial-gradient(46% 20% at 48% 78%,rgba(255,236,205,.30),transparent 70%),
+    radial-gradient(30% 16% at 88% 82%,rgba(255,255,255,.18),transparent 70%);
+  filter:blur(22px);will-change:transform;animation:acqua-luce 18s ease-in-out infinite alternate;}
+.hero-slideshow-wrapper::after{display:block !important;content:"";position:absolute;inset:-6% 0;pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.10) 0,rgba(255,255,255,.10) 3px,rgba(255,255,255,0) 3px,rgba(255,255,255,0) 26px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 35%,#000 85%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 35%,#000 85%,transparent 100%);
+  filter:blur(3px);opacity:.55;will-change:transform;animation:acqua-onde 9s ease-in-out infinite alternate;}
+.hero-slideshow-wrapper .hero__content,.hero-slideshow-wrapper .container{position:relative;z-index:2;}
+@keyframes acqua-luce{0%{transform:translate3d(-4%,-2%,0) scale(1)}50%{transform:translate3d(4%,3%,0) scale(1.07)}100%{transform:translate3d(-2%,4%,0) scale(1.03)}}
+@keyframes acqua-onde{0%{transform:translate3d(-1.5%,-10px,0) scaleY(1)}50%{transform:translate3d(1.5%,8px,0) scaleY(1.04)}100%{transform:translate3d(-1%,14px,0) scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.hero-slideshow-wrapper::before,.hero-slideshow-wrapper::after,.parallax-bg.jarallax-img img{animation:none}}
 </style>
 </head>
 
@@ -626,7 +650,7 @@ body .site-footer .btt a:hover,body .site-footer .btt a:hover i{color:#e0b43a !i
 </div>		<header id="masthead" class="site-header header-full-width is-sticky no-scroll no-t h-below-hero" role="banner">
 			<div class="container">
 				<div class="site-branding">
-					<div class="site-brand-inner has-logo-img no-desc"><div class="site-logo-div"><a href="index.html" class="custom-logo-link  no-t-logo" rel="home" itemprop="url"><img width="125" height="126" src="photo/cropped-LogoBugOnly_500px-1-1.png" class="custom-logo" alt="Ananda Roma" itemprop="logo" decoding="async" /><span class="header-brand-text">Ananda Roma</span></a></div></div>				</div>
+					<div class="site-brand-inner has-logo-img no-desc"><div class="site-logo-div"><a href="index.html" class="custom-logo-link  no-t-logo" rel="home" itemprop="url"><img width="283" height="67" src="photo/logo-fiore-loto.png" class="custom-logo" alt="Ananda Roma" itemprop="logo" decoding="async" /><span class="header-brand-text">Ananda Roma</span></a></div></div>				</div>
 				<div class="header-right-wrapper">
 					<a href="#0" id="nav-toggle">Menu<span></span></a>
 					<nav id="site-navigation" class="main-navigation" role="navigation">
@@ -654,9 +678,9 @@ body .site-footer .btt a:hover,body .site-footer .btt a:hover i{color:#e0b43a !i
 Vieni a scoprire come la meditazione, lo yoga e l’approfondimento degli insegnamenti spirituali, possano essere di aiuto per imparare a vivere con maggiore consapevolezza, serenità e gioia.<br />
 Ad Ananda Roma potrai conoscere gli antichi insegnamenti portati in occidente dal grande maestro indiano Paramhansa Yogananda, autore di Autobiografia di uno Yogi, e trasmessi da Swami Kriyananda, suo discepolo diretto. Dal 2000 ci dedichiamo a condividerli con coloro che, come te, sono alla ricerca di una nuova consapevolezza interiore. Ti aspettiamo.</p>
 <p><img fetchpriority="high" decoding="async" class=" wp-image-2423 aligncenter" src="photo/rounded-in-photoretrica.png" alt="" width="358" height="322" data-mce-src="photo/rounded-in-photoretrica.png"></p>
-<p style="text-align: justify;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: justify; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Paramhansa Yogananda è stato il primo grande maestro indiano a trascorrere la maggior parte della sua vita in Occidente. Divenuto famoso per il suo libro Autobiografia di uno Yogi, ha contribuito a rendere lo yoga e la meditazione ben conosciuti e praticati in tutto il mondo con la profondità e l’universalità dei suoi insegnamenti. Il suo scopo era quello di ispirare i sinceri ricercatori spirituali, indipendentemente dalla religione di appartenenza, a perseguire l’esperienza interiore e diretta di Dio, attraverso pratiche facilmente accessibili.</p>
+<p class="about-text" style="text-align: justify;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: justify; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Paramhansa Yogananda è stato il primo grande maestro indiano a trascorrere la maggior parte della sua vita in Occidente. Divenuto famoso per il suo libro Autobiografia di uno Yogi, ha contribuito a rendere lo yoga e la meditazione ben conosciuti e praticati in tutto il mondo con la profondità e l’universalità dei suoi insegnamenti. Il suo scopo era quello di ispirare i sinceri ricercatori spirituali, indipendentemente dalla religione di appartenenza, a perseguire l’esperienza interiore e diretta di Dio, attraverso pratiche facilmente accessibili.</p>
 <p><img decoding="async" class="wp-image-2424 aligncenter" src="photo/rounded-in-photoretrica-copia.png" alt="" width="358" height="322" data-mce-src="photo/rounded-in-photoretrica-copia.png"></p>
-<p style="text-align: justify;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: justify; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Insegnante spirituale, autore e compositore di fama mondiale, Swami Kriyananda è stato uno dei maggiori esponenti dello yoga occidentale.<br />
+<p class="about-text" style="text-align: justify;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: justify; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Insegnante spirituale, autore e compositore di fama mondiale, Swami Kriyananda è stato uno dei maggiori esponenti dello yoga occidentale.<br />
 Discepolo diretto di Paramhansa Yogananda, ha dedicato l’intera vita a diffondere in tutto il mondo gli insegnamenti della Realizzazione del Sé trasmessi dal suo Maestro e a dimostranne l’applicazione in ogni ambito dell’esistenza.</p>
 </div>				</div>
 								<div class="row">
