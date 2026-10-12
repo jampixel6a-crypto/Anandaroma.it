@@ -529,14 +529,14 @@ body .site-footer .footer-colosseo{position:absolute;right:6%;top:50%;transform:
 .parallax-bg.jarallax-img img{filter:blur(2.5px) saturate(1.05);transform:scale(1.05);will-change:transform;animation:acqua-img 24s ease-in-out infinite alternate;}
 @keyframes acqua-img{0%{transform:scale(1.05) translate3d(-.6%,-.4%,0)}100%{transform:scale(1.08) translate3d(.6%,.6%,0)}}
 .hero-slideshow-wrapper::before,.hero-slideshow-wrapper::after{content:"";position:absolute;inset:-25%;pointer-events:none;z-index:0;display:block !important;
-  background:repeating-radial-gradient(circle at 50% 54%,
+  background:repeating-radial-gradient(circle at 50% 50%,
     rgba(255,255,255,0) calc(0px + var(--r)),
     rgba(255,255,255,.11) calc(34px + var(--r)),
     rgba(255,255,255,0) calc(70px + var(--r)),
     rgba(255,255,255,0) calc(190px + var(--r)));
-  -webkit-mask-image:radial-gradient(circle at 50% 54%,#000 0,#000 28%,transparent 62%);mask-image:radial-gradient(circle at 50% 54%,#000 0,#000 28%,transparent 62%);
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0,#000 28%,transparent 62%);mask-image:radial-gradient(circle at 50% 50%,#000 0,#000 28%,transparent 62%);
   filter:blur(5px);animation:acqua-cerchi 14s linear infinite;}
-.hero-slideshow-wrapper::after{background:repeating-radial-gradient(circle at 50% 54%,
+.hero-slideshow-wrapper::after{background:repeating-radial-gradient(circle at 50% 50%,
     rgba(255,255,255,0) calc(0px + var(--r)),
     rgba(255,236,205,.09) calc(26px + var(--r)),
     rgba(255,255,255,0) calc(52px + var(--r)),
@@ -544,8 +544,39 @@ body .site-footer .footer-colosseo{position:absolute;right:6%;top:50%;transform:
   animation-duration:21s;animation-direction:reverse;}
 @keyframes acqua-cerchi{from{--r:0px}to{--r:190px}}
 .hero-slideshow-wrapper .hero__content,.hero-slideshow-wrapper .container{position:relative;z-index:2;}
+.slider-spinner .double-bounce1,.slider-spinner .double-bounce2{background-color:#eac453 !important;opacity:.55;box-shadow:0 0 22px 6px rgba(234,196,83,.45);}
 @media (prefers-reduced-motion:reduce){.hero-slideshow-wrapper::before,.hero-slideshow-wrapper::after,.parallax-bg.jarallax-img img{animation:none}}
 </style>
+<link rel="stylesheet" href="Other/calendario.css">
+<script src="Other/calendario.js" defer></script>
+<script id="avvio-in-cima">
+/* All'apertura il sito parte sempre dall'inizio della home (niente ripristino dello scroll né salto a un'ancora). */
+(function(){
+  try { if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } } catch (e) {}
+  try { if (location.hash) { history.replaceState(null, '', location.pathname + location.search); } } catch (e) {}
+  var mosso = false;
+  function cima(){ if (!mosso) { window.scrollTo(0, 0); } }
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function(ev){
+    window.addEventListener(ev, function(){ mosso = true; }, { passive: true, once: true });
+  });
+  cima();
+  document.addEventListener('DOMContentLoaded', cima);
+  window.addEventListener('load', function(){ cima(); setTimeout(cima, 80); setTimeout(cima, 350); });
+  window.addEventListener('pageshow', function(e){ if (e.persisted) { mosso = false; cima(); } });
+})();
+/* Menu mobile: all'apertura porta il menu in alto, così tutte le voci (anche Insegnanti) sono visibili. */
+document.addEventListener('DOMContentLoaded', function(){
+  var t = document.getElementById('nav-toggle'), h = document.getElementById('masthead');
+  if (!t || !h) { return; }
+  t.addEventListener('click', function(){
+    setTimeout(function(){
+      if (!t.classList.contains('nav-is-visible') || window.innerWidth > 1140) { return; }
+      var r = h.getBoundingClientRect();
+      if (r.top > 2) { window.scrollTo({ top: (window.pageYOffset || 0) + r.top, behavior: 'smooth' }); }
+    }, 80);
+  });
+});
+</script>
 </head>
 
 <body class="home wp-singular page-template page-template-template-frontpage page-template-template-frontpage-php page page-id-1415 wp-custom-logo wp-theme-onepress cookies-not-set">
@@ -665,7 +696,7 @@ body .site-footer .footer-colosseo{position:absolute;right:6%;top:50%;transform:
 						<ul class="onepress-menu">
 							<li id="menu-item-1500" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1500"><a href="#about">Anandaroma</a></li>
 							<li id="menu-item-1678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1678"><a href="#servizi">Attivita&#8217;</a></li>
-							<li id="menu-item-1679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1679"><a href="#insegnanti">Insegnanti</a></li>
+							<li id="menu-item-1679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1679"><a href="#insegnanti">Gli insegnanti</a></li>
 							<li id="menu-item-1504" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1504"><a href="#programmi">Programmi</a></li>
 							<li id="menu-item-1501" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1501"><a href="#team">Calendario</a></li>
 							<li id="menu-item-1505" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1505"><a href="#contact">Contatti</a></li>
@@ -805,8 +836,26 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
                                 <div class="section-title-area">
                     <h5 class="section-subtitle">Le nostre attivita&#039; ed Eventi</h5>                    <h2 class="section-title">Calendario</h2>                    <div class="section-desc"><div id="google-calendar-wrap">
   <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#3376c4,#eac453);"></div>
-  <iframe src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=Europe%2FRome&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;src=fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d%40group.calendar.google.com&amp;color=%233376C4"
-    frameborder="0" scrolling="no"></iframe>
+  <div id="calendario-attivita" data-calendar-id="fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d@group.calendar.google.com" data-api-key="AIzaSyAO6LS6QkS6cUoHTdb0TkzCYqdA60lbwPo" data-timezone="Europe/Rome"><p style="text-align:center;padding:40px 0;color:#6b7690;">Caricamento del calendario…</p></div>
+   <template id="calendario-fallback"><iframe src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=Europe%2FRome&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;src=fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d%40group.calendar.google.com&amp;color=%233376C4"
+    frameborder="0" scrolling="no"></iframe></template>
+   <noscript><iframe src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=Europe%2FRome&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;src=fbced337e45707e28ba50bc3dfb5bcf6f7778faeb8746073b2428dff8dec5e3d%40group.calendar.google.com&amp;color=%233376C4"
+    frameborder="0" scrolling="no"></iframe></noscript>
+   <script>
+/* Se calendario.js non è stato caricato sul sito, mostra comunque il calendario Google incorporato. */
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    if (window.__calendarioAvviato) { return; }
+    var root = document.getElementById('calendario-attivita'), tpl = document.getElementById('calendario-fallback'), wrap = document.getElementById('google-calendar-wrap');
+    if (!root || !tpl || !wrap) { return; }
+    root.parentNode.removeChild(root);
+    var h = document.createElement('div'); h.innerHTML = tpl.innerHTML;
+    var f = h.querySelector('iframe');
+    if (f && window.innerWidth < 768) { f.src = f.src.replace('mode=MONTH', 'mode=AGENDA'); }
+    while (h.firstChild) { wrap.appendChild(h.firstChild); }
+  }, 2500);
+});
+</script>
 </div>
 <div style="text-align:center;margin-top:18px;">
   <span style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#3376c4,#5a9bdb);color:#fff;padding:10px 22px;border-radius:30px;font-size:.85rem;letter-spacing:.3px;box-shadow:0 3px 10px rgba(51,118,196,.25);">
@@ -1298,5 +1347,105 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   };
 })();
 </script>
+<!-- POPUP EVENTO: Paramhansa Yogananda - Una Luce per il mondo (attivo fino al 26/10/2026 compreso) -->
+<style id="popup-evento-css" type="text/css">
+#popup-evento{position:fixed;inset:0;z-index:100000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(10,24,60,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;transition:opacity .4s ease;}
+#popup-evento.aperto{display:flex;}
+#popup-evento.visibile{opacity:1;transition:opacity 1.4s cubic-bezier(.22,.61,.36,1);}
+#popup-evento .pe-box{position:relative;display:grid;grid-template-columns:40% 1fr;width:100%;max-width:840px;max-height:84vh;overflow:hidden;background:transparent;border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.4);opacity:0;transform:translateX(-110px);transition:transform .45s ease,opacity .4s ease;}
+#popup-evento.visibile .pe-box{opacity:1;transform:none;transition:transform 2s cubic-bezier(.16,.84,.3,1) .2s,opacity 1.7s ease .2s;}
+#popup-evento .pe-img{background:#015196;opacity:.82;display:flex;align-items:center;justify-content:center;min-height:0;}
+#popup-evento .pe-img img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;}
+#popup-evento .pe-testo{background:rgba(255,253,246,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:24px 26px 20px;overflow-y:auto;max-height:84vh;color:#1d2433;font-family:var(--font-main,'Simon Font','Fraunces Local',Georgia,serif);font-size:14px;line-height:1.5;}
+#popup-evento .pe-testo h2{margin:0 0 4px;padding-right:34px;font-size:1.32em;line-height:1.25;letter-spacing:.02em;color:#2b3a99;font-weight:400;}
+#popup-evento .pe-testo h3{margin:0 0 16px;font-size:1.05em;font-weight:400;color:#8a6a10;font-style:italic;}
+#popup-evento .pe-testo p{margin:0 0 12px;color:#1d2433;}
+body #popup-evento .pe-testo strong,body #popup-evento .pe-testo h2{font-weight:600 !important;}
+#popup-evento .pe-data{padding:10px 14px;margin:14px 0;border-left:4px solid #eac453;background:#f6f1de;border-radius:0 8px 8px 0;}
+#popup-evento .pe-btn{display:inline-block;margin-top:6px;padding:12px 26px;border-radius:30px;background:#eac453;color:#2a2418 !important;text-decoration:none;font-size:1em;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:background .2s,transform .2s;}
+#popup-evento .pe-btn:hover{background:#f3d27a;transform:translateY(-1px);}
+#popup-evento .pe-close{position:absolute;top:10px;right:12px;z-index:2;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:#2b3a99;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);}
+#popup-evento .pe-close:hover{background:#fff;}
+@media (max-width:760px){
+  #popup-evento{padding:10px;}
+  #popup-evento .pe-box{display:block;overflow-y:auto;max-height:88vh;max-width:440px;}
+  #popup-evento .pe-img{display:block;}
+  #popup-evento .pe-img img{height:auto;max-height:42vh;object-fit:contain;}
+  #popup-evento .pe-testo{padding:20px 18px 22px;overflow:visible;max-height:none;font-size:14.5px;}
+}
+@media (prefers-reduced-motion:reduce){#popup-evento,#popup-evento .pe-box{transition:none;}}
+</style>
+<div id="popup-evento" role="dialog" aria-modal="true" aria-labelledby="pe-titolo" aria-hidden="true">
+  <div class="pe-box">
+    <button type="button" class="pe-close" aria-label="Chiudi">&times;</button>
+    <div class="pe-img"><img src="photo/locandina-yogananda.jpg" alt="Locandina: Paramhansa Yogananda, Una Luce per il mondo. 80 anni di Autobiografia di uno Yogi. Lunedì 26 ottobre, ore 17:30, Sala della Protomoteca, Campidoglio, Roma. Ingresso gratuito." width="911" height="1280"></div>
+    <div class="pe-testo">
+      <h2 id="pe-titolo">✨ <strong>PARAMHANSA YOGANANDA – UNA LUCE PER IL MONDO</strong> ✨</h2>
+      <h3>80 anni di Autobiografia di uno Yogi</h3>
+      <p>Quest’anno ricorre un anniversario speciale: <strong>80 anni dalla prima pubblicazione di Autobiografia di uno Yogi</strong>, il libro attraverso cui Paramhansa Yogananda ha portato il suo messaggio di unità, pace e ricerca interiore a milioni di persone in tutto il mondo.</p>
+      <p class="pe-data">Per celebrare questa importante ricorrenza, ci ritroveremo <strong>lunedì 26 ottobre 2026, dalle 17:30 alle 19:30, nella Sala della Protomoteca del Campidoglio, a Roma.</strong></p>
+      <p>Sarà un pomeriggio di <strong>testimonianze, musica, letture e ispirazioni</strong> dedicato alla vita e all’eredità spirituale di Yogananda.</p>
+      <p>Tra gli ospiti <strong>Jayadev Jaerschky, Enzo Decaro, Giacomo Campiotti, Bernard Rouch, Antonio Nuzzo</strong>, la pianista <strong>Gloria Campaner</strong> e, ospite speciale, <strong>Asha Nayaswami</strong>, che da oltre cinquant’anni condivide nel mondo gli insegnamenti di Yogananda e Swami Kriyananda.</p>
+      <p>🎟️ <strong>La partecipazione è gratuita, con prenotazione su Eventbrite:</strong></p>
+      <a class="pe-btn" href="https://www.eventbrite.com/e/paramhansa-yogananda-una-luce-per-il-mondo-tickets-2002120963698?aff=oddtdtcreator&amp;utm_source=chatgpt.com" target="_blank" rel="noopener">Prenota qui</a>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  // Visibile fino al 26 ottobre 2026 compreso (data di Roma).
+  var FINE = '2026-10-26';
+  var oggi;
+  try { oggi = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Rome' }); }
+  catch (e) { var d = new Date(); oggi = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  if (oggi > FINE) return;
+
+  // true = una sola volta per sessione; false = a ogni caricamento della pagina
+  var UNA_VOLTA_PER_SESSIONE = false;
+  var KEY = 'popupYogananda80';
+  if (UNA_VOLTA_PER_SESSIONE) { try { if (sessionStorage.getItem(KEY)) return; } catch (e) {} }
+
+  var pop = document.getElementById('popup-evento');
+  if (!pop) return;
+  var chiudi = pop.querySelector('.pe-close');
+  var precedente = null;
+
+  function apri() {
+    precedente = document.activeElement;
+    pop.classList.add('aperto');
+    pop.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ pop.classList.add('visibile'); }); });
+    if (chiudi) chiudi.focus();
+  }
+  function chiudiPopup() {
+    pop.classList.remove('visibile');
+    pop.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    setTimeout(function(){ pop.classList.remove('aperto'); }, 460);
+    if (UNA_VOLTA_PER_SESSIONE) { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} }
+    if (precedente && precedente.focus) { try { precedente.focus(); } catch (e) {} }
+    document.removeEventListener('keydown', tasti);
+  }
+  function tasti(e) {
+    if (e.key === 'Escape') { chiudiPopup(); return; }
+    if (e.key === 'Tab') { // il focus resta dentro il popup
+      var el = pop.querySelectorAll('a[href],button');
+      if (!el.length) return;
+      var primo = el[0], ultimo = el[el.length - 1];
+      if (e.shiftKey && document.activeElement === primo) { e.preventDefault(); ultimo.focus(); }
+      else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primo.focus(); }
+    }
+  }
+  if (chiudi) chiudi.addEventListener('click', chiudiPopup);
+  pop.addEventListener('click', function(e){ if (e.target === pop) chiudiPopup(); });
+  pop.querySelector('.pe-btn').addEventListener('click', function(){ if (UNA_VOLTA_PER_SESSIONE) { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} } });
+  document.addEventListener('keydown', tasti);
+
+  if (document.readyState === 'complete') { setTimeout(apri, 700); }
+  else { window.addEventListener('load', function(){ setTimeout(apri, 700); }); }
+})();
+</script>
+
 </body>
 </html>
