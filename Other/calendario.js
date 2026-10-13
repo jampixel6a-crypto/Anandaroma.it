@@ -13,7 +13,7 @@
   var MESI = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'];
   var GIORNI = ['lun', 'mar', 'mer', 'gio', 'ven', 'sab', 'dom'];
   var GIORNI_LUNGHI = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
-  var PALETTE = ['#3376c4', '#b9851e', '#2f9e8f', '#8a5fc7', '#d1604d', '#5b8c3a', '#c2578f', '#2b3a99', '#d98324', '#3f9bb5', '#7a6c5d', '#6b8e23'];
+  var PALETTE = ['#3376c4', '#b9851e', '#2f9e8f', '#8a5fc7', '#e0719f', '#5b8c3a', '#9c4f96', '#2b3a99', '#d98324', '#3f9bb5', '#7a6c5d', '#6b8e23'];
   var overrides = {};
   try { overrides = JSON.parse(root.getAttribute('data-colori') || '{}'); } catch (e) { overrides = {}; }
 
