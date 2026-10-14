@@ -193,6 +193,7 @@
       ui.legend.appendChild(b);
     });
     ui.legend.appendChild(ui.today);
+    ui.legend.className = 'cal-legend' + (usedKeys.length > 1 ? '' : ' cal-solo');
     ui.legend.style.display = (usedKeys.length > 1 || (isMobile() && !ui.today.hidden)) ? '' : 'none';
     /* griglia mensile */
     ui.grid.textContent = '';

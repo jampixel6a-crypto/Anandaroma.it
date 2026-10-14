@@ -41,7 +41,9 @@
 
 /* smartphone: elenco per giorno al posto della griglia */
 @media (max-width:767px){
-  #calendario-attivita .cal-today{width:26px;height:26px;font-size:.78rem;}
+  #calendario-attivita .cal-legend{position:relative;min-height:30px;}
+  #calendario-attivita .cal-legend.cal-solo .cal-leg{display:none;}
+  #calendario-attivita .cal-today{position:absolute;left:11px;top:50%;margin-top:-15px;width:30px;height:30px;font-size:1.05rem;color:#222a3a;}
   #calendario-attivita .cal-ag-day.cal-today-cell{background:#f1f7ff;border-radius:8px;}
   #calendario-attivita .cal-ag-day.cal-today-cell .cal-ag-lab strong{display:flex;align-items:center;justify-content:center;width:30px;height:30px;margin:0 auto;border-radius:50%;background:transparent;color:#3376c4;font-size:1.05rem;font-weight:600 !important;border:1px solid rgba(51,118,196,.4);animation:cal-pulse 2.6s ease-in-out infinite;}
   #calendario-attivita{padding:20px 12px 14px;}
