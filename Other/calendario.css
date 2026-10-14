@@ -6,8 +6,6 @@
 #calendario-attivita .cal-nav{width:40px;height:40px;border-radius:50%;border:1px solid #cfd8ee;background:#f4f7fd;color:#3376c4;font-size:26px;line-height:1;cursor:pointer;transition:background .2s,transform .2s;}
 #calendario-attivita .cal-nav:hover:not(:disabled){background:#e6eefb;transform:scale(1.05);}
 #calendario-attivita .cal-nav:disabled{opacity:.35;cursor:default;}
-#calendario-attivita .cal-today{position:absolute;right:0;border:1px solid #eac453;background:#fbf3d6;color:#7a5a07;border-radius:20px;padding:6px 16px;font-size:.85rem;cursor:pointer;font-family:inherit;}
-#calendario-attivita .cal-today:hover{background:#f6e7ad;}
 #calendario-attivita .cal-legend{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px;margin:0 0 20px;}
 #calendario-attivita .cal-leg{position:relative;width:11px;height:11px;padding:0;border:0;border-radius:50%;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1);transition:transform .2s,opacity .2s,box-shadow .2s;}
 #calendario-attivita .cal-leg::after{content:"";position:absolute;inset:-9px;}
@@ -24,10 +22,11 @@
 #calendario-attivita .cal-cell.cal-has{cursor:pointer;}
 #calendario-attivita .cal-cell.cal-has:hover{background:#f7faff;}
 #calendario-attivita .cal-num{font-size:.9rem;color:#3a4561;padding:0 2px 2px;text-align:center;align-self:stretch;}
-#calendario-attivita .cal-cell.cal-today-cell{background:#f1f7ff;}
-#calendario-attivita .cal-today-cell .cal-num{display:flex;align-items:center;justify-content:center;width:22px;height:22px;padding:0;margin:0 auto 2px;border-radius:50%;background:transparent;color:#3376c4;font-weight:600 !important;font-size:.82rem;align-self:center;border:1px solid rgba(51,118,196,.4);animation:cal-pulse 2.6s ease-in-out infinite;}
+#calendario-attivita .cal-today{position:relative;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;padding:0;border-radius:50%;background:transparent;color:#3376c4;font-family:inherit;font-weight:600;font-size:.68rem;line-height:1;border:1px solid rgba(51,118,196,.4);cursor:pointer;animation:cal-pulse 2.6s ease-in-out infinite;}
+#calendario-attivita .cal-today::after{content:"";position:absolute;inset:-9px;}
+#calendario-attivita .cal-today[hidden]{display:none;}
+@media (prefers-reduced-motion:reduce){#calendario-attivita .cal-today{animation:none;}}
 @keyframes cal-pulse{0%,100%{box-shadow:0 0 0 0 rgba(51,118,196,.22);border-color:rgba(51,118,196,.4);}50%{box-shadow:0 0 0 4px rgba(51,118,196,0);border-color:rgba(51,118,196,.18);}}
-@media (prefers-reduced-motion:reduce){#calendario-attivita .cal-today-cell .cal-num,#calendario-attivita .cal-ag-day.cal-today-cell .cal-ag-lab strong{animation:none;}}
 #calendario-attivita .cal-ev{display:flex;align-items:baseline;gap:5px;width:100%;border:0;border-left:3px solid var(--c);background:color-mix(in srgb,var(--c) 14%,#fff);color:#1f2740;border-radius:5px;padding:3px 6px;font-size:.76rem;line-height:1.25;text-align:left;cursor:pointer;font-family:inherit;min-width:0;transition:background .2s,transform .2s;}
 #calendario-attivita .cal-ev:hover{background:color-mix(in srgb,var(--c) 26%,#fff);transform:translateY(-1px);}
 #calendario-attivita .cal-ev-t{font-weight:600 !important;color:color-mix(in srgb,var(--c) 72%,#000);flex:none;font-size:.72rem;}
@@ -39,19 +38,17 @@
 
 /* smartphone: elenco per giorno al posto della griglia */
 @media (max-width:767px){
+  #calendario-attivita .cal-today{width:26px;height:26px;font-size:.78rem;}
   #calendario-attivita{padding:20px 12px 14px;}
   #calendario-attivita .cal-leg{width:15px;height:15px;}
   #calendario-attivita .cal-legend{gap:22px;}
   #calendario-attivita .cal-grid{display:none;}
   #calendario-attivita .cal-agenda{display:block;}
   #calendario-attivita .cal-title{font-size:1.2rem;min-width:0;flex:1;}
-  #calendario-attivita .cal-today{position:static;padding:5px 11px;}
-  #calendario-attivita .cal-ag-day{display:flex;gap:12px;padding:10px 4px;border-top:1px solid #e9edf5;}
+    #calendario-attivita .cal-ag-day{display:flex;gap:12px;padding:10px 4px;border-top:1px solid #e9edf5;}
   #calendario-attivita .cal-ag-lab{width:44px;flex:none;text-align:center;color:#3a4561;}
   #calendario-attivita .cal-ag-lab strong{display:block;font-size:1.35rem;font-weight:400 !important;line-height:1.1;}
   #calendario-attivita .cal-ag-lab span{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#6b7690;}
-  #calendario-attivita .cal-ag-day.cal-today-cell{background:#f1f7ff;border-radius:8px;}
-  #calendario-attivita .cal-ag-day.cal-today-cell .cal-ag-lab strong{display:flex;align-items:center;justify-content:center;width:30px;height:30px;margin:0 auto;border-radius:50%;background:transparent;color:#3376c4;font-size:1.05rem;font-weight:600 !important;border:1px solid rgba(51,118,196,.4);animation:cal-pulse 2.6s ease-in-out infinite;}
   #calendario-attivita .cal-ag-list{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;}
   #calendario-attivita .cal-ag-list .cal-ev{font-size:.9rem;padding:8px 10px;}
   #calendario-attivita .cal-ag-list .cal-ev-t{font-size:.84rem;}

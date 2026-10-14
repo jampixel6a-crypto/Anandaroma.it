@@ -138,8 +138,8 @@
     ui.prev = el('button', 'cal-nav', '‹'); ui.prev.type = 'button'; ui.prev.setAttribute('aria-label', 'Mese precedente');
     ui.next = el('button', 'cal-nav', '›'); ui.next.type = 'button'; ui.next.setAttribute('aria-label', 'Mese successivo');
     ui.title = el('h3', 'cal-title'); ui.title.setAttribute('aria-live', 'polite');
-    ui.today = el('button', 'cal-today', 'Oggi'); ui.today.type = 'button';
-    head.appendChild(ui.prev); head.appendChild(ui.title); head.appendChild(ui.next); head.appendChild(ui.today);
+    head.appendChild(ui.prev); head.appendChild(ui.title); head.appendChild(ui.next);
+    ui.today = el('button', 'cal-today', String(parseKey(todayKey).d)); ui.today.type = 'button'; ui.today.setAttribute('aria-label', 'Vai al giorno di oggi'); ui.today.title = 'Oggi';
     ui.legend = el('div', 'cal-legend'); ui.legend.setAttribute('role', 'group'); ui.legend.setAttribute('aria-label', 'Filtra per attività');
     ui.grid = el('div', 'cal-grid'); ui.agenda = el('div', 'cal-agenda');
     root.appendChild(head); root.appendChild(ui.legend); root.appendChild(ui.grid); root.appendChild(ui.agenda);
@@ -164,6 +164,7 @@
     return b;
   }
   function render() {
+    ui.today.hidden = (state.byDay[todayKey] || []).filter(visible).length > 0;
     var y = state.y, m = state.m;
     ui.title.textContent = MESI[m - 1].charAt(0).toUpperCase() + MESI[m - 1].slice(1) + ' ' + y;
     ui.prev.disabled = monthIndex(y, m) <= monthIndex(state.minY, state.minM);
@@ -190,7 +191,8 @@
       b.addEventListener('click', function () { state.filter = (state.filter === kk) ? null : kk; render(); });
       ui.legend.appendChild(b);
     });
-    ui.legend.style.display = usedKeys.length > 1 ? '' : 'none';
+    ui.legend.appendChild(ui.today);
+    ui.legend.style.display = (usedKeys.length > 1 || !ui.today.hidden) ? '' : 'none';
     /* griglia mensile */
     ui.grid.textContent = '';
     GIORNI.forEach(function (g) { ui.grid.appendChild(el('div', 'cal-dow', g)); });
@@ -199,9 +201,9 @@
     for (var i = 0; i < weeks * 7; i++) {
       (function (dk) {
         var p = parseKey(dk);
-        var cell = el('div', 'cal-cell' + (p.m !== m ? ' cal-out' : '') + (dk === todayKey ? ' cal-today-cell' : ''));
-        cell.appendChild(el('div', 'cal-num', String(p.d)));
         var list = (state.byDay[dk] || []).filter(visible);
+        var cell = el('div', 'cal-cell' + (p.m !== m ? ' cal-out' : '') + '');
+        cell.appendChild(el('div', 'cal-num', String(p.d)));
         list.slice(0, 3).forEach(function (ev) { cell.appendChild(chip(ev, dk)); });
         if (list.length > 3) {
           var more = el('button', 'cal-more', '+' + (list.length - 3) + ' altre'); more.type = 'button';
@@ -219,7 +221,7 @@
       var evs = (state.byDay[d] || []).filter(visible);
       if (!evs.length) { continue; }
       any = true;
-      var row = el('div', 'cal-ag-day' + (d === todayKey ? ' cal-today-cell' : ''));
+      var row = el('div', 'cal-ag-day');
       var p2 = parseKey(d);
       var lab = el('div', 'cal-ag-lab'); lab.appendChild(el('strong', null, String(p2.d))); lab.appendChild(el('span', null, GIORNI[weekdayMon(d)]));
       var col = el('div', 'cal-ag-list');
