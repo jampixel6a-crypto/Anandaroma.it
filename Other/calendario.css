@@ -24,10 +24,10 @@
 #calendario-attivita .cal-num{font-size:.9rem;color:#3a4561;padding:0 2px 2px;text-align:center;align-self:stretch;}
 #calendario-attivita .cal-cell.cal-today-cell{background:#f1f7ff;}
 #calendario-attivita .cal-today-cell .cal-num{display:flex;align-items:center;justify-content:center;width:22px;height:22px;padding:0;margin:0 auto 2px;border-radius:50%;background:transparent;color:#3376c4;font-weight:600 !important;font-size:.82rem;align-self:center;border:1px solid rgba(51,118,196,.4);animation:cal-pulse 2.6s ease-in-out infinite;}
-@media (min-width:768px){#calendario-attivita .cal-today{display:none;}}
 #calendario-attivita .cal-today{position:relative;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;padding:0;border-radius:50%;background:transparent;color:#3376c4;font-family:inherit;font-weight:600;font-size:.68rem;line-height:1;border:1px solid rgba(51,118,196,.4);cursor:pointer;animation:cal-pulse 2.6s ease-in-out infinite;}
 #calendario-attivita .cal-today::after{content:"";position:absolute;inset:-9px;}
 #calendario-attivita .cal-today[hidden]{display:none;}
+@media (min-width:768px){#calendario-attivita .cal-today{display:none;}}
 @media (prefers-reduced-motion:reduce){#calendario-attivita .cal-today,#calendario-attivita .cal-today-cell .cal-num,#calendario-attivita .cal-ag-day.cal-today-cell .cal-ag-lab strong{animation:none;}}
 @keyframes cal-pulse{0%,100%{box-shadow:0 0 0 0 rgba(51,118,196,.22);border-color:rgba(51,118,196,.4);}50%{box-shadow:0 0 0 4px rgba(51,118,196,0);border-color:rgba(51,118,196,.18);}}
 #calendario-attivita .cal-ev{display:flex;align-items:baseline;gap:5px;width:100%;border:0;border-left:3px solid var(--c);background:color-mix(in srgb,var(--c) 14%,#fff);color:#1f2740;border-radius:5px;padding:3px 6px;font-size:.76rem;line-height:1.25;text-align:left;cursor:pointer;font-family:inherit;min-width:0;transition:background .2s,transform .2s;}
