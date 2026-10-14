@@ -131,7 +131,6 @@
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (text != null) { e.textContent = text; } return e; }
   function monthIndex(y, m) { return y * 12 + (m - 1); }
   var ui = {};
-  function isMobile() { return !!(window.matchMedia && window.matchMedia('(max-width:767px)').matches); }
   function build() {
     root.textContent = '';
     wrap.classList.add('cal-attivo');
@@ -140,13 +139,11 @@
     ui.next = el('button', 'cal-nav', '›'); ui.next.type = 'button'; ui.next.setAttribute('aria-label', 'Mese successivo');
     ui.title = el('h3', 'cal-title'); ui.title.setAttribute('aria-live', 'polite');
     head.appendChild(ui.prev); head.appendChild(ui.title); head.appendChild(ui.next);
-    ui.today = el('button', 'cal-today', String(parseKey(todayKey).d)); ui.today.type = 'button'; ui.today.setAttribute('aria-label', 'Vai al giorno di oggi'); ui.today.title = 'Oggi';
     ui.legend = el('div', 'cal-legend'); ui.legend.setAttribute('role', 'group'); ui.legend.setAttribute('aria-label', 'Filtra per attività');
     ui.grid = el('div', 'cal-grid'); ui.agenda = el('div', 'cal-agenda');
     root.appendChild(head); root.appendChild(ui.legend); root.appendChild(ui.grid); root.appendChild(ui.agenda);
     ui.prev.addEventListener('click', function () { go(-1); });
     ui.next.addEventListener('click', function () { go(1); });
-    ui.today.addEventListener('click', function () { var t = parseKey(todayKey); state.y = t.y; state.m = t.m; render(); });
   }
   function go(n) {
     var i = monthIndex(state.y, state.m) + n;
@@ -165,7 +162,6 @@
     return b;
   }
   function render() {
-    ui.today.hidden = (state.byDay[todayKey] || []).filter(visible).length > 0;
     var y = state.y, m = state.m;
     ui.title.textContent = MESI[m - 1].charAt(0).toUpperCase() + MESI[m - 1].slice(1) + ' ' + y;
     ui.prev.disabled = monthIndex(y, m) <= monthIndex(state.minY, state.minM);
@@ -192,9 +188,7 @@
       b.addEventListener('click', function () { state.filter = (state.filter === kk) ? null : kk; render(); });
       ui.legend.appendChild(b);
     });
-    ui.legend.appendChild(ui.today);
-    ui.legend.className = 'cal-legend' + (usedKeys.length > 1 ? '' : ' cal-solo');
-    ui.legend.style.display = (usedKeys.length > 1 || (isMobile() && !ui.today.hidden)) ? '' : 'none';
+    ui.legend.style.display = usedKeys.length > 1 ? '' : 'none';
     /* griglia mensile */
     ui.grid.textContent = '';
     GIORNI.forEach(function (g) { ui.grid.appendChild(el('div', 'cal-dow', g)); });
@@ -221,13 +215,14 @@
     var any = false;
     for (var d = first; d <= last; d = addDays(d, 1)) {
       var evs = (state.byDay[d] || []).filter(visible);
-      if (!evs.length) { continue; }
-      any = true;
+      if (!evs.length && d !== todayKey) { continue; }
+      if (evs.length) { any = true; }
       var row = el('div', 'cal-ag-day' + (d === todayKey ? ' cal-today-cell' : ''));
       var p2 = parseKey(d);
       var lab = el('div', 'cal-ag-lab'); lab.appendChild(el('strong', null, String(p2.d))); lab.appendChild(el('span', null, GIORNI[weekdayMon(d)]));
       var col = el('div', 'cal-ag-list');
       evs.forEach(function (ev) { col.appendChild(chip(ev, d)); });
+      if (!evs.length) { col.appendChild(el('span', 'cal-ag-oggi', 'Oggi')); }
       row.appendChild(lab); row.appendChild(col); ui.agenda.appendChild(row);
     }
     if (!any) { ui.agenda.appendChild(el('p', 'cal-empty', 'Nessuna attività in programma in questo mese.')); }
@@ -320,8 +315,5 @@
 
   /* ---------- avvio ---------- */
   if (!CAL || !KEY) { fallback('configurazione mancante'); return; }
-  load().then(function () {
-    build(); render();
-    if (window.matchMedia) { var mq = window.matchMedia('(max-width:767px)'); var onMq = function () { render(); }; if (mq.addEventListener) { mq.addEventListener('change', onMq); } else if (mq.addListener) { mq.addListener(onMq); } }
-  }).catch(fallback);
+  load().then(function () { build(); render(); }).catch(fallback);
 })();
