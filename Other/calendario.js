@@ -131,6 +131,7 @@
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (text != null) { e.textContent = text; } return e; }
   function monthIndex(y, m) { return y * 12 + (m - 1); }
   var ui = {};
+  function isMobile() { return !!(window.matchMedia && window.matchMedia('(max-width:767px)').matches); }
   function build() {
     root.textContent = '';
     wrap.classList.add('cal-attivo');
@@ -192,7 +193,7 @@
       ui.legend.appendChild(b);
     });
     ui.legend.appendChild(ui.today);
-    ui.legend.style.display = (usedKeys.length > 1 || !ui.today.hidden) ? '' : 'none';
+    ui.legend.style.display = (usedKeys.length > 1 || (isMobile() && !ui.today.hidden)) ? '' : 'none';
     /* griglia mensile */
     ui.grid.textContent = '';
     GIORNI.forEach(function (g) { ui.grid.appendChild(el('div', 'cal-dow', g)); });
@@ -202,7 +203,7 @@
       (function (dk) {
         var p = parseKey(dk);
         var list = (state.byDay[dk] || []).filter(visible);
-        var cell = el('div', 'cal-cell' + (p.m !== m ? ' cal-out' : '') + '');
+        var cell = el('div', 'cal-cell' + (p.m !== m ? ' cal-out' : '') + (dk === todayKey ? ' cal-today-cell' : ''));
         cell.appendChild(el('div', 'cal-num', String(p.d)));
         list.slice(0, 3).forEach(function (ev) { cell.appendChild(chip(ev, dk)); });
         if (list.length > 3) {
@@ -221,7 +222,7 @@
       var evs = (state.byDay[d] || []).filter(visible);
       if (!evs.length) { continue; }
       any = true;
-      var row = el('div', 'cal-ag-day');
+      var row = el('div', 'cal-ag-day' + (d === todayKey ? ' cal-today-cell' : ''));
       var p2 = parseKey(d);
       var lab = el('div', 'cal-ag-lab'); lab.appendChild(el('strong', null, String(p2.d))); lab.appendChild(el('span', null, GIORNI[weekdayMon(d)]));
       var col = el('div', 'cal-ag-list');
@@ -318,5 +319,8 @@
 
   /* ---------- avvio ---------- */
   if (!CAL || !KEY) { fallback('configurazione mancante'); return; }
-  load().then(function () { build(); render(); }).catch(fallback);
+  load().then(function () {
+    build(); render();
+    if (window.matchMedia) { var mq = window.matchMedia('(max-width:767px)'); var onMq = function () { render(); }; if (mq.addEventListener) { mq.addEventListener('change', onMq); } else if (mq.addListener) { mq.addListener(onMq); } }
+  }).catch(fallback);
 })();
