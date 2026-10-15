@@ -222,7 +222,7 @@
       var lab = el('div', 'cal-ag-lab'); lab.appendChild(el('strong', null, String(p2.d))); lab.appendChild(el('span', null, GIORNI[weekdayMon(d)]));
       var col = el('div', 'cal-ag-list');
       evs.forEach(function (ev) { col.appendChild(chip(ev, d)); });
-      if (!evs.length) { col.appendChild(el('span', 'cal-ag-oggi', 'Oggi')); }
+      if (!evs.length) { col.appendChild(el('span', 'cal-ag-oggi', 'Nessun evento')); }
       row.appendChild(lab); row.appendChild(col); ui.agenda.appendChild(row);
     }
     if (!any) { ui.agenda.appendChild(el('p', 'cal-empty', 'Nessuna attività in programma in questo mese.')); }
