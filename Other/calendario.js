@@ -222,10 +222,22 @@
       var lab = el('div', 'cal-ag-lab'); lab.appendChild(el('strong', null, String(p2.d))); lab.appendChild(el('span', null, GIORNI[weekdayMon(d)]));
       var col = el('div', 'cal-ag-list');
       evs.forEach(function (ev) { col.appendChild(chip(ev, d)); });
-      if (!evs.length) { col.appendChild(el('span', 'cal-ag-oggi', 'Nessun evento')); }
+      if (!evs.length) { col.appendChild(el('span', 'cal-ag-oggi', nextEventText())); }
       row.appendChild(lab); row.appendChild(col); ui.agenda.appendChild(row);
     }
     if (!any) { ui.agenda.appendChild(el('p', 'cal-empty', 'Nessuna attività in programma in questo mese.')); }
+  }
+
+  function nextEventText() {
+    var keys = Object.keys(state.byDay).sort(), nk = null;
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i] > todayKey && state.byDay[keys[i]].filter(visible).length) { nk = keys[i]; break; }
+    }
+    if (!nk) { return 'Nessun evento'; }
+    var a = parseKey(todayKey), b = parseKey(nk);
+    var diff = Math.round((Date.UTC(b.y, b.m - 1, b.d) - Date.UTC(a.y, a.m - 1, a.d)) / 86400000);
+    var when = diff === 1 ? 'domani' : diff === 2 ? 'dopodomani' : weekdayLong(nk) + ' ' + b.d + ' ' + MESI[b.m - 1];
+    return 'Prossima attività: ' + when;
   }
 
   /* ---------- finestre di dettaglio ---------- */
