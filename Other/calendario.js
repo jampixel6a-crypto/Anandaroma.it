@@ -15,6 +15,9 @@
   var GIORNI_LUNGHI = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
   var PALETTE = ['#3376c4', '#b9851e', '#2f9e8f', '#8a5fc7', '#e0719f', '#5b8c3a', '#9c4f96', '#2b3a99', '#d98324', '#3f9bb5', '#7a6c5d', '#6b8e23'];
   var overrides = {};
+  /* Colori forzati per titolo: se il titolo dell'attività contiene il testo indicato, usa quel colore. */
+  var COLORI_PER_TITOLO = [['autobiografia di uno yogi', '#6aa9e6']];
+  function coloreForzato(k) { for (var i = 0; i < COLORI_PER_TITOLO.length; i++) { if (k.indexOf(COLORI_PER_TITOLO[i][0]) !== -1) { return COLORI_PER_TITOLO[i][1]; } } return null; }
   try { overrides = JSON.parse(root.getAttribute('data-colori') || '{}'); } catch (e) { overrides = {}; }
 
   var state = { events: [], byDay: {}, colors: {}, keys: [], filter: null, y: 0, m: 0, minY: 0, minM: 0, maxY: 0, maxM: 0 };
@@ -66,7 +69,7 @@
     state.keys = Object.keys(keys).sort(function (a, b) { return a.localeCompare(b, 'it'); });
     state.names = keys;
     state.colors = {};
-    state.keys.forEach(function (k, i) { state.colors[k] = overrides[k] || PALETTE[i % PALETTE.length]; });
+    state.keys.forEach(function (k, i) { state.colors[k] = overrides[k] || coloreForzato(k) || PALETTE[i % PALETTE.length]; });
   }
   function colorOf(ev) { return state.colors[ev.key] || PALETTE[0]; }
   function timeLabel(ev, dayK) {
