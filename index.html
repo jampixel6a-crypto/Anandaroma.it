@@ -547,8 +547,8 @@ body .site-footer .footer-colosseo{position:absolute;right:6%;top:50%;transform:
 .slider-spinner .double-bounce1,.slider-spinner .double-bounce2{background-color:#eac453 !important;opacity:.55;box-shadow:0 0 22px 6px rgba(234,196,83,.45);}
 @media (prefers-reduced-motion:reduce){.hero-slideshow-wrapper::before,.hero-slideshow-wrapper::after,.parallax-bg.jarallax-img img{animation:none}}
 </style>
-<link rel="stylesheet" href="Other/calendario.css">
-<script src="Other/calendario.js" defer></script>
+<link rel="stylesheet" href="Other/calendario.css?v=20261017">
+<script src="Other/calendario.js?v=20261017" charset="utf-8" defer></script>
 <script id="avvio-in-cima">
 /* All'apertura il sito parte sempre dall'inizio della home (niente ripristino dello scroll né salto a un'ancora). */
 (function(){
@@ -881,6 +881,7 @@ window.addEventListener('load', function () {
 <div class="wpcf7-replacement">
 <form id="ananda-contact-form" action="https://formspree.io/f/mgawqdkj" method="POST" class="wpcf7-form" aria-label="Modulo di contatto">
 <input type="hidden" name="_subject" value="Nuovo messaggio dal sito Ananda Roma" />
+<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true" />
 <p><label> La tua email (richiesto)<br />
 <input size="40" maxlength="400" class="wpcf7-form-control" required type="email" name="email" />
 </label>
@@ -915,7 +916,7 @@ window.addEventListener('load', function () {
         statusBox.style.display = 'block';
         statusBox.style.color = '#2e7d32';
         statusBox.style.fontWeight = '600';
-        statusBox.textContent = 'La mail è stata inviata correttamente. Grazie';
+        statusBox.textContent = 'Grazie, Il tuo Messaggio è stato ricevuto correttamente.';
         form.reset();
         submitBtn.disabled = false;
         submitBtn.value = 'Invia';
@@ -1400,10 +1401,12 @@ body #popup-evento .pe-testo strong,body #popup-evento .pe-testo h2{font-weight:
   catch (e) { var d = new Date(); oggi = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   if (oggi > FINE) return;
 
-  // true = una sola volta per sessione; false = a ogni caricamento della pagina
-  var UNA_VOLTA_PER_SESSIONE = false;
+  // Fino al 18/10/2026 compare a ogni caricamento della pagina; dal 19/10/2026 una sola volta al giorno.
+  var UNA_VOLTA_AL_GIORNO_DAL = '2026-10-19';
   var KEY = 'popupYogananda80';
-  if (UNA_VOLTA_PER_SESSIONE) { try { if (sessionStorage.getItem(KEY)) return; } catch (e) {} }
+  if (oggi >= UNA_VOLTA_AL_GIORNO_DAL) {
+    try { if (localStorage.getItem(KEY) === oggi) return; localStorage.setItem(KEY, oggi); } catch (e) {}
+  }
 
   var pop = document.getElementById('popup-evento');
   if (!pop) return;
@@ -1423,7 +1426,6 @@ body #popup-evento .pe-testo strong,body #popup-evento .pe-testo h2{font-weight:
     pop.setAttribute('aria-hidden', 'true');
     document.documentElement.style.overflow = '';
     setTimeout(function(){ pop.classList.remove('aperto'); }, 460);
-    if (UNA_VOLTA_PER_SESSIONE) { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} }
     if (precedente && precedente.focus) { try { precedente.focus(); } catch (e) {} }
     document.removeEventListener('keydown', tasti);
   }
@@ -1439,8 +1441,7 @@ body #popup-evento .pe-testo strong,body #popup-evento .pe-testo h2{font-weight:
   }
   if (chiudi) chiudi.addEventListener('click', chiudiPopup);
   pop.addEventListener('click', function(e){ if (e.target === pop) chiudiPopup(); });
-  pop.querySelector('.pe-btn').addEventListener('click', function(){ if (UNA_VOLTA_PER_SESSIONE) { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} } });
-  document.addEventListener('keydown', tasti);
+   document.addEventListener('keydown', tasti);
 
   if (document.readyState === 'complete') { setTimeout(apri, 700); }
   else { window.addEventListener('load', function(){ setTimeout(apri, 700); }); }
