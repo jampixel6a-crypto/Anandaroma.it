@@ -405,6 +405,57 @@ var pbLocalizeObj = {"ajax":"https://anandaroma.it/wp-admin/admin-ajax.php","sec
     margin-top: 14px;
   }
 }
+
+/* TITOLI SEZIONE: solo prima lettera maiuscola */
+.section-title-area .section-title{text-transform:none;}
+
+/* SEZIONE FOTO: griglia di quadrati uguali; la foto sotto il puntatore si ingrandisce molto, al centro della sezione */
+#foto .foto-grid{position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:1140px;margin:0 auto;}
+#foto .foto-item{margin:0;position:relative;z-index:1;border-radius:10px;box-shadow:0 4px 16px rgba(60,50,90,.14);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease;transform-origin:center center;backface-visibility:hidden;will-change:transform;}
+#foto .foto-item.attiva{transform:translate(var(--tx,0px),var(--ty,0px)) scale(var(--s,1.6));z-index:50;box-shadow:0 18px 50px rgba(30,20,60,.45);}
+#foto .foto-item{cursor:zoom-in;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+#foto .foto-item.attiva{cursor:zoom-out;}
+#foto .foto-hint{margin:26px 0 0;text-align:center;font-size:13px;line-height:1.4;color:#8c8c8c;}
+#foto .foto-hint .hint-touch{display:none;}
+@media (hover:none) and (pointer:coarse){#foto .foto-hint .hint-pc{display:none;}#foto .foto-hint .hint-touch{display:inline;}}
+#foto .foto-item img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:10px;}
+@media (min-width:992px){#foto .foto-grid{grid-template-columns:repeat(4,1fr);gap:20px;}}
+
+/* MENU: prima lettera maiuscola, resto minuscolo (come scritto nelle voci) */
+.onepress-menu a,.onepress-menu li > a,.onepress-menu li a{text-transform:none !important;}
+
+/* PROGRAMMI: i tre blocchi entrano scorrendo la pagina (Come si medita da sopra, Ananda Yoga da sotto, E inoltre da destra) */
+#programmi{overflow-x:hidden;}
+.js-rv #programmi .rv{opacity:0;transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);}
+.js-rv #programmi .rv-top{transform:translateY(-70px);}
+.js-rv #programmi .rv-bottom{transform:translateY(70px);}
+.js-rv #programmi .rv-right{transform:translateX(90px);}
+.js-rv #programmi .rv.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.js-rv #programmi .rv{opacity:1;transform:none;transition:none;}}
+
+/* INSEGNANTI: ogni foto rotonda gira in orizzontale come un piatto (asse verticale), un solo giro, alternando il verso (1ª in un senso, 2ª nell'altro, ...) */
+.js-gira #insegnanti .wp-block-media-text__media img{opacity:0;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.js-gira #insegnanti .wp-block-media-text__media img.gira-dx{animation:piattoDx 2.2s cubic-bezier(.2,.7,.2,1) forwards;}
+.js-gira #insegnanti .wp-block-media-text__media img.gira-sx{animation:piattoSx 2.2s cubic-bezier(.2,.7,.2,1) forwards;}
+@keyframes piattoDx{
+  0%{opacity:0;transform:perspective(900px) rotateY(180deg);}
+  30%{opacity:1;}
+  100%{opacity:1;transform:perspective(900px) rotateY(0deg);}
+}
+@keyframes piattoSx{
+  0%{opacity:0;transform:perspective(900px) rotateY(-180deg);}
+  30%{opacity:1;}
+  100%{opacity:1;transform:perspective(900px) rotateY(0deg);}
+}
+@media (prefers-reduced-motion:reduce){.js-gira #insegnanti .wp-block-media-text__media img{opacity:1;animation:none !important;}}
+
+/* ENTRATE LATERALI: locandina da destra, sezione Foto da sinistra (stessa durata e stesso movimento, lente) */
+#servizi,#foto{overflow-x:hidden;}
+.js-lat .entra-dx,.js-lat .entra-sx{opacity:0;transition:opacity 2.6s ease,transform 2.6s cubic-bezier(.25,.6,.25,1);}
+.js-lat .entra-dx{transform:translateX(160px);}
+.js-lat .entra-sx{transform:translateX(-160px);}
+.js-lat .entra-dx.in,.js-lat .entra-sx.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.js-lat .entra-dx,.js-lat .entra-sx{opacity:1;transform:none;transition:none;}}
 </style>
 
 <!-- FONT YOUNGEST SERIF + HERO CIELO -->
@@ -452,7 +503,7 @@ body .site-title,body .section-title,body .section-subtitle,body .section-desc,b
 
 /* HERO: cielo sfumato come da screenshot */
 .hero__content::before{display:none !important;}
-.hero-large-text .hero-title-text{color:#fff;letter-spacing:.04em;text-transform:uppercase;text-shadow:0 2px 14px rgba(0,0,0,.18);}
+.hero-large-text .hero-title-text{color:#fff;letter-spacing:.04em;text-transform:none;text-shadow:0 2px 14px rgba(0,0,0,.18);}
 .hero-small-text h6{color:#fff;text-transform:uppercase;letter-spacing:.03em;text-shadow:0 2px 10px rgba(0,0,0,.18);}
 .hero-slideshow-wrapper:after{background:transparent !important;}
 .hero-content-style1 .btn,.hero-content-style1 .btn-secondary-outline{
@@ -464,7 +515,7 @@ body .site-title,body .section-title,body .section-subtitle,body .section-desc,b
 <style id="header-brand-css" type="text/css">
 .site-logo-div .custom-logo-link{display:flex;width:fit-content;align-items:center;gap:14px;height:75px;line-height:1;text-decoration:none;}
 .site-logo-div img.custom-logo{height:44px !important;width:auto !important;flex-shrink:0;margin:0 !important;display:block;}
-.header-brand-text{font-size:24px;line-height:1;letter-spacing:.04em;text-transform:uppercase;color:#3a4aa8 !important;white-space:nowrap;display:block;margin:0;padding-top:2px;}
+.header-brand-text{font-size:24px;line-height:1;letter-spacing:.04em;text-transform:none;color:#3a4aa8 !important;white-space:nowrap;display:block;margin:0;padding-top:2px;}
 @media (max-width:420px){.header-brand-text{font-size:18px;}.site-logo-div img.custom-logo{height:36px !important;}}
 </style>
 <style id="youngest-serif-light-css" type="text/css">
@@ -694,9 +745,10 @@ document.addEventListener('DOMContentLoaded', function(){
 					<a href="#0" id="nav-toggle">Menu<span></span></a>
 					<nav id="site-navigation" class="main-navigation" role="navigation">
 						<ul class="onepress-menu">
-							<li id="menu-item-1500" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1500"><a href="#about">Anandaroma</a></li>
-							<li id="menu-item-1678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1678"><a href="#servizi">Attivita&#8217;</a></li>
+							<li id="menu-item-1500" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1500"><a href="#about">Ananda Roma</a></li>
+							<li id="menu-item-1678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1678"><a href="#servizi">Attività</a></li>
 							<li id="menu-item-1679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1679"><a href="#insegnanti">Gli insegnanti</a></li>
+							<li id="menu-item-1680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1680"><a href="#foto">Foto</a></li>
 							<li id="menu-item-1504" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1504"><a href="#programmi">Programmi</a></li>
 							<li id="menu-item-1501" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1501"><a href="#team">Calendario</a></li>
 							<li id="menu-item-1505" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1505"><a href="#contact">Contatti</a></li>
@@ -730,13 +782,36 @@ Discepolo diretto di Paramhansa Yogananda, ha dedicato l’intera vita a diffond
 							<section id="servizi"  class="section-services section-padding section-meta onepage-section">
 						<div class="container">
 								<div class="section-title-area">
-										<h2 class="section-title">Le nostre Attivita&#039;</h2>					<div class="section-desc"><p style="text-align: center;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: center; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Ad Ananda Roma puoi avvicinarti alla Scienza della Meditazione e allo Yoga come vie<br />
+										<h2 class="section-title">Le nostre attività</h2>					<div class="section-desc"><p style="text-align: center;font-size: 80%;font-family: 'Simon Font','Fraunces Local',Georgia,serif" data-mce-style="text-align: center; font-size: 80%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Ad Ananda Roma puoi avvicinarti alla Scienza della Meditazione e allo Yoga come vie<br />
 complementari per ritrovare equilibrio, energia e consapevolezza interiore.<br />
 Attraverso i nostri corsi di meditazione e di yoga imparerai:<br />
 -come meditare e come praticare gli Esercizi di Ricarica Energetica di Paramhansa Yogananda<br />
 -come rilassare e rigenerare il corpo e la mente con l&#8217; Ananda Yoga.<br />
 Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altri corsi di approfondimento.</p>
 </div>				</div>
+				<div class="locandina-corso" style="max-width:540px;margin:34px auto 0;text-align:center;font-family:'Simon Font','Fraunces Local',Georgia,serif;">
+					<img decoding="async" src="photo/locandina-come-si-medita.jpg" alt="Come si medita - Corso per principianti, Ananda Roma" width="1024" height="1024" loading="lazy" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto 18px;border-radius:8px;box-shadow:0 6px 22px rgba(80,50,120,.18);" />
+					<h3 style="margin:0 0 16px;font-size:1.5rem;color:#5b3a82;">Orari e giorni</h3>
+					<p style="margin:0 0 16px;font-size:1.05rem;"><strong>11 Novembre</strong><br />Introduttivo ore 19:00-20:00</p>
+					<p style="margin:0 0 6px;font-size:1.05rem;"><strong>Date del corso:</strong></p>
+					<p style="margin:0;font-size:1.05rem;line-height:1.7;">18 Novembre &nbsp;ore 18:30-20:00<br />25 Novembre &nbsp;ore 18:30-20:00<br />2 Dicembre &nbsp;ore 18:30-20:00<br />9 Dicembre &nbsp;ore 18:30-20:00<br />16 Dicembre &nbsp;ore 18:30-20:00</p>
+				</div>
+				<script>
+				(function () {
+					var img = document.querySelector('.locandina-corso img');
+					if (!img || !('IntersectionObserver' in window)) { return; }
+					if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+					img.style.opacity = '0';
+					img.style.transform = 'translateX(-90px)';
+					img.style.transition = 'opacity .9s ease, transform .9s ease';
+					var io = new IntersectionObserver(function (entries) {
+						entries.forEach(function (e) {
+							if (e.isIntersecting) { img.style.opacity = '1'; img.style.transform = 'none'; io.disconnect(); }
+						});
+					}, { threshold: 0.15 });
+					io.observe(img);
+				})();
+				</script>
 			</div>
 							</section>
 
@@ -745,7 +820,7 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
 								<div class="container">
 									<div class="section-title-area">
 										<h5 class="section-subtitle">Il nostro Team</h5>
-										<h2 class="section-title">Gli Insegnanti</h2>
+										<h2 class="section-title">Gli insegnanti</h2>
 									</div>
 									<div class="row">
 										<div class="col-sm-12 col-lg-12">
@@ -776,7 +851,7 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
 											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="650" height="650" src="photo/5-1024x1002.png" alt="" class="wp-image-2387 size-full" /></figure><div class="wp-block-media-text__content">
 											<p><strong>Darshana Carmela Notarangelo</strong></p>
 											<div style="height:2px; width:100%; max-width:300px; margin:6px 0 14px; background:linear-gradient(90deg, rgba(51,118,196,0) 0%, rgba(51,118,196,0.75) 25%, rgba(234,196,83,0.95) 55%, rgba(234,196,83,0.5) 80%, rgba(51,118,196,0) 100%);"></div>
-											<p style="text-align: justify; font-size: 110%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Istruttrice di Ananda Yoga, lo pratica da oltre otto anni e nel 2022 ha conseguito il diploma presso la Scuola Europea di Ananda Yoga di Assisi.<br>Considera l’Ananda yoga, basato sulla tradizione di Paramhansa Yogananda e Swami Kriyananda, uno stile di yoga in grado di fondere al meglio tradizione e contemporaneità, disciplina e giocosità, rilassamento ed energia.</p>
+											<p style="text-align: justify; font-size: 110%; font-family: 'Simon Font','Fraunces Local',Georgia,serif;">Istruttrice di Ananda Yoga, lo pratica da oltre dieci anni e nel 2022 ha conseguito il diploma presso la Scuola Europea di Ananda Yoga di Assisi.<br>Considera l’Ananda yoga, basato sulla tradizione di Paramhansa Yogananda e Swami Kriyananda, uno stile di yoga in grado di fondere al meglio tradizione e contemporaneità, disciplina e giocosità, rilassamento ed energia.</p>
 											</div></div>
 
 											<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:15% auto"><figure class="wp-block-media-text__media"><img decoding="async" width="650" height="650" src="photo/6.png" alt="Alessandro Gunnella" class="size-full" /></figure><div class="wp-block-media-text__content">
@@ -789,11 +864,109 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
 								</div>
 							</section>
 
+<script>
+(function(){
+  var foto = Array.prototype.slice.call(document.querySelectorAll('#insegnanti .wp-block-media-text__media img'));
+  if(!foto.length) return;
+  if(!('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-gira');
+  function classe(img){ return foto.indexOf(img) % 2 === 0 ? 'gira-dx' : 'gira-sx'; }
+  /* un solo giro per foto quando compare scorrendo: la 1ª gira in un verso, la 2ª nel verso opposto, e così via */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add(classe(en.target));
+        io.unobserve(en.target);
+      }
+    });
+  }, {threshold: 0.35});
+  /* tocco / click sulla foto: rifà il giro */
+  foto.forEach(function(img){
+    img.addEventListener('click', function(){
+      if(img.getAttribute('data-gira') === '1') return;      /* sta già girando */
+      img.setAttribute('data-gira', '1');
+      img.classList.remove('gira-dx', 'gira-sx');
+      void img.offsetWidth;                                   /* riavvia l'animazione */
+      img.classList.add(classe(img));
+      setTimeout(function(){ img.removeAttribute('data-gira'); }, 2300);
+    });
+    io.observe(img);
+  });
+})();
+</script>
+							<!-- SEZIONE FOTO -->
+							<section id="foto" class="section-padding section-meta onepage-section">
+								<div class="container">
+									<div class="section-title-area">
+										<h5 class="section-subtitle">Momenti insieme</h5>
+										<h2 class="section-title">Foto</h2>
+									</div>
+									<div class="foto-grid">
+										<figure class="foto-item"><img decoding="async" loading="lazy" src="photo/foto-evento-01.jpg" alt="Ingresso con il cartellone dell'evento per gli 80 anni di Autobiografia di uno Yogi e la sagoma di Paramhansa Yogananda" width="800" height="800" /></figure>
+										<figure class="foto-item"><img decoding="async" loading="lazy" src="photo/foto-evento-02.jpg" alt="Piazza del Campidoglio a Roma" width="800" height="800" /></figure>
+										<figure class="foto-item"><img decoding="async" loading="lazy" src="photo/foto-evento-03.jpg" alt="Tavolo con le edizioni di Autobiografia di uno Yogi in tante lingue" width="800" height="800" /></figure>
+										<figure class="foto-item"><img decoding="async" loading="lazy" src="photo/foto-evento-04.jpg" alt="Edizioni di Autobiografia di uno Yogi esposte accanto ai busti e al cartellone Un capolavoro spirituale senza tempo" width="800" height="800" /></figure>
+										<figure class="foto-item"><img decoding="async" loading="lazy" src="photo/foto-evento-05.jpg" alt="Ritratto di Paramhansa Yogananda con fiori d'arancio e l'edizione speciale del libro" width="800" height="800" /></figure>
+										<figure class="foto-item"><img decoding="async" loading="lazy" src="photo/foto-evento-06.jpg" alt="Il pubblico durante la serata nella sala" width="800" height="800" /></figure>
+										<figure class="foto-item"><img decoding="async" loading="lazy" src="photo/foto-evento-07.jpg" alt="Un relatore al microfono accanto al pianoforte" width="800" height="800" /></figure>
+										<figure class="foto-item"><img decoding="async" loading="lazy" src="photo/foto-evento-08.jpg" alt="I relatori sul palco durante la serata" width="800" height="800" /></figure>
+									</div>
+									<p class="foto-hint"><span class="hint-pc">Fai un click su una foto per ingrandirla.</span><span class="hint-touch">Fai doppio tap su una foto per ingrandirla.</span></p>
+<script>
+(function(){
+  var grid = document.querySelector('#foto .foto-grid');
+  if(!grid) return;
+  var attiva = null, ultimoTap = {t:0, el:null}, giu = null;
+  function chiudi(){ if(attiva){ attiva.classList.remove('attiva'); attiva = null; } }
+  function apri(it){
+    if(attiva === it) return;
+    chiudi();
+    attiva = it;
+    /* usa la posizione "a riposo" (offsetLeft/Top), che non cambia durante l'ingrandimento */
+    var gw = grid.clientWidth, gh = grid.clientHeight;
+    var s = Math.min(Math.min(gh, gw * 0.96) / it.offsetWidth, 2.6);
+    it.style.setProperty('--s', s.toFixed(3));
+    it.style.setProperty('--tx', (gw/2 - (it.offsetLeft + it.offsetWidth/2)).toFixed(1) + 'px');
+    it.style.setProperty('--ty', (gh/2 - (it.offsetTop + it.offsetHeight/2)).toFixed(1) + 'px');
+    it.classList.add('attiva');
+  }
+  grid.addEventListener('pointerdown', function(e){ giu = {x:e.clientX, y:e.clientY}; });
+  grid.addEventListener('pointerup', function(e){
+    var it = e.target.closest ? e.target.closest('.foto-item') : null;
+    if(!it || !giu) return;
+    if(Math.abs(e.clientX - giu.x) > 10 || Math.abs(e.clientY - giu.y) > 10) return; /* era uno scorrimento, non un tocco */
+    if(it === attiva){ chiudi(); ultimoTap = {t:0, el:null}; return; }   /* un click/tap sulla foto ingrandita la richiude */
+    if(e.pointerType === 'mouse' || e.pointerType === 'pen'){ apri(it); return; }   /* PC: un click */
+    var ora = Date.now();   /* telefono: doppio tap */
+    if(ultimoTap.el === it && ora - ultimoTap.t < 400){ apri(it); ultimoTap = {t:0, el:null}; }
+    else { ultimoTap = {t:ora, el:it}; }
+  });
+  document.addEventListener('pointerdown', function(e){ if(!grid.contains(e.target)) chiudi(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') chiudi(); });
+})();
+</script>
+								</div>
+							</section>
+
+<script>
+(function(){
+  var loc = document.querySelector('.locandina-corso');
+  var fot = document.querySelector('#foto .container');
+  if(!('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-lat');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold: 0.12});
+  if(loc){ loc.classList.add('entra-dx'); io.observe(loc); }   /* locandina: da destra */
+  if(fot){ fot.classList.add('entra-sx'); io.observe(fot); }   /* sezione Foto: da sinistra */
+})();
+</script>
+
             <section id="programmi"         class="section-gallery section-padding section-meta onepage-section">
         
     <div class="g-layout-default container">
                     <div class="section-title-area">
-                <h5 class="section-subtitle">Programmi ed Eventi</h5>                <h2 class="section-title">I Nostri Programmi</h2>            </div>
+                <h5 class="section-subtitle">Programmi ed Eventi</h5>                <h2 class="section-title">I nostri programmi</h2>            </div>
                 <div class="gallery-content">
             
 <pre class="wp-block-code has-black-color has-text-color has-background has-link-color wp-elements-a3238127b661f58193b0479c1f4951fb" style="background-color:#faf0d3"><code><strong>COME SI MEDITA</strong></code></pre>
@@ -831,6 +1004,32 @@ Potrai inoltre prendere parte agli incontri settimanali di meditazione. e a altr
         
     </div>
                 </section>
+<script>
+(function(){
+  var box = document.querySelector('#programmi .gallery-content');
+  if(!box) return;
+  document.documentElement.classList.add('js-rv');
+  /* raggruppa ogni titolo (riquadro beige) con il testo che lo segue */
+  var gruppi = [], cur = null;
+  Array.prototype.slice.call(box.children).forEach(function(k){
+    if(k.tagName === 'PRE'){ cur = document.createElement('div'); cur.className = 'rv'; gruppi.push(cur); box.insertBefore(cur, k); }
+    if(cur) cur.appendChild(k);
+  });
+  var cicli = ['top','bottom','right'];
+  gruppi.forEach(function(g, i){
+    var t = (g.textContent || '').trim().toUpperCase(), d = cicli[i % 3];
+    if(t.indexOf('COME SI MEDITA') === 0) d = 'top';
+    else if(t.indexOf('ANANDA YOGA') === 0) d = 'bottom';
+    else if(t.indexOf('E INOLTRE') === 0) d = 'right';
+    g.classList.add('rv-' + d);
+  });
+  if(!('IntersectionObserver' in window)){ gruppi.forEach(function(g){ g.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold: 0.15});
+  gruppi.forEach(function(g){ io.observe(g); });
+})();
+</script>
                         <section id="team"                  class="section-team section-padding section-meta onepage-section">
                                 <div class="container">
                                 <div class="section-title-area">
@@ -907,9 +1106,13 @@ window.addEventListener('load', function () {
     var submitBtn = form.querySelector('input[type="submit"]');
     submitBtn.disabled = true;
     submitBtn.value = 'Invio in corso...';
+    var fd = new FormData(form);
+    var mitt = (form.elements['email'].value || '').trim();
+    var ogg = (form.elements['Oggetto'].value || '').trim();
+    fd.set('_subject', mitt + (ogg ? ' - ' + ogg : ''));
     fetch(form.action, {
       method: 'POST',
-      body: new FormData(form),
+      body: fd,
       headers: { 'Accept': 'application/json' }
     }).then(function(response){
       if (response.ok) {
@@ -1028,7 +1231,7 @@ wp.i18n.setLocaleData( { 'text direction ltr': [ 'ltr' ] } );
 <script type="text/javascript" id="onepress-theme-js-extra">
 /* <![CDATA[ */
 var onepress_js_settings = {"onepress_disable_animation":"","onepress_disable_sticky_header":"","onepress_vertical_align_menu":"","hero_animation":"fadeInDown","hero_speed":"5000","hero_fade":"2000","submenu_width":"0","hero_duration":"6000","hero_disable_preload":"","disabled_google_font":"","is_home":"","gallery_enable":"1","is_rtl":"","parallax_speed":"0.5"};
-var Onepress_Bully = {"enable_label":"","disable_mobile":"1","sections":{"home":{"id":"home","_id":"features","inverse":false,"enable":true,"title":"Home"},"about":{"id":"about","_id":"about","inverse":false,"enable":true,"title":"Ananda Roma"},"servizi":{"id":"servizi","_id":"services","inverse":false,"enable":true,"title":"Le nostre Attivita'"},"insegnanti":{"id":"insegnanti","_id":"insegnanti","inverse":false,"enable":true,"title":"Insegnanti"},"programmi":{"id":"programmi","_id":"gallery","inverse":false,"enable":true,"title":"I Nostri Programmi"},"team":{"id":"team","_id":"team","inverse":false,"enable":true,"title":"Calendario"},"contact":{"id":"contact","_id":"contact","inverse":0,"enable":true,"title":"Contattaci"}}};
+var Onepress_Bully = {"enable_label":"","disable_mobile":"1","sections":{"home":{"id":"home","_id":"features","inverse":false,"enable":true,"title":"Home"},"about":{"id":"about","_id":"about","inverse":false,"enable":true,"title":"Ananda Roma"},"servizi":{"id":"servizi","_id":"services","inverse":false,"enable":true,"title":"Le nostre Attivita'"},"insegnanti":{"id":"insegnanti","_id":"insegnanti","inverse":false,"enable":true,"title":"Insegnanti"},"foto":{"id":"foto","_id":"foto","inverse":false,"enable":true,"title":"Foto"},"programmi":{"id":"programmi","_id":"gallery","inverse":false,"enable":true,"title":"I Nostri Programmi"},"team":{"id":"team","_id":"team","inverse":false,"enable":true,"title":"Calendario"},"contact":{"id":"contact","_id":"contact","inverse":0,"enable":true,"title":"Contattaci"}}};
 /* ]]> */
 </script>
 <script type="text/javascript" src="Other/theme.minified.js" id="onepress-theme-js"></script>
@@ -1348,65 +1551,60 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   };
 })();
 </script>
-<!-- POPUP EVENTO: Paramhansa Yogananda - Una Luce per il mondo (attivo fino al 26/10/2026 compreso) -->
+<!-- POPUP CORSO: Come si medita - corso per principianti (attivo fino all'11/11/2026 compreso, una volta al giorno) -->
 <style id="popup-evento-css" type="text/css">
-#popup-evento{position:fixed;inset:0;z-index:100000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(10,24,60,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;transition:opacity .4s ease;}
+#popup-evento{position:fixed;inset:0;z-index:100000;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));background:rgba(40,24,70,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;transition:opacity .4s ease;}
 #popup-evento.aperto{display:flex;}
 #popup-evento.visibile{opacity:1;transition:opacity 1.4s cubic-bezier(.22,.61,.36,1);}
-#popup-evento .pe-box{position:relative;display:grid;grid-template-columns:40% 1fr;width:100%;max-width:840px;max-height:84vh;overflow:hidden;background:transparent;border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.4);opacity:0;transform:translateX(-110px);transition:transform .45s ease,opacity .4s ease;}
+#popup-evento .pe-box{position:relative;display:grid;grid-template-columns:50% 1fr;width:100%;max-width:840px;margin:auto;overflow:hidden;background:transparent;border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.4);opacity:0;transform:translateX(-110px);transition:transform .45s ease,opacity .4s ease;}
 #popup-evento.visibile .pe-box{opacity:1;transform:none;transition:transform 2s cubic-bezier(.16,.84,.3,1) .2s,opacity 1.7s ease .2s;}
-#popup-evento .pe-img{background:#015196;opacity:.82;display:flex;align-items:center;justify-content:center;min-height:0;}
-#popup-evento .pe-img img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;}
-#popup-evento .pe-testo{background:rgba(255,253,246,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:24px 26px 20px;overflow-y:auto;max-height:84vh;color:#1d2433;font-family:var(--font-main,'Simon Font','Fraunces Local',Georgia,serif);font-size:14px;line-height:1.5;}
-#popup-evento .pe-testo h2{margin:0 0 4px;padding-right:34px;font-size:1.32em;line-height:1.25;letter-spacing:.02em;color:#2b3a99;font-weight:400;}
-#popup-evento .pe-testo h3{margin:0 0 16px;font-size:1.05em;font-weight:400;color:#8a6a10;font-style:italic;}
+#popup-evento .pe-img{background:linear-gradient(#cfbddb 50%,#c29cd1 50%);display:flex;align-items:center;justify-content:center;min-height:0;}
+#popup-evento .pe-img img{display:block;width:100%;height:auto;max-height:84vh;object-fit:contain;object-position:center;}
+#popup-evento .pe-testo{display:flex;flex-direction:column;background:rgba(255,253,250,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:26px 26px 22px;color:#1d2433;font-family:var(--font-main,'Simon Font','Fraunces Local',Georgia,serif);font-size:15px;line-height:1.55;text-align:center;}
+#popup-evento .pe-testo h2{margin:0 0 4px;padding:0 34px;font-size:1.5em;line-height:1.25;letter-spacing:.02em;color:#5b3a82;font-weight:400;}
+#popup-evento .pe-testo h3{margin:0 0 16px;font-size:1.05em;font-weight:400;color:#7a5aa6;font-style:italic;}
 #popup-evento .pe-testo p{margin:0 0 12px;color:#1d2433;}
 body #popup-evento .pe-testo strong,body #popup-evento .pe-testo h2{font-weight:600 !important;}
-#popup-evento .pe-data{padding:10px 14px;margin:14px 0;border-left:4px solid #eac453;background:#f6f1de;border-radius:0 8px 8px 0;}
-#popup-evento .pe-btn{display:inline-block;margin-top:6px;padding:12px 26px;border-radius:30px;background:#eac453;color:#2a2418 !important;text-decoration:none;font-size:1em;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:background .2s,transform .2s;}
-#popup-evento .pe-btn:hover{background:#f3d27a;transform:translateY(-1px);}
-#popup-evento .pe-close{position:absolute;top:10px;right:12px;z-index:2;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:#2b3a99;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);}
+#popup-evento .pe-testo > :first-child{margin-top:auto;}
+#popup-evento .pe-testo > :last-child{margin-bottom:auto;}
+#popup-evento .pe-testo > .pe-data:first-child{margin-left:44px;margin-right:44px;}
+#popup-evento .pe-data{padding:10px 14px;margin:14px 0;border:1px solid #d3c1ea;background:#f4eefb;border-radius:10px;}
+#popup-evento .pe-info{margin-top:16px;font-size:.92em;color:#4a3a63;}
+#popup-evento .pe-close{position:absolute;top:10px;right:12px;z-index:2;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:#5b3a82;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);}
 #popup-evento .pe-close:hover{background:#fff;}
 @media (max-width:760px){
-  #popup-evento{padding:10px;}
-  #popup-evento .pe-box{display:block;overflow-y:auto;max-height:88vh;max-width:440px;}
+  #popup-evento{padding:10px 10px calc(70px + env(safe-area-inset-bottom,0px));}
+  #popup-evento .pe-box{display:block;max-width:440px;}
   #popup-evento .pe-img{display:block;}
-  #popup-evento .pe-img img{height:auto;max-height:42vh;object-fit:contain;}
-  #popup-evento .pe-testo{padding:20px 18px 22px;overflow:visible;max-height:none;font-size:14.5px;}
+  #popup-evento .pe-img img{height:auto;max-height:46vh;object-fit:contain;}
+  #popup-evento .pe-testo{display:block;padding:20px 18px 22px;overflow:visible;max-height:none;font-size:15px;}
+  #popup-evento .pe-testo > .pe-data:first-child{margin:0 0 14px;}
 }
 @media (prefers-reduced-motion:reduce){#popup-evento,#popup-evento .pe-box{transition:none;}}
 </style>
-<div id="popup-evento" role="dialog" aria-modal="true" aria-labelledby="pe-titolo" aria-hidden="true">
+<div id="popup-evento" role="dialog" aria-modal="true" aria-label="Come si medita, corso per principianti" aria-hidden="true">
   <div class="pe-box">
     <button type="button" class="pe-close" aria-label="Chiudi">&times;</button>
-    <div class="pe-img"><img src="photo/locandina-yogananda.jpg" alt="Locandina: Paramhansa Yogananda, Una Luce per il mondo. 80 anni di Autobiografia di uno Yogi. Lunedì 26 ottobre, ore 17:30, Sala della Protomoteca, Campidoglio, Roma. Ingresso gratuito." width="911" height="1280"></div>
+    <div class="pe-img"><img src="photo/locandina-popup-come-si-medita.jpg" alt="Locandina: Come si medita, corso per principianti. Ananda Roma, Largo della Gancia 5, Piazza Mazzini. Info e prenotazioni 366 8147348." width="1024" height="776"></div>
     <div class="pe-testo">
-      <h2 id="pe-titolo">✨ <strong>PARAMHANSA YOGANANDA – UNA LUCE PER IL MONDO</strong> ✨</h2>
-      <h3>80 anni di Autobiografia di uno Yogi</h3>
-      <p>Quest’anno ricorre un anniversario speciale: <strong>80 anni dalla prima pubblicazione di Autobiografia di uno Yogi</strong>, il libro attraverso cui Paramhansa Yogananda ha portato il suo messaggio di unità, pace e ricerca interiore a milioni di persone in tutto il mondo.</p>
-      <p class="pe-data">Per celebrare questa importante ricorrenza, ci ritroveremo <strong>lunedì 26 ottobre 2026, dalle 17:30 alle 19:30, nella Sala della Protomoteca del Campidoglio, a Roma.</strong></p>
-      <p>Sarà un pomeriggio di <strong>testimonianze, musica, letture e ispirazioni</strong> dedicato alla vita e all’eredità spirituale di Yogananda.</p>
-      <p>Tra gli ospiti <strong>Jayadev Jaerschky, Enzo Decaro, Giacomo Campiotti, Bernard Rouch, Antonio Nuzzo</strong>, la pianista <strong>Gloria Campaner</strong> e, ospite speciale, <strong>Asha Nayaswami</strong>, che da oltre cinquant’anni condivide nel mondo gli insegnamenti di Yogananda e Swami Kriyananda.</p>
-      <p>🎟️ <strong>La partecipazione è gratuita, con prenotazione su Eventbrite:</strong></p>
-      <a class="pe-btn" href="https://www.eventbrite.com/e/paramhansa-yogananda-una-luce-per-il-mondo-tickets-2002120963698?aff=oddtdtcreator&amp;utm_source=chatgpt.com" target="_blank" rel="noopener">Prenota qui</a>
+      <p class="pe-data"><strong>11 Novembre</strong><br>Introduttivo ore 19:00-20:00</p>
+      <p><strong>Date del corso:</strong></p>
+      <p>18 Novembre &nbsp;ore 18:30-20:00<br>25 Novembre &nbsp;ore 18:30-20:00<br>2 Dicembre &nbsp;ore 18:30-20:00<br>9 Dicembre &nbsp;ore 18:30-20:00<br>16 Dicembre &nbsp;ore 18:30-20:00</p>
+      <p class="pe-info"><strong>Ananda Roma</strong><br>Largo della Gancia 5 (Piazza Mazzini)<br>Info e prenotazioni 366 8147348<br>anche su WhatsApp, Facebook e Instagram</p>
     </div>
   </div>
 </div>
 <script>
 (function(){
-  // Visibile fino al 26 ottobre 2026 compreso (data di Roma).
-  var FINE = '2026-10-26';
+  // Visibile fino all'11 novembre 2026 compreso (data di Roma), una sola volta al giorno per visitatore.
+  var FINE = '2026-11-11';
   var oggi;
   try { oggi = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Rome' }); }
   catch (e) { var d = new Date(); oggi = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   if (oggi > FINE) return;
 
-  // Fino al 18/10/2026 compare a ogni caricamento della pagina; dal 19/10/2026 una sola volta al giorno.
-  var UNA_VOLTA_AL_GIORNO_DAL = '2026-10-19';
-  var KEY = 'popupYogananda80';
-  if (oggi >= UNA_VOLTA_AL_GIORNO_DAL) {
-    try { if (localStorage.getItem(KEY) === oggi) return; localStorage.setItem(KEY, oggi); } catch (e) {}
-  }
+  var KEY = 'popupComeSiMedita';
+  try { if (localStorage.getItem(KEY) === oggi) return; localStorage.setItem(KEY, oggi); } catch (e) {}
 
   var pop = document.getElementById('popup-evento');
   if (!pop) return;
@@ -1441,7 +1639,7 @@ body #popup-evento .pe-testo strong,body #popup-evento .pe-testo h2{font-weight:
   }
   if (chiudi) chiudi.addEventListener('click', chiudiPopup);
   pop.addEventListener('click', function(e){ if (e.target === pop) chiudiPopup(); });
-   document.addEventListener('keydown', tasti);
+  document.addEventListener('keydown', tasti);
 
   if (document.readyState === 'complete') { setTimeout(apri, 700); }
   else { window.addEventListener('load', function(){ setTimeout(apri, 700); }); }
